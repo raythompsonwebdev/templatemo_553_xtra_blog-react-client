@@ -30,7 +30,7 @@ This is an example of how to list things you need to use the software and how to
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/raythompsonwebdev/travelagencyvuebackend.git
+   git clone https://github.com/raythompsonwebdev/templatemo_553_xtra_blog-react-client.git
    ```
 2. Install NPM packages
    ```sh
@@ -45,9 +45,3 @@ or
 $ npm run dev
 ```
 
-### test production server
-```sh
-$ node server.js
-or
-$ npm run start
-```
