@@ -1,6 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Blogsnippet from "./Blogsnippet.js";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Blogsnippet from './Blogsnippet.js';
 
 function BlogsnippetContainer(props) {
   const { blogData } = props;
@@ -14,7 +14,7 @@ function BlogsnippetContainer(props) {
       blogpost={item.blogpost}
       category={item.category}
       prodId={item.prodId}
-      submitted={item.date}
+      date={item.date}
       comments={item.comments}
     />
   ));
@@ -29,13 +29,15 @@ BlogsnippetContainer.defaultProps = {
 BlogsnippetContainer.propTypes = {
   blogData: PropTypes.arrayOf(
     PropTypes.shape({
+      key: PropTypes.string,
       author: PropTypes.string,
-      username: PropTypes.string,
+      blogimage: PropTypes.string,
       blogtitle: PropTypes.string,
       blogpost: PropTypes.string,
-      mood: PropTypes.string,
+      category: PropTypes.string,
       prodId: PropTypes.string,
-      submitted: PropTypes.string,
+      date: PropTypes.string,
+      comments: PropTypes.string,
     })
   ),
 };
