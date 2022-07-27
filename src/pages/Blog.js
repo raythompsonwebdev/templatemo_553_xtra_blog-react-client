@@ -14,8 +14,10 @@ export default function Blog(props) {
       // add "proxy":"http://localhost:8000/" property to package.json to avoid cors issue
 
       const result = await fetch(`http://localhost:3333/api/post/${id}`);
+      // eslint-disable-next-line no-console
       console.log(result);
       const body = await result.json();
+      // eslint-disable-next-line no-console
       console.log(body);
       setblogInfo(body);
     };
@@ -41,10 +43,11 @@ export default function Blog(props) {
       <div className="row tm-row">
         <div className="col-12">
           <hr className="tm-hr-primary tm-mb-55" />
-          <video width="954" height="535" controls className="tm-mb-40">
+
+          {/* <video width="954" height="535" controls className="tm-mb-40">
             <source src="/static/video/wheat-field.mp4" type="video/mp4" />
             Your browser does not support the video tag.
-          </video>
+          </video> */}
           <img src={blogimage} alt="pin" />
         </div>
       </div>
@@ -59,6 +62,7 @@ export default function Blog(props) {
                 {convertDate(date)} - posted by {author}
               </p>
               <p>{blogpost} </p>
+              <p>{category} </p>
               <span className="d-block text-right tm-color-primary">
                 {comments}
               </span>
@@ -71,7 +75,7 @@ export default function Blog(props) {
                 <figure className="tm-comment-figure">
                   <img
                     src="/static/img/comment-1.jpg"
-                    alt="Image"
+                    alt="One"
                     className="mb-2 rounded-circle img-thumbnail"
                   />
                   <figcaption className="tm-color-primary text-center">
@@ -99,7 +103,7 @@ export default function Blog(props) {
                   <figure className="tm-comment-figure">
                     <img
                       src="/static/img/comment-2.jpg"
-                      alt="Image"
+                      alt="Two"
                       className="mb-2 rounded-circle img-thumbnail"
                     />
                     <figcaption className="tm-color-primary text-center">
@@ -127,13 +131,12 @@ export default function Blog(props) {
                   <input className="form-control" name="email" type="text" />
                 </div>
                 <div className="mb-4">
-                  <textarea
-                    className="form-control"
-                    name="message"
-                    rows="6"></textarea>
+                  <textarea className="form-control" name="message" rows="6" />
                 </div>
                 <div className="text-right">
-                  <button className="tm-btn tm-btn-primary tm-btn-small">
+                  <button
+                    type="submit"
+                    className="tm-btn tm-btn-primary tm-btn-small">
                     Submit
                   </button>
                 </div>
@@ -185,7 +188,7 @@ export default function Blog(props) {
               <figure>
                 <img
                   src="/static/img/img-02.jpg"
-                  alt="Image"
+                  alt="Three"
                   className="mb-3 img-fluid"
                 />
                 <figcaption className="tm-color-primary">
@@ -197,7 +200,7 @@ export default function Blog(props) {
               <figure>
                 <img
                   src="/static/img/img-05.jpg"
-                  alt="Image"
+                  alt="four"
                   className="mb-3 img-fluid"
                 />
                 <figcaption className="tm-color-primary">
@@ -209,7 +212,7 @@ export default function Blog(props) {
               <figure>
                 <img
                   src="/static/img/img-06.jpg"
-                  alt="Image"
+                  alt="five"
                   className="mb-3 img-fluid"
                 />
                 <figcaption className="tm-color-primary">

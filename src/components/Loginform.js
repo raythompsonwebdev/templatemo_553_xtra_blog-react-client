@@ -1,9 +1,9 @@
-import { React, useState } from "react";
+import React, { useState } from 'react';
 
 // eslint-disable-next-line func-style
 export default function Loginform() {
-  const [userEmail, setUserEmail] = useState(" ");
-  const [userPassword, setUserPassword] = useState(" ");
+  const [email, setUserEmail] = useState(' ');
+  const [hashpassword, setUserPassword] = useState(' ');
 
   function handleUserEmail(e) {
     setUserEmail(e.target.value);
@@ -13,15 +13,16 @@ export default function Loginform() {
     setUserPassword(e.target.value);
   }
 
-  function submit() {
-    const myForm = document.getElementById("login");
-
-    const formData = new FormData(myForm);
+  function submitLogin() {
+    const formData = {
+      email,
+      hashpassword,
+    };
     // eslint-disable-next-line no-console
     console.log(formData);
 
-    fetch("http://localhost:3333/login", {
-      method: "POST",
+    fetch('http://localhost:3333/api/login', {
+      method: 'POST',
       body: formData,
     })
       .then((response) => {
@@ -37,7 +38,7 @@ export default function Loginform() {
       })
       .catch((err) => {
         // eslint-disable-next-line no-console
-        console.error("Fetch Error : ", err.message);
+        console.error('Fetch Error : ', err.message);
         // throw new Error(err.message);
       })
       .finally((result) => {
@@ -47,7 +48,7 @@ export default function Loginform() {
   }
 
   return (
-    <form id="login" onSubmit={submit}>
+    <form id="login" onSubmit={submitLogin}>
       <h1 className="h3 mb-3 fw-normal">Login Here </h1>
 
       <div className="form-group">
@@ -58,7 +59,7 @@ export default function Loginform() {
             type="text"
             name="email"
             id="email"
-            value={userEmail}
+            value={email}
             onChange={handleUserEmail}
             required
           />
@@ -73,7 +74,7 @@ export default function Loginform() {
             type="password"
             name="password"
             id="password"
-            value={userPassword}
+            value={hashpassword}
             onChange={handleuserPassword}
             required
           />

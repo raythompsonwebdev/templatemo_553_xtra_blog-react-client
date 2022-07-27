@@ -4,10 +4,13 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import StyleLintPlugin from 'stylelint-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import ImageMinimizerPlugin from 'image-minimizer-webpack-plugin';
+
+// eslint-disable-next-line no-underscore-dangle
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
 // const { extendDefaultPlugins } = require("svgo");
 const isDev = true;
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   mode: 'development',
   entry: {
@@ -50,7 +53,7 @@ export default {
           // Feel free to experiment with options for better result for you
           plugins: [
             ['gifsicle', { interlaced: true }],
-            //['jpegtran', { progressive: true }],
+            // ['jpegtran', { progressive: true }],
             ['pngquant', { optimizationLevel: 5 }],
             // Svgo configuration here https://github.com/svg/svgo#configuration
             // [

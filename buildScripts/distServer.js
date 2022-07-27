@@ -1,4 +1,3 @@
-
 import express from 'express';
 import path from 'path';
 import open from 'open';
@@ -8,25 +7,20 @@ import compression from 'compression';
 const port = 3000;
 const app = express();
 
-//add gzip compression
+// add gzip compression
 app.use(compression());
 
 app.use(express.static('dist'));
 
-app.get('/', function(req, res) {
+app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../dist/index.html'));
 });
 
-//opens browser
-app.listen(port, function(err){
-
-  if(err){
-
+// opens browser
+app.listen(port, (err) => {
+  if (err) {
     console.log(err);
-
-  } else{
-
-    open('http://localhost:' + port);
+  } else {
+    open(`http://localhost:${port}`);
   }
-
 });

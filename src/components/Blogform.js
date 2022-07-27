@@ -1,12 +1,12 @@
-import { React, useState } from "react";
+import { React, useState } from 'react';
 
 // eslint-disable-next-line func-style
 export default function Blogform() {
-  const [author, setAuthor] = useState(" ");
-  const [username, setUsername] = useState(" ");
-  const [blogtitle, setPosttitle] = useState(" ");
-  const [blogpost, setPost] = useState(" ");
-  const [mood, setMood] = useState(" ");
+  const [author, setAuthor] = useState(' ');
+  const [username, setUsername] = useState(' ');
+  const [blogtitle, setPosttitle] = useState(' ');
+  const [blogpost, setPost] = useState(' ');
+  const [mood, setMood] = useState(' ');
 
   const currDate = new Date().toISOString().slice(0, 10);
   const [submitted, setDate] = useState(currDate);
@@ -35,12 +35,40 @@ export default function Blogform() {
     setDate(e.target.value);
   }
 
+  // useEffect(() => {
+  // eslint-disable-next-line func-style
+  const submitForm = () => {
+    const formData = new FormData();
+
+    fetch('http://localhost:3333/create-post', {
+      method: 'POST',
+      body: formData,
+    })
+      .then((response) => {
+        if (!response.ok) {
+          // error processing
+          throw new Error(`${response.status}: ${response.statusText}`);
+        }
+        return response.text();
+      })
+      .then((response) => {
+        // eslint-disable-next-line no-console
+        console.log(response);
+      })
+      .catch((err) => {
+        // eslint-disable-next-line no-console
+        console.log(err);
+
+        // eslint-disable-next-line no-console
+        console.error('Fetch Error : ', err.message);
+      });
+  };
+
+  // submitForm();
+  // });
+
   return (
-    <form
-      id="create-post"
-      action="http://localhost:3333/create-post"
-      method="POST"
-    >
+    <form className="mb-5 ml-auto mr-0 tm-contact-form" onSubmit={submitForm}>
       <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
 
       <div className="form-group">

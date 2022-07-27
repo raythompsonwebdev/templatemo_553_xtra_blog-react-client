@@ -13,8 +13,8 @@ import Contact from './pages/Contact.js';
 import './static/css/bootstrap.min.css';
 import './static/css/templatemo-xtra-blog.css';
 import './static/fontawesome/css/all.min.css';
-//import "./js/templatemo-script.js";
-//import reportWebVitals from "./reportWebVitals.js";
+// import "./js/templatemo-script.js";
+// import reportWebVitals from "./reportWebVitals.js";
 
 const routing = (
   <Router>
@@ -22,13 +22,13 @@ const routing = (
       <Header />
       <React.StrictMode>
         <Routes>
-          <Route path="/" exact element={<App />} />
+          <Route path="/" element={<App />} />
           <Route path="/post/:id" exact element={<Blog />} />
-          <Route path="/contact" exact element={<Contact />} />
-          <Route path="/about" exact element={<About />} />
-          <Route path="/create-post" exact element={<Createblog />} />
-          <Route path="/login" exact element={<Login />} />
-          <Route path="/register" exact element={<Register />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/create-post" element={<Createblog />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </React.StrictMode>
       <Footer />
@@ -43,4 +43,4 @@ root.render(routing);
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-//reportWebVitals();
+// reportWebVitals();

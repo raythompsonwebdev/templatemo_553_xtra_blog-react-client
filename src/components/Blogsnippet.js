@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 function Blogsnippet(props) {
   const {
-    id,
+    // id,
     author,
     blogimage,
     blogtitle,
@@ -17,8 +17,8 @@ function Blogsnippet(props) {
     ...props,
   };
 
-  function convertDate(date) {
-    const newDate = new Date(date);
+  function convertDate(inputDate) {
+    const newDate = new Date(inputDate);
     const result = newDate.toDateString();
     return result;
   }
@@ -30,14 +30,12 @@ function Blogsnippet(props) {
         to={`/post/${prodId}`}
         className="effect-lily tm-post-link tm-pt-60">
         <div className="tm-post-link-inner">
-          <img src={`${blogimage}`} alt="Image" className="img-fluid" />
+          <img src={`${blogimage}`} alt="One" className="img-fluid" />
         </div>
         <span className="position-absolute tm-new-badge">New</span>
         <h2 className="tm-pt-30 tm-color-primary tm-post-title">{blogtitle}</h2>
       </Link>
-      <form action={`/post/${prodId}`}>
-        <input type="submit" />
-      </form>
+
       <p className="tm-pt-30">{blogpost}</p>
       <div className="d-flex justify-content-between tm-pt-45">
         <span className="tm-color-primary">{category}</span>

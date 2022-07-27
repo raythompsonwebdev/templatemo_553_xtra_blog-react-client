@@ -1,15 +1,15 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 // eslint-disable-next-line func-style
 export default function SearchForm() {
-
-  const [email, setEmail] = useState(" ");
+  const [email, setEmail] = useState(' ');
 
   function handleEmail(e) {
     setEmail(e.target.value);
   }
 
-  const submit = (e) => {
+  // eslint-disable-next-line func-style
+  const submitSearch = (e) => {
     // eslint-disable-next-line no-console
     console.log(
       // eslint-disable-next-line react/destructuring-assignment
@@ -17,16 +17,24 @@ export default function SearchForm() {
     );
     e.preventDefault();
   };
- 
+
   return (
     <div className="col-12">
-      <form className="form-inline tm-mb-80 tm-search-form" onSubmit={submit} >                
-        <input className="form-control tm-search-input" name="query" type="text" placeholder="Search..." aria-label="Search" onChange={handleEmail} />
+      <form
+        className="form-inline tm-mb-80 tm-search-form"
+        onSubmit={submitSearch}>
+        <input
+          className="form-control tm-search-input"
+          name="query"
+          type="text"
+          placeholder="Search..."
+          aria-label="Search"
+          onChange={handleEmail}
+        />
         <button className="tm-search-button" type="submit">
-            <i className="fas fa-search tm-search-icon" aria-hidden="true"></i>
-        </button>                                
+          <i className="fas fa-search tm-search-icon" aria-hidden="true" />
+        </button>
       </form>
-    </div> 
-   
+    </div>
   );
 }
