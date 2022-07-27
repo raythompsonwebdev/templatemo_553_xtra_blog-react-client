@@ -2,23 +2,27 @@
   "env": {
       "browser": true, // Browser global variables like `window` etc.
       "es6": true, // Enable all ECMAScript 6 features except for modules.
-      "jest": true, // Jest global variables like `it` etc.
-      "node": true // Defines things like process.env when generating through node
+      "jest": true // Jest global variables like `it` etc.
+      
   },
   "extends": [
-      "airbnb",
+      "airbnb",      
       "react-app",
-      "eslint:recommended",
       "react-app/jest",
+      "eslint:recommended",
+      "plugin:react/recommended",
+      "plugin:prettier/recommended",      
       "plugin:jsx-a11y/recommended",
       "plugin:jest/recommended",
       "plugin:import/recommended",
-      "plugin:prettier/recommended"
+      "plugin:import/errors",
+      "plugin:import/warnings"
   ],
   "parserOptions": {
       "requireConfigFile": false,
       "ecmaFeatures": {
-        "globalReturn": false
+        "globalReturn": false,
+        "jsx": true
         
       },
       "babelOptions": {
@@ -35,15 +39,25 @@
   "root": true, // For configuration cascading.
   "parser": "@babel/eslint-parser", // Uses babel-eslint transforms.
   "rules": {
-      "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+        {
+          "js": "never",
+          "jsx": "never",
+          "ts": "never",
+          "tsx": "never"
+        }
+      ],
+      "prettier/prettier": "error",
+      "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
       "strict" : ["error","global"],
       "prefer-destructuring":["error",{"array":true, "object":true},{"enforceForRenamedProperties":true}],
       "new-cap": "error",
       "no-invalid-this": "error",
       "prefer-const":"error",
       "func-style":["error", "declaration"],
-      "no-new-func":"error",
-      "prettier/prettier": "error",
+      "no-new-func":"error",      
       "no-unused-vars": "warn",
       "no-console": "warn",
       "func-names": "warn",
@@ -67,6 +81,11 @@
   "settings": {
     "react": {
         "version": "detect" // Detect react version
+    },
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
     }
   }
 }
