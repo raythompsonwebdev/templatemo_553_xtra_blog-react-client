@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Loginform from '../components/Loginform.js';
+import Loginform from '../components/Forms/Loginform';
 
 export default function Login() {
   return (
@@ -13,9 +13,7 @@ export default function Login() {
     </div> */}
       <div className="row tm-row tm-mb-120">
         <div className="col-12">
-          <h2 className="tm-color-primary tm-post-title tm-mb-60">
-            Contact Us
-          </h2>
+          <h2 className="tm-color-primary tm-post-title tm-mb-60">Login</h2>
         </div>
         <div className="col-lg-7 tm-contact-left">
           <Loginform />

@@ -60,12 +60,12 @@ export default function Contact() {
   // });
 
   return (
-    <form className="mb-5 ml-auto mr-0 tm-contact-form" onSubmit={submitForm}>
+    <form className="mb-5 ml-auto mr-0" onSubmit={submitForm}>
       <div className="form-group row mb-4">
-        <div className="col-sm-9">
+        <div className="col-sm-12">
           <label
             htmlFor="name"
-            className="col-sm-3 col-form-label text-right tm-color-primary">
+            className="col-sm-12 col-form-label text-left tm-color-primary">
             Name
             <input
               className="form-control mr-0 ml-auto"
@@ -79,10 +79,10 @@ export default function Contact() {
         </div>
       </div>
       <div className="form-group row mb-4">
-        <div className="col-sm-9">
+        <div className="col-sm-12">
           <label
             htmlFor="email"
-            className="col-sm-3 col-form-label text-right tm-color-primary">
+            className="col-sm-12 col-form-label text-left tm-color-primary">
             Email
             <input
               className="form-control mr-0 ml-auto"
@@ -96,10 +96,10 @@ export default function Contact() {
         </div>
       </div>
       <div className="form-group row mb-4">
-        <div className="col-sm-9">
+        <div className="col-sm-12">
           <label
             htmlFor="subject"
-            className="col-sm-3 col-form-label text-right tm-color-primary">
+            className="col-sm-12 col-form-label text-left tm-color-primary">
             Subject
             <input
               className="form-control mr-0 ml-auto"
@@ -113,10 +113,10 @@ export default function Contact() {
         </div>
       </div>
       <div className="form-group row mb-5">
-        <div className="col-sm-9">
+        <div className="col-sm-12">
           <label
             htmlFor="message"
-            className="col-sm-3 col-form-label text-right tm-color-primary">
+            className="col-sm-12 col-form-label text-left tm-color-primary">
             Message
             <textarea
               className="form-control mr-0 ml-auto"
@@ -129,7 +129,7 @@ export default function Contact() {
           </label>
         </div>
       </div>
-      <div className="form-group row text-right">
+      <div className="form-group row text-left">
         <div className="col-12">
           <button className="tm-btn tm-btn-primary tm-btn-small" type="submit">
             Submit

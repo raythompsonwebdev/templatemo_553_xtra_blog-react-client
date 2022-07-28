@@ -67,15 +67,12 @@ export default function Registerform() {
   // });
 
   return (
-    <div className="col-lg-7 tm-contact-left">
-      <form
-        className="mb-5 ml-auto mr-0 tm-contact-form"
-        id="form"
-        onSubmit={submitRegister}>
+    <div className="col-lg-7 ">
+      <form className="mb-5 ml-auto mr-0" id="form" onSubmit={submitRegister}>
         <h1 className="h3 mb-3 fw-normal">Register Here</h1>
 
         <div className="form-group">
-          <label htmlFor="username">
+          <label htmlFor="username" style={{ width: '100%' }}>
             Username:&#32;
             <input
               className="form-control"
@@ -89,7 +86,7 @@ export default function Registerform() {
         </div>
 
         <div className="form-group">
-          <label htmlFor="email">
+          <label htmlFor="email" style={{ width: '100%' }}>
             Email:&#32;
             <input
               className="form-control"
@@ -103,7 +100,7 @@ export default function Registerform() {
         </div>
 
         <div className="form-group">
-          <label htmlFor="password">
+          <label htmlFor="password" style={{ width: '100%' }}>
             Password:&#32;
             <input
               className="form-control"

@@ -7,7 +7,7 @@ import webpack from 'webpack';
 import webmiddleware from 'webpack-dev-middleware';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import config from './webpack.config.dev.js';
+import config from './webpack.config.dev';
 
 const compiler = webpack(config);
 

@@ -40,10 +40,6 @@ export default function Loginform() {
         // eslint-disable-next-line no-console
         console.error('Fetch Error : ', err.message);
         // throw new Error(err.message);
-      })
-      .finally((result) => {
-        // eslint-disable-next-line no-console
-        console.log(`finished  -${result}`);
       });
   }
 
@@ -52,7 +48,7 @@ export default function Loginform() {
       <h1 className="h3 mb-3 fw-normal">Login Here </h1>
 
       <div className="form-group">
-        <label htmlFor="username">
+        <label htmlFor="username" style={{ width: '100%' }}>
           Email:&#32;
           <input
             className="form-control"
@@ -67,7 +63,7 @@ export default function Loginform() {
       </div>
 
       <div className="form-group">
-        <label htmlFor="password">
+        <label htmlFor="password" style={{ width: '100%' }}>
           Password:&#32;
           <input
             className="form-control"

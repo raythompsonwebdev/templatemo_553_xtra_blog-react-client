@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Registerform from '../components/Registerform.js';
+import Registerform from '../components/Forms/Registerform';
 
 export default function Register() {
   return (

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 // eslint-disable-next-line import/extensions
-import SearchForm from '../components/SearchForm.js';
+import SearchForm from '../components/Forms/SearchForm.js';
 
 export default function About() {
   return (

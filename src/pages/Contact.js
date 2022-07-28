@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import SearchForm from '../components/SearchForm.js';
-import ContactForm from '../components/ContactForm.js';
-import GoogleMap from '../components/GoogleMap.js';
+import SearchForm from '../components/Forms/SearchForm';
+import ContactForm from '../components/Forms/ContactForm';
+import GoogleMap from '../components/GoogleMap';
 
 export default function Contact() {
   return (

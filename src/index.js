@@ -1,15 +1,15 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from './components/Header.js';
-import Footer from './components/Footer.js';
-import App from './pages/App.js';
-import Blog from './pages/Blog.js';
-import About from './pages/About.js';
-import Createblog from './pages/Createblog.js';
-import Login from './pages/Login.js';
-import Register from './pages/Register.js';
-import Contact from './pages/Contact.js';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import App from './pages/App';
+import Blog from './pages/Blog';
+import About from './pages/About';
+import Createblog from './pages/Createblog';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Contact from './pages/Contact';
 import './static/css/bootstrap.min.css';
 import './static/css/templatemo-xtra-blog.css';
 import './static/fontawesome/css/all.min.css';
@@ -22,13 +22,13 @@ const routing = (
       <Header />
       <React.StrictMode>
         <Routes>
-          <Route path="/" element={<App />} />
-          <Route path="/post/:id" exact element={<Blog />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/create-post" element={<Createblog />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route exact path="/" element={<App />} />
+          <Route exact path="/post/:id" element={<Blog />} />
+          <Route exact path="/contact" element={<Contact />} />
+          <Route exact path="/about" element={<About />} />
+          <Route exact path="/create-post" element={<Createblog />} />
+          <Route exact path="/login" element={<Login />} />
+          <Route exact path="/register" element={<Register />} />
         </Routes>
       </React.StrictMode>
       <Footer />
