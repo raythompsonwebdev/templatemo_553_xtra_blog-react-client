@@ -43,14 +43,14 @@
       "error",
       "ignorePackages",
         {
-          "js": "never",
-          "jsx": "never",
+          "js": "always",
+          "jsx": "always",
           "ts": "never",
           "tsx": "never"
         }
       ],
       "prettier/prettier": "error",
-      "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
+      "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
       "strict" : ["error","global"],
       "prefer-destructuring":["error",{"array":true, "object":true},{"enforceForRenamedProperties":true}],
       "new-cap": "error",

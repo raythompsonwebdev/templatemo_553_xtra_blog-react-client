@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Blogsnippet from './Blogsnippet';
+import Blogsnippet from './Blogsnippet.js';
 
 function BlogsnippetContainer(props) {
   const { blogData } = props;

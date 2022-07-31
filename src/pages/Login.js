@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Loginform from '../components/Forms/Loginform';
+import Loginform from '../components/Forms/Loginform.js';
 
 export default function Login() {
   return (

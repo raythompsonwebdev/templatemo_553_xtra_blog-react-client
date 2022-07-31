@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import BlogsnippetContainer from '../components/Blog/BlogsnippetContainer';
-import SearchForm from '../components/Forms/SearchForm';
+import BlogsnippetContainer from '../components/Blog/BlogsnippetContainer.js';
+import SearchForm from '../components/Forms/SearchForm.js';
 
 // eslint-disable-next-line func-style
 function App() {

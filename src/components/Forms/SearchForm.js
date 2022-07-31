@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 // eslint-disable-next-line func-style
 export default function SearchForm() {
-  const [serachterm, setSearchTerm] = useState(' ');
+  const [searchterm, setSearchTerm] = useState('');
 
   function handleSearch(e) {
     setSearchTerm(e.target.value);
@@ -12,34 +12,34 @@ export default function SearchForm() {
     e.preventDefault(e);
     // eslint-disable-next-line no-console
     const formData = {
-      serachterm,
+      searchterm,
     };
 
     // eslint-disable-next-line no-console
     console.log(formData);
 
-    // fetch('http://localhost:3333/api/', {
-    //   method: 'GET',
-    //   body: formData,
-    // })
-    //   .then((response) => {
-    //     if (!response.ok) {
-    //       // error processing
-    //       throw new Error(`${response.status}: ${response.statusText}`);
-    //     }
-    //     return response.text();
-    //   })
-    //   .then((response) => {
-    //     // eslint-disable-next-line no-console
-    //     console.log(response);
-    //   })
-    //   .catch((err) => {
-    //     // eslint-disable-next-line no-console
-    //     console.log(err);
+    fetch('http://localhost:3333/api/search', {
+      method: 'GET',
+      body: formData,
+    })
+      .then((response) => {
+        if (!response.ok) {
+          // error processing
+          throw new Error(`${response.status}: ${response.statusText}`);
+        }
+        return response.text();
+      })
+      .then((response) => {
+        // eslint-disable-next-line no-console
+        console.log(response);
+      })
+      .catch((err) => {
+        // eslint-disable-next-line no-console
+        console.log(err);
 
-    //     // eslint-disable-next-line no-console
-    //     console.error('Fetch Error : ', err.message);
-    //   });
+        // eslint-disable-next-line no-console
+        console.error('Fetch Error : ', err.message);
+      });
   }
 
   return (

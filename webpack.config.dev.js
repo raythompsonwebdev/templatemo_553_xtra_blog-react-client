@@ -18,7 +18,7 @@ export default {
   },
   watch: true,
   target: 'web',
-  devtool: 'inline-source-map',
+  devtool: 'eval-source-map',
   output: {
     // serves build from memory
     path: path.join(__dirname, '..', 'public'),
@@ -55,24 +55,7 @@ export default {
             ['gifsicle', { interlaced: true }],
             // ['jpegtran', { progressive: true }],
             ['pngquant', { optimizationLevel: 5 }],
-            // Svgo configuration here https://github.com/svg/svgo#configuration
-            // [
-            //   "svgo",
-            //   {
-            //     plugins: extendDefaultPlugins([
-            //       {
-            //         name: "removeViewBox",
-            //         active: false,
-            //       },
-            //       {
-            //         name: "addAttributesToSVGElement",
-            //         params: {
-            //           attributes: [{ xmlns: "http://www.w3.org/2000/svg" }],
-            //         },
-            //       },
-            //     ]),
-            //   },
-            // ],
+            ['jpegtran', { progressive: true }],
           ],
         },
       },
@@ -84,6 +67,7 @@ export default {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
+        enforce: 'pre',
         use: {
           loader: 'babel-loader',
           options: {
@@ -153,8 +137,8 @@ export default {
   resolve: {
     extensions: ['*', '.js', '.jsx'],
     alias: {
-      Images: path.resolve(__dirname, './src/static/images/'),
-      Fonts: path.resolve(__dirname, './src/static/fonts/'),
+      Images: path.resolve(__dirname, './src/static/img/'),
+      Fonts: path.resolve(__dirname, './src/static/fontawesome/'),
     },
   },
 };

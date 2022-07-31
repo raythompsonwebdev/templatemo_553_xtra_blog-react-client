@@ -1,5 +1,5 @@
 import React from 'react';
-import MainNav from './MainNav';
+import MainNav from './MainNav.js';
 
 // eslint-disable-next-line func-style
 function Header() {

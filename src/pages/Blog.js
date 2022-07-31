@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import SearchForm from '../components/Forms/SearchForm';
-import Comment from '../components/Comments/Comment';
-import CommentReply from '../components/Comments/CommentReply';
-import CommentForm from '../components/Comments/CommentForm';
+import SearchForm from '../components/Forms/SearchForm.js';
+import Comment from '../components/Comments/Comment.js';
+import CommentReply from '../components/Comments/CommentReply.js';
+import CommentForm from '../components/Comments/CommentForm.js';
 
 export default function Blog(props) {
   const { id } = useParams();
