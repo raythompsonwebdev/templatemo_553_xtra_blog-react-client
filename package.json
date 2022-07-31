@@ -13,7 +13,7 @@
   "scripts": {
     "prestart": "babel-node buildScripts/startMessage.js",
     "start": " npm-run-all --parallel open:src",
-    "open:src": "babel-node buildScripts/srcServer.js",
+    "open:src": "babel-node srcServer.js",
     "lint": "eslint webpack.config.* src --color --fix",
     "lint:watch": "npm run lint -- --watch",
     "security-check": "retire --package",

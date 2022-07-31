@@ -11,7 +11,7 @@ const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
 const isDev = false;
 
-const config = {
+const webpackConfig = {
   mode: 'production',
   devtool: 'source-map',
   entry: {
@@ -89,10 +89,6 @@ const config = {
         loader: 'html-loader',
       },
       {
-        test: /\.css$/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader'],
-      },
-      {
         test: /\.css$|sass$|\.scss$/,
         use: [
           MiniCssExtractPlugin.loader,
@@ -102,14 +98,14 @@ const config = {
               sourceMap: isDev,
             },
           },
-          {
-            loader: 'postcss-loader',
-            options: {
-              postcssOptions: {
-                plugins: [['postcss-preset-env']],
-              },
-            },
-          },
+          // {
+          //   loader: 'postcss-loader',
+          //   options: {
+          //     postcssOptions: {
+          //       plugins: [['postcss-preset-env']],
+          //     },
+          //   },
+          // },
           {
             loader: 'sass-loader',
             options: {
@@ -182,4 +178,4 @@ const config = {
   },
 };
 
-export default config;
+export default webpackConfig;

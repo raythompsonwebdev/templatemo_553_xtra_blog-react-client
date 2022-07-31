@@ -12,7 +12,7 @@ export default function About() {
       <div className="row tm-row tm-mb-45">
         <div className="col-12">
           <hr className="tm-hr-primary tm-mb-55" />
-          <img src="/static/img/about-01.jpg" alt="one" className="img-fluid" />
+          <img src="/images/about-01.jpg" alt="one" className="img-fluid" />
         </div>
       </div>
       <div className="row tm-row tm-mb-40">
@@ -98,7 +98,7 @@ export default function About() {
         <div className="col-lg-6 tm-mb-60 tm-person-col">
           <div className="media tm-person">
             <img
-              src="/static/img/about-02.jpg"
+              src="/images/about-02.jpg"
               alt="two"
               className="img-fluid mr-4"
             />
@@ -117,7 +117,7 @@ export default function About() {
         <div className="col-lg-6 tm-mb-60 tm-person-col">
           <div className="media tm-person">
             <img
-              src="/static/img/about-03.jpg"
+              src="/images/about-03.jpg"
               alt="three"
               className="img-fluid mr-4"
             />
@@ -134,7 +134,7 @@ export default function About() {
         <div className="col-lg-6 tm-mb-60 tm-person-col">
           <div className="media tm-person">
             <img
-              src="/static/img/about-04.jpg"
+              src="/images/about-04.jpg"
               alt="four"
               className="img-fluid mr-4"
             />
@@ -151,7 +151,7 @@ export default function About() {
         <div className="col-lg-6 tm-mb-60 tm-person-col">
           <div className="media tm-person">
             <img
-              src="/static/img/about-05.jpg"
+              src="/images/about-05.jpg"
               alt="five"
               className="img-fluid mr-4"
             />

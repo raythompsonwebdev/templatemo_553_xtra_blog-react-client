@@ -119,7 +119,7 @@ export default function Blog(props) {
             <Link to="#" className="d-block tm-mb-40">
               <figure>
                 <img
-                  src="/static/img/img-02.jpg"
+                  src="/images/img-02.jpg"
                   alt="Three"
                   className="mb-3 img-fluid"
                 />
@@ -131,7 +131,7 @@ export default function Blog(props) {
             <Link to="#" className="d-block tm-mb-40">
               <figure>
                 <img
-                  src="/static/img/img-05.jpg"
+                  src="/images/img-05.jpg"
                   alt="four"
                   className="mb-3 img-fluid"
                 />
@@ -143,7 +143,7 @@ export default function Blog(props) {
             <Link to="#" className="d-block tm-mb-40">
               <figure>
                 <img
-                  src="/static/img/img-06.jpg"
+                  src="/images/img-06.jpg"
                   alt="five"
                   className="mb-3 img-fluid"
                 />

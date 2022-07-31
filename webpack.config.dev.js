@@ -10,6 +10,8 @@ const __dirname = path.dirname(new URL(import.meta.url).pathname);
 // const { extendDefaultPlugins } = require("svgo");
 const isDev = true;
 
+const PUBLIC_PATH = '/';
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   mode: 'development',
@@ -23,7 +25,7 @@ export default {
     path: path.join(__dirname, 'public'),
     filename: 'js/[name].bundle.[fullhash].js',
     chunkFilename: 'chunks/[name].chunk.[fullhash].js',
-    publicPath: 'auto',
+    publicPath: PUBLIC_PATH,
   },
 
   plugins: [
@@ -53,8 +55,8 @@ export default {
           // Feel free to experiment with options for better result for you
           plugins: [
             ['gifsicle', { interlaced: true }],
-            ['pngquant', { optimizationLevel: 5 }],
             ['jpegtran', { progressive: true }],
+            ['pngquant', { optimizationLevel: 5 }],
           ],
         },
       },
@@ -98,11 +100,13 @@ export default {
 
       {
         test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        type: 'asset/resource',
         use: ['file-loader'],
       },
       // file loader for images
       {
         test: /\.(jpg|jpeg|png|gif|svg|pdf|ico)$/,
+        type: 'asset/resource',
         use: [
           {
             loader: 'file-loader',
@@ -121,7 +125,8 @@ export default {
   resolve: {
     extensions: ['*', '.js', '.jsx'],
     alias: {
-      Images: path.resolve(__dirname, 'images'),
+      Images: path.resolve(__dirname, './static/src/images/'),
+      Fonts: path.resolve(__dirname, './src/static/fontawesome/webfonts/'),
     },
   },
 };

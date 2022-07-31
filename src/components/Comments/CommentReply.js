@@ -8,7 +8,7 @@ function CommentReply() {
       <div className="tm-comment">
         <figure className="tm-comment-figure">
           <img
-            src="/static/img/comment-2.jpg"
+            src="/images/comment-2.jpg"
             alt="Two"
             className="mb-2 rounded-circle img-thumbnail"
           />

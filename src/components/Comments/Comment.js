@@ -7,7 +7,7 @@ function Comment() {
     <div className="tm-comment tm-mb-45">
       <figure className="tm-comment-figure">
         <img
-          src="/static/img/comment-1.jpg"
+          src="/images/comment-1.jpg"
           alt="One"
           className="mb-2 rounded-circle img-thumbnail"
         />
