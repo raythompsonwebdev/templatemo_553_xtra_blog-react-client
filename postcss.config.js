@@ -1,4 +1,2 @@
 // eslint-disable-next-line import/no-anonymous-default-export
-export default {
-  plugins: ['autoprefixer', ['postcss-preset-env', {}]],
-};
+export default ['autoprefixer', 'postcss-nested'];

@@ -46,32 +46,14 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-dist/
 
-Files/
 npm-debug.log
 node_modules/
-bower_components/
-_assets/household-recycling-guide.gif
-_assets/household-recycling-guide.pdf
-_assets/household-recycling-flowchart-poster.gif
-_assets/household-recycling-flowchart-poster.pdf
-_assets/reduce-reuse-recycle-poster.gif
-_assets/reduce-reuse-recycle-poster.pdf
-_assets/wordsearch.gif
-_assets/wordsearch.pdf
 .git/
-Files/
 test/
 .sass-cache/
 .settings/
 
-src/static/img/
-src/static/fontawesome/
-src/static/js/*.js
-src/static/video/
-src/static/sass/
-src/css/sass/style.scss
 buildScripts/generateMockData.js
 buildScripts/mockDataSchema.js
 buildScripts/testSetup.js
@@ -79,4 +61,13 @@ buildScripts/testSetup.js
 src/reportWebVitals.js
 src/setupTests.js
 src/App.test.js
-public/static/
+
+src/static/fontawesome/
+src/static/video/
+src/static/sass/
+src/static/js/
+src/static/images/*.jpg
+
+public/fontawesome/
+public/video/
+

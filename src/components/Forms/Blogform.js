@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import React, { useState } from 'react';
 
 // eslint-disable-next-line func-style
 export default function Blogform() {

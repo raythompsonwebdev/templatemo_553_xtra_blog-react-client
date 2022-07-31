@@ -17,11 +17,7 @@ export default function Blog(props) {
       // add "proxy":"http://localhost:8000/" property to package.json to avoid cors issue
 
       const result = await fetch(`http://localhost:3333/api/post/${id}`);
-      // eslint-disable-next-line no-console
-      console.log(result);
       const body = await result.json();
-      // eslint-disable-next-line no-console
-      console.log(body);
       setblogInfo(body);
     };
 
@@ -51,7 +47,7 @@ export default function Blog(props) {
             <source src="/static/video/wheat-field.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video> */}
-          <img src={blogimage} alt="pin" />
+          <img src={blogimage} alt={blogtitle} />
         </div>
       </div>
       <div className="row tm-row">

@@ -1,5 +1,4 @@
 import React from 'react';
-// import PropTypes from "prop-types";
 import { Link } from 'react-router-dom';
 
 function Blogsnippet(props) {
@@ -30,7 +29,7 @@ function Blogsnippet(props) {
         to={`/post/${prodId}`}
         className="effect-lily tm-post-link tm-pt-60">
         <div className="tm-post-link-inner">
-          <img src={`${blogimage}`} alt="One" className="img-fluid" />
+          <img src={blogimage} alt="One" className="img-fluid" />
         </div>
         <span className="position-absolute tm-new-badge">New</span>
         <h2 className="tm-pt-30 tm-color-primary tm-post-title">{blogtitle}</h2>
@@ -51,13 +50,15 @@ function Blogsnippet(props) {
 }
 
 Blogsnippet.defaultProps = {
-  author: 'author not found',
-  username: 'user not found ',
-  blogtitle: 'not found',
-  blogpost: 'not found',
-  mood: 'not found',
-  prodId: 1,
-  submitted: 'not found',
+  author: '',
+  blogimage: '',
+  category: '',
+  comments: '',
+  username: '',
+  blogtitle: '',
+  blogpost: '',
+  prodId: 0,
+  date: '',
 };
 
 export default Blogsnippet;

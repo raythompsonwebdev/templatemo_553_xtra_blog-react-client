@@ -6,11 +6,12 @@ import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 
+// eslint-disable-next-line no-underscore-dangle
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
 const isDev = false;
 
-export default {
+const config = {
   mode: 'production',
   devtool: 'source-map',
   entry: {
@@ -101,9 +102,14 @@ export default {
               sourceMap: isDev,
             },
           },
-          // {
-          //   loader: 'postcss-loader',
-          // },
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: [['postcss-preset-env']],
+              },
+            },
+          },
           {
             loader: 'sass-loader',
             options: {
@@ -175,3 +181,5 @@ export default {
     errorDetails: true,
   },
 };
+
+export default config;

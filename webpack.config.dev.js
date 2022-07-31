@@ -16,14 +16,14 @@ export default {
   entry: {
     main: './src/index.js',
   },
-  watch: true,
   target: 'web',
-  devtool: 'eval-source-map',
+  devtool: 'inline-source-map',
   output: {
     // serves build from memory
-    path: path.join(__dirname, '..', 'public'),
+    path: path.join(__dirname, 'public'),
     filename: 'js/[name].bundle.[fullhash].js',
     chunkFilename: 'chunks/[name].chunk.[fullhash].js',
+    publicPath: 'auto',
   },
 
   plugins: [
@@ -42,7 +42,7 @@ export default {
     }),
     new StyleLintPlugin({
       configFile: './.stylelintrc.json',
-      files: './src/static/sass/*.scss',
+      files: './src/static/css/*.css',
       fix: true,
     }),
     new ImageMinimizerPlugin({
@@ -53,7 +53,6 @@ export default {
           // Feel free to experiment with options for better result for you
           plugins: [
             ['gifsicle', { interlaced: true }],
-            // ['jpegtran', { progressive: true }],
             ['pngquant', { optimizationLevel: 5 }],
             ['jpegtran', { progressive: true }],
           ],
@@ -88,21 +87,6 @@ export default {
               sourceMap: isDev,
             },
           },
-          // {
-          //   loader: 'postcss-loader',
-          //   options: {
-          //     postcssOptions: {
-          //       plugins: [
-          //         [
-          //           'postcss-preset-env',
-          //           {
-          //             // Options
-          //           },
-          //         ],
-          //       ],
-          //     },
-          //   },
-          // },
           {
             loader: 'sass-loader',
             options: {
@@ -137,8 +121,7 @@ export default {
   resolve: {
     extensions: ['*', '.js', '.jsx'],
     alias: {
-      Images: path.resolve(__dirname, './src/static/img/'),
-      Fonts: path.resolve(__dirname, './src/static/fontawesome/'),
+      Images: path.resolve(__dirname, 'images'),
     },
   },
 };
