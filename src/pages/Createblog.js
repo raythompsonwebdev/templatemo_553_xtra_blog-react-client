@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Blogform from '../components/Forms/Blogform.js';
+import Blogform from '../components/Blog/Blogform.js';
 
 export default function Createblog() {
   return (

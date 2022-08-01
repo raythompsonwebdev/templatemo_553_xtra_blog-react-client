@@ -1,44 +1,58 @@
 import React, { useState } from 'react';
 
-// eslint-disable-next-line func-style
 export default function Blogform() {
-  const [author, setAuthor] = useState(' ');
-  const [username, setUsername] = useState(' ');
-  const [blogtitle, setPosttitle] = useState(' ');
-  const [blogpost, setPost] = useState(' ');
-  const [mood, setMood] = useState(' ');
-
+  const [blogauthor, setBlogAuthor] = useState(' ');
+  // const [username, setUsername] = useState(' ');
+  const [blogtitle, setBlogTitle] = useState(' ');
+  const [blogtext, setBlogText] = useState(' ');
+  const [blogimage, setBlogImage] = useState(' ');
+  const [blogcat, setBlogCat] = useState(' ');
+  // add current date
   const currDate = new Date().toISOString().slice(0, 10);
-  const [submitted, setDate] = useState(currDate);
+  const [blogdate, setBlogDate] = useState(currDate);
 
-  function handleUsername(e) {
-    setUsername(e.target.value);
+  function handleBlogAuthor(e) {
+    setBlogAuthor(e.target.value);
   }
 
-  function handleAuthor(e) {
-    setAuthor(e.target.value);
+  // function handleUsername(e) {
+  //   setUsername(e.target.value);
+  // }
+
+  function handleBlogTitle(e) {
+    setBlogTitle(e.target.value);
   }
 
-  function handlePosttitle(e) {
-    setPosttitle(e.target.value);
+  function handleBlogText(e) {
+    setBlogText(e.target.value);
   }
 
-  function handlePost(e) {
-    setPost(e.target.value);
+  function handleBlogImage(e) {
+    setBlogImage(e.target.value);
   }
 
-  function handleMood(e) {
-    setMood(e.target.value);
+  function handleBlogCat(e) {
+    setBlogCat(e.target.value);
   }
 
-  function handleDate(e) {
-    setDate(e.target.value);
+  function handleBlogDate(e) {
+    setBlogDate(e.target.value);
   }
 
-  // useEffect(() => {
-  // eslint-disable-next-line func-style
-  const submitForm = () => {
-    const formData = new FormData();
+  function submitForm() {
+    // const formData = new FormData();
+
+    const formData = {
+      blogauthor,
+      blogtitle,
+      blogtext,
+      blogimage,
+      blogcat,
+      blogdate,
+    };
+
+    // eslint-disable-next-line no-console
+    console.log(formData);
 
     fetch('http://localhost:3333/create-post', {
       method: 'POST',
@@ -62,31 +76,28 @@ export default function Blogform() {
         // eslint-disable-next-line no-console
         console.error('Fetch Error : ', err.message);
       });
-  };
-
-  // submitForm();
-  // });
+  }
 
   return (
     <form className="mb-5 ml-auto mr-0 tm-contact-form" onSubmit={submitForm}>
       <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
 
       <div className="form-group">
-        <label htmlFor="author">
+        <label htmlFor="blogauthor">
           Author:&#32;
           <input
             className="form-control"
             type="text"
-            name="author"
-            id="author"
-            value={author}
-            onChange={handleAuthor}
+            name="blogauthor"
+            id="blogauthor"
+            value={blogauthor}
+            onChange={handleBlogAuthor}
             required
           />
         </label>
       </div>
 
-      <div className="form-group">
+      {/* <div className="form-group">
         <label htmlFor="username">
           Username:&#32;
           <input
@@ -99,7 +110,7 @@ export default function Blogform() {
             required
           />
         </label>
-      </div>
+      </div> */}
 
       <div className="form-group">
         <label htmlFor="blogtitle">
@@ -110,50 +121,65 @@ export default function Blogform() {
             name="blogtitle"
             id="blogtitle"
             value={blogtitle}
-            onChange={handlePosttitle}
+            onChange={handleBlogTitle}
             required
           />
         </label>
       </div>
 
       <div className="form-group">
-        <label htmlFor="blogpost">
+        <label htmlFor="blogtext">
           <span>Post:&#32;</span>
           <textarea
-            value={blogpost}
-            onChange={handlePost}
-            name="blogpost"
-            id="blogpost"
+            value={blogtext}
+            onChange={handleBlogText}
+            name="blogtext"
+            id="blogtext"
             rows="10"
           />
         </label>
       </div>
 
       <div className="form-group">
-        <label htmlFor="mood">
+        <label htmlFor="blogimage">
           Mood:&#32;
           <input
             className="form-control"
             type="text"
-            name="mood"
-            id="mood"
-            value={mood}
-            onChange={handleMood}
+            name="blogimage"
+            id="blogimage"
+            value={blogimage}
+            onChange={handleBlogImage}
             required
           />
         </label>
       </div>
 
       <div className="form-group">
-        <label htmlFor="submitted">
+        <label htmlFor="blogcat">
+          Mood:&#32;
+          <input
+            className="form-control"
+            type="text"
+            name="blogcat"
+            id="blogcat"
+            value={blogcat}
+            onChange={handleBlogCat}
+            required
+          />
+        </label>
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="blogdate">
           Date :
           <input
             className="form-control"
             type="date"
-            id="submittedr"
-            name="submitted"
-            onChange={handleDate}
-            value={submitted}
+            id="blogdate"
+            name="blogdate"
+            onChange={handleBlogDate}
+            value={blogdate}
           />
         </label>
       </div>

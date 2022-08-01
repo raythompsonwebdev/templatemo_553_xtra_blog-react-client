@@ -24,7 +24,6 @@ export default function Registerform() {
     setDate(e.target.value);
   }
 
-  // useEffect(() => {
   // eslint-disable-next-line func-style
   const submitRegister = (e) => {
     e.preventDefault();
@@ -39,32 +38,22 @@ export default function Registerform() {
     // eslint-disable-next-line no-console
     console.log(formData);
 
-    // fetch('http://localhost:3333/api/register-user', {
-    //   method: 'POST',
-    //   body: formData,
-    // })
-    //   .then((response) => {
-    //     if (!response.ok) {
-    //       // error processing
-    //       throw new Error(`${response.status}: ${response.statusText}`);
-    //     }
-    //     return response.text();
-    //   })
-    //   .then((response) => {
-    //     // eslint-disable-next-line no-console
-    //     console.log(response);
-    //   })
-    //   .catch((err) => {
-    //     // eslint-disable-next-line no-console
-    //     console.log(err);
-
-    //     // eslint-disable-next-line no-console
-    //     console.error('Fetch Error : ', err.message);
-    //   });
+    fetch('http://localhost:3333/api/register-user', {
+      method: 'POST',
+      body: formData,
+    })
+      .then((response) => {
+        if (!response.ok) {
+          // error processing
+          throw new Error(`${response.status}: ${response.statusText}`);
+        }
+        return response.text();
+      })
+      .then((response) => {
+        // eslint-disable-next-line no-console
+        console.log(response);
+      });
   };
-
-  // submitRegister();
-  // });
 
   return (
     <div className="col-lg-7 ">

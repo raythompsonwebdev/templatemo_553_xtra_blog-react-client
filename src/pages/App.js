@@ -18,9 +18,6 @@ function App() {
         return response.json();
       })
       .then((data) => {
-        // eslint-disable-next-line no-console
-        // console.log(data);
-
         const returnedData = data.map((blog, index) => {
           const { id } = blog;
           // eslint-disable-next-line no-param-reassign
@@ -30,10 +27,6 @@ function App() {
         });
 
         setblogData(returnedData);
-      })
-      .catch((error) => {
-        // eslint-disable-next-line no-console
-        console.error(error);
       });
   }, []);
 

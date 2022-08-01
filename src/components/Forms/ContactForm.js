@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 // eslint-disable-next-line func-style
 export default function Contact() {
   const [username, setUsername] = useState(' ');
-  const [subject, setSubject] = useState('');
   const [email, setEmail] = useState(' ');
+  const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
 
   function handleUsername(e) {
@@ -24,17 +24,24 @@ export default function Contact() {
   }
 
   // eslint-disable-next-line no-console
-  console.log(username, subject, email, message);
+  console.log(username, email, subject, message);
 
-  // useEffect(() => {
   // eslint-disable-next-line func-style
   const submitForm = (e) => {
     e.preventDefault();
-    const formData = new FormData();
+    // const formData = new FormData();
+
+    const formData = {
+      username,
+      email,
+      subject,
+      message,
+    };
 
     fetch('http://localhost:3333/api/contact', {
       method: 'POST',
-      body: Object.fromEntries(formData),
+      // body: Object.fromEntries(formData),
+      body: formData,
     })
       .then((response) => {
         if (!response.ok) {
@@ -46,18 +53,8 @@ export default function Contact() {
       .then((response) => {
         // eslint-disable-next-line no-console
         console.log(response);
-      })
-      .catch((err) => {
-        // eslint-disable-next-line no-console
-        console.log(err);
-
-        // eslint-disable-next-line no-console
-        console.error('Fetch Error : ', err.message);
       });
   };
-
-  // submitForm();
-  // });
 
   return (
     <form className="mb-5 ml-auto mr-0" onSubmit={submitForm}>

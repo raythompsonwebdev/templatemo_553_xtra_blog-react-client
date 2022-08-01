@@ -32,13 +32,6 @@ export default function SearchForm() {
       .then((response) => {
         // eslint-disable-next-line no-console
         console.log(response);
-      })
-      .catch((err) => {
-        // eslint-disable-next-line no-console
-        console.log(err);
-
-        // eslint-disable-next-line no-console
-        console.error('Fetch Error : ', err.message);
       });
   }
 
