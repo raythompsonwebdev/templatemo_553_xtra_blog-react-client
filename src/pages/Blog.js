@@ -72,7 +72,7 @@ export default function Blog(props) {
               <hr className="tm-hr-primary tm-mb-45" />
               <Comment />
               <CommentReply />
-              <CommentForm />
+              <CommentForm author={author} />
             </div>
           </div>
         </div>
