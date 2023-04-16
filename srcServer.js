@@ -7,7 +7,7 @@ import serveStatic from 'serve-static';
 import webmiddleware from 'webpack-dev-middleware';
 import path from 'path';
 import { fileURLToPath } from 'url';
-// import rateLimit from 'express-rate-limit';
+
 import config from './webpack.config.dev.js';
 
 const compiler = webpack(config);
@@ -18,16 +18,6 @@ const compiler = webpack(config);
 
 const PORT = process.env.PORT || 3000;
 const app = express();
-
-// const limiter = rateLimit({
-//   windowMs: 15 * 60 * 1000, // 15 minutes
-//   max: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
-//   standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
-//   legacyHeaders: false, // Disable the `X-RateLimit-*` headers
-// });
-
-// // Apply the rate limiting middleware to all requests
-// app.use(limiter);
 
 // set up file paths for static files - updated.
 // eslint-disable-next-line no-underscore-dangle
