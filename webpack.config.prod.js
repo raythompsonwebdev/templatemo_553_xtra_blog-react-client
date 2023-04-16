@@ -5,6 +5,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
+import ImageMinimizerPlugin from 'image-minimizer-webpack-plugin';
 
 // eslint-disable-next-line no-underscore-dangle
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
@@ -126,28 +127,6 @@ const webpackConfig = {
           'file-loader',
           {
             loader: 'image-webpack-loader',
-            options: {
-              name: '[path][name]-[fullhash:8].[ext]',
-              mozjpeg: {
-                progressive: true,
-                quality: 65,
-              },
-              // optipng.enabled: false will disable optipng
-              optipng: {
-                enabled: false,
-              },
-              pngquant: {
-                quality: [0.65, 0.9],
-                speed: 4,
-              },
-              gifsicle: {
-                interlaced: false,
-              },
-              // the webp option will enable WEBP
-              webp: {
-                quality: 75,
-              },
-            },
           },
         ],
       },
@@ -170,6 +149,27 @@ const webpackConfig = {
     new MiniCssExtractPlugin({
       filename: 'css/[name].bundle.[fullhash].css',
       chunkFilename: 'chunks/[id].chunk.[fullhash].css',
+    }),
+    new ImageMinimizerPlugin({
+      minimizer: {
+        implementation: ImageMinimizerPlugin.squooshMinify,
+        options: {
+          encodeOptions: {
+            mozjpeg: {
+              // That setting might be close to lossless, but it’s not guaranteed
+              // https://github.com/GoogleChromeLabs/squoosh/issues/85
+              quality: 100,
+            },
+            webp: {
+              lossless: 1,
+            },
+            avif: {
+              // https://github.com/GoogleChromeLabs/squoosh/blob/dev/codecs/avif/enc/README.md
+              cqLevel: 0,
+            },
+          },
+        },
+      },
     }),
   ],
   stats: {
