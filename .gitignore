@@ -1,3 +1,28 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
@@ -46,7 +71,6 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-
 npm-debug.log
 node_modules/
 .git/
@@ -54,23 +78,15 @@ test/
 .sass-cache/
 .settings/
 
-buildScripts/generateMockData.js
-buildScripts/mockDataSchema.js
-buildScripts/testSetup.js
-
 src/reportWebVitals.js
 src/setupTests.js
 src/App.test.js
 
-src/static/fontawesome/
-src/static/video/
-src/static/sass/
 src/static/js/
-src/static/images/*.jpg
+src/static/images/
 
 public/fontawesome/
 public/video/
 public/images/
 
 dist/
-
