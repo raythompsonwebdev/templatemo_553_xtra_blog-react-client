@@ -26,10 +26,14 @@ const Loginform = () => {
     const password: FormDataEntryValue | null = formData.get('password')
 
     // eslint-disable-next-line no-console
-    console.log(formData);
+    console.log(username, password);
 
     fetch('http://localhost:3333/api/login', {
       method: 'POST',
+      headers: {
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({username, password}),
     })
       .then((response) => {
@@ -42,12 +46,7 @@ const Loginform = () => {
       .then((response) => {
         // eslint-disable-next-line no-console
         console.log(response);
-      })
-      .catch((err) => {
-        // eslint-disable-next-line no-console
-        console.error('Fetch Error : ', err.message);
-        // throw new Error(err.message);
-      });
+      })      
   }
 
   return (

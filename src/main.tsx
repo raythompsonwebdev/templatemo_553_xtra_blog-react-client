@@ -10,6 +10,7 @@ import Createblog from './pages/Createblog';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Contact from './pages/Contact';
+import Profile from './pages/Profile';
 import './assets/css/bootstrap.min.css';
 import './assets/css/templatemo-xtra-blog.css';
 // import "./js/templatemo-script.js";
@@ -28,6 +29,7 @@ const routing = (
           <Route path="/create-post" element={<Createblog />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </React.StrictMode>
       <Footer />

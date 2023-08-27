@@ -3,16 +3,11 @@ import Blogform from '../components/Blog/Blogform';
 
 const Createblog = () => (
     <main className="tm-main">
-      {/* <div className="row tm-row">     
-    <SearchForm />                                 
-  </div>            
-  <div className="row tm-row tm-mb-45">
-      <GoogleMap />               
-  </div> */}
+
       <div className="row tm-row tm-mb-120">
         <div className="col-12">
           <h2 className="tm-color-primary tm-post-title tm-mb-60">
-            Contact Us
+            Add Blog
           </h2>
         </div>
         <div className="col-lg-7 tm-contact-left">

@@ -2,14 +2,21 @@ import { SetStateAction, useState } from "react";
 
 const Blogform = () => {
 
+  const [bloguser, setBlogUser] = useState('');
   const [blogauthor, setBlogAuthor] = useState('');
   const [blogtitle, setBlogTitle] = useState('');
   const [blogtext, setBlogText] = useState('');
-  const [blogimage, setBlogImage] = useState('');
+  // const [blogimage, setBlogImage] = useState('');
   const [blogcat, setBlogCat] = useState('');
   // add current date
   const currDate = new Date().toISOString().slice(0, 10);
   const [blogdate, setBlogDate] = useState(currDate);
+
+
+  const handleBlogUser = (e: { preventDefault: () => void , target: { value: SetStateAction<string> }}) => {
+    const{ value } = e.target;
+    setBlogUser(value);
+  }
 
  const handleBlogAuthor = (e: { preventDefault: () => void , target: { value: SetStateAction<string> }}) => {
     const{ value } = e.target;
@@ -26,10 +33,10 @@ const Blogform = () => {
     setBlogText(value);
   }
 
-  const handleBlogImage = (e: { preventDefault: () => void , target: { value: SetStateAction<string> }}) => {
-    const{value } = e.target;
-    setBlogImage(value);
-  }
+  // const handleBlogImage = (e: { preventDefault: () => void , target: { value: SetStateAction<string> }}) => {
+  //   const{value } = e.target;
+  //   setBlogImage(value);
+  // }
 
   const handleBlogCat = (e: { preventDefault: () => void , target: { value: SetStateAction<string> }}) => {
     const{value } = e.target;
@@ -45,7 +52,7 @@ const Blogform = () => {
 
     e.preventDefault();
 
-    const myForm = document.getElementById("login") as HTMLFormElement;
+    const myForm = document.getElementById("addblog-form") as HTMLFormElement;
 
     const formData : FormData = new FormData(myForm);
     
@@ -67,35 +74,32 @@ const Blogform = () => {
         // eslint-disable-next-line no-console
         console.log(response);
       })
-      .catch((err) => {
-        // eslint-disable-next-line no-console
-        console.log(err);
-
-        // eslint-disable-next-line no-console
-        console.error('Fetch Error : ', err.message);
-      });
+      
   }
 
   return (
-    <form className="mb-5 ml-auto mr-0 tm-contact-form" onSubmit={submitForm}>
-      <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
+    <form id="addblog-form" className="mb-5 ml-auto mr-0" onSubmit={submitForm}>
+      <h1 className="h3 mb-3 fw-normal">Insert Blog Details Here</h1>
 
-      <div className="form-group">
-        <label htmlFor="blogauthor">
-          Author:&#32;
-          <input
-            className="form-control"
-            type="text"
-            name="blogauthor"
-            id="blogauthor"
-            value={blogauthor}
-            onChange={handleBlogAuthor}
-            required
-          />
-        </label>
+      <div className="form-group row mb-4">
+        <div className="col-sm-12">
+          <label htmlFor="blogauthor">
+            Author:&#32;
+            <input
+              className="form-control"
+              type="text"
+              name="blogauthor"
+              id="blogauthor"
+              value={blogauthor}
+              onChange={handleBlogAuthor}
+              required
+            />
+          </label>
+        </div>
       </div>
 
-      {/* <div className="form-group">
+      <div className="form-group row mb-4">
+        <div className="col-sm-12">
         <label htmlFor="username">
           Username:&#32;
           <input
@@ -103,14 +107,16 @@ const Blogform = () => {
             type="text"
             name="username"
             id="username"
-            value={username}
-            onChange={handleUsername}
+            value={bloguser}
+            onChange={handleBlogUser}
             required
           />
         </label>
-      </div> */}
+        </div>
+      </div>
 
-      <div className="form-group">
+      <div className="form-group row mb-4">
+        <div className="col-sm-12">
         <label htmlFor="blogtitle">
           Post Title:&#32;
           <input
@@ -123,67 +129,78 @@ const Blogform = () => {
             required
           />
         </label>
+        </div>
       </div>
 
-      <div className="form-group">
-        <label htmlFor="blogtext">
-          <span>Post:&#32;</span>
-          <textarea
-            value={blogtext}
-            onChange={handleBlogText}
-            name="blogtext"
-            id="blogtext"
-            rows={10}
-          />
-        </label>
+      <div className="form-group row mb-4">
+        <div className="col-sm-12">
+          <label htmlFor="blogtext">
+            <span>Post:&#32;</span>
+            <textarea
+              value={blogtext}
+              onChange={handleBlogText}
+              name="blogtext"
+              id="blogtext"
+              rows={10}
+            />
+          </label>
+        </div>
       </div>
 
-      <div className="form-group">
-        <label htmlFor="blogimage">
-          Mood:&#32;
-          <input
-            className="form-control"
-            type="text"
-            name="blogimage"
-            id="blogimage"
-            value={blogimage}
-            onChange={handleBlogImage}
-            required
-          />
-        </label>
+
+      {/* <div className="form-group row mb-4">
+        <div className="col-sm-12">
+          <label htmlFor="blogimage">
+            Mood:&#32;
+            <input
+              className="form-control"
+              type="text"
+              name="blogimage"
+              id="blogimage"
+              value={blogimage}
+              onChange={handleBlogImage}
+              required
+            />
+          </label>
+        </div>
+      </div> */}
+
+      <div className="form-group row mb-4">
+        <div className="col-sm-12">
+          <label htmlFor="blogcat">
+            Mood:&#32;
+            <input
+              className="form-control"
+              type="text"
+              name="blogcat"
+              id="blogcat"
+              value={blogcat}
+              onChange={handleBlogCat}
+              required
+            />
+          </label>
+        </div>
       </div>
 
-      <div className="form-group">
-        <label htmlFor="blogcat">
-          Mood:&#32;
-          <input
-            className="form-control"
-            type="text"
-            name="blogcat"
-            id="blogcat"
-            value={blogcat}
-            onChange={handleBlogCat}
-            required
-          />
-        </label>
-      </div>
 
-      <div className="form-group">
-        <label htmlFor="blogdate">
-          Date :
-          <input
-            className="form-control"
-            type="date"
-            id="blogdate"
-            name="blogdate"
-            onChange={handleBlogDate}
-            value={blogdate}
-          />
-        </label>
+      <div className="form-group row mb-4">
+        <div className="col-sm-12">
+          <label htmlFor="blogdate">
+            Date :
+            <input
+              className="form-control"
+              type="date"
+              id="blogdate"
+              name="blogdate"
+              onChange={handleBlogDate}
+              value={blogdate}
+            />
+          </label>
+        </div>
       </div>
 
       <button className="w-100 btn btn-lg btn-primary" type="submit">
-        Sign in
+        Add Blog
       </button>
       <p className="mt-5 mb-3 text-muted">© 2017–2021</p>
     </form>
