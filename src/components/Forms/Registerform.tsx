@@ -52,9 +52,9 @@ const Registerform = () => {
       .then((response) => {
         if (!response.ok) {
           // error processing
-          throw new Error(`${response.status}: ${response.statusText}`);
+          throw new Error(`registerForm : ${response.status}: ${response.statusText}`);
         }
-        return response.text();
+        return response.json();
       })
       .then((response) => {
         // eslint-disable-next-line no-console

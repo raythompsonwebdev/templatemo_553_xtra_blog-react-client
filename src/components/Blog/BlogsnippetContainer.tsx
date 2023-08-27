@@ -6,7 +6,7 @@ function BlogsnippetContainer(props: { blogData :BlogType[], lastIndex: number})
   const { blogData, lastIndex } = props;
 
   // eslint-disable-next-line no-console
-  console.log(blogData, lastIndex)
+  console.log(lastIndex)
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const Blog = blogData.map((item :BlogType) => (
     <Blogsnippet

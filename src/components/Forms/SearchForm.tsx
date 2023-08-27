@@ -13,13 +13,14 @@ export default function SearchForm() {
     const myForm = document.querySelector(".tm-search-form") as HTMLFormElement
 
     const formData : FormData = new FormData(myForm);
+
+    const searchquery: FormDataEntryValue | null = formData.get('query')
      
     // eslint-disable-next-line no-console
-    console.log(searchterm);
+    console.log(searchterm, searchquery);
 
-    fetch('http://localhost:3333/api/search', {
+    fetch(`http://localhost:3333/api/search?query=${searchterm}`, {
       method: 'GET',
-      body: formData,
     })
       .then((response) => {
         if (!response.ok) {

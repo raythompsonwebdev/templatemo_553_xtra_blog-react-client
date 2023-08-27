@@ -2,11 +2,11 @@ import { SetStateAction, useState } from "react";
 
  
 const Loginform = () => {
-  const [email, setUserEmail] = useState(' ');
-  const [hashpassword, setUserPassword] = useState(' ');
+  const [username, setUserName] = useState('');
+  const [password, setUserPassword] = useState('');
 
-  const handleUserEmail = (e: { preventDefault: () => void , target: { value: SetStateAction<string> }})=> {
-    setUserEmail(e.target.value);
+  const handleUserName = (e: { preventDefault: () => void , target: { value: SetStateAction<string> }})=> {
+    setUserName(e.target.value);
   }
 
   const handleuserPassword = (e: { preventDefault: () => void , target: { value: SetStateAction<string> }}) => {
@@ -21,12 +21,16 @@ const Loginform = () => {
 
     const formData : FormData = new FormData(myForm);
 
+    //get url query params
+    const username: FormDataEntryValue | null = formData.get('username')
+    const password: FormDataEntryValue | null = formData.get('password')
+
     // eslint-disable-next-line no-console
     console.log(formData);
 
     fetch('http://localhost:3333/api/login', {
       method: 'POST',
-      body: formData,
+      body: JSON.stringify({username, password}),
     })
       .then((response) => {
         if (!response.ok) {
@@ -52,14 +56,14 @@ const Loginform = () => {
 
       <div className="form-group">
         <label htmlFor="username" style={{ width: '100%' }}>
-          Email:&#32;
+          Username:&#32;
           <input
             className="form-control"
             type="text"
-            name="email"
-            id="email"
-            value={email}
-            onChange={handleUserEmail}
+            name="username"
+            id="text"
+            value={username}
+            onChange={handleUserName}
             required
           />
         </label>
@@ -73,7 +77,7 @@ const Loginform = () => {
             type="password"
             name="password"
             id="password"
-            value={hashpassword}
+            value={password}
             onChange={handleuserPassword}
             required
           />
