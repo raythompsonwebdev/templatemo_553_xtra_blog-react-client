@@ -1,28 +1,29 @@
 import { SetStateAction, useState } from "react";
 
  
-export default function Contact() {
+const Contact = () => {
+
   const [username, setUsername] = useState(' ');
   const [email, setEmail] = useState(' ');
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
 
-  function handleUsername(e: { preventDefault: () => void , target: { value: SetStateAction<string> }}) {
+  const handleUsername = (e: { preventDefault: () => void , target: { value: SetStateAction<string> }}) => {
     const{value } = e.target;
     setUsername(value);
   }
 
-  function handleEmail(e: { preventDefault: () => void , target: { value: SetStateAction<string> }}) {
+  const handleEmail = (e: { preventDefault: () => void , target: { value: SetStateAction<string> }}) => {
     const{value } = e.target;
     setEmail(value);
   }
 
-  function handleSubject(e: { preventDefault: () => void , target: { value: SetStateAction<string> }}) {
+  const handleSubject = (e: { preventDefault: () => void , target: { value: SetStateAction<string> }}) => {
     const{value } = e.target;
     setSubject(value);
   }
 
-  function handleMessage(e: { preventDefault: () => void , target: { value: SetStateAction<string> }}) {
+  const handleMessage = (e: { preventDefault: () => void , target: { value: SetStateAction<string> }}) => {
     const{value } = e.target;
     setMessage(value);
   }
@@ -36,13 +37,6 @@ export default function Contact() {
     const myForm = document.getElementById("contact-form") as HTMLFormElement;
 
     const formData : FormData = new FormData(myForm);
-
-    // const formData = {
-    //   username,
-    //   email,
-    //   subject,
-    //   message,
-    // };
 
     fetch('http://localhost:3333/api/contact', {
       method: 'POST',
@@ -141,3 +135,5 @@ export default function Contact() {
     </form>
   );
 }
+
+export default Contact

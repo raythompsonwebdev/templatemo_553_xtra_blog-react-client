@@ -1,7 +1,7 @@
 
 
-export interface Blog {
-  key:string | number
+export interface BlogType {
+  id:number;
   author: string;
   username:string;
   blogtitle:string;
@@ -9,4 +9,8 @@ export interface Blog {
   mood: string;
   prodId: string;
   submitted: string;
+  blogimage:string;
+  category_id:number;
+  postId?:number;
+  key?:number;
 }

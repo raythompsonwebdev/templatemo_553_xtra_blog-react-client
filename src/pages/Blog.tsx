@@ -4,11 +4,12 @@ import SearchForm from '../components/Forms/SearchForm';
 import Comment from '../components/Comments/Comment';
 import CommentReply from '../components/Comments/CommentReply';
 import CommentForm from '../components/Comments/CommentForm';
+import { BlogType } from '../types/index'
+import {convertDate} from '../helper'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const Blog = (props :any) => {
-  // eslint-disable-next-line no-console
-  console.log(props)
+const Blog = () => {
+   
   const { id } = useParams();
 
   // const singleBlog = blogData.find((item) => item.name === name);
@@ -18,7 +19,6 @@ const Blog = (props :any) => {
      
     const fetchData = async () => {
       // add "proxy":"http://localhost:8000/" property to package.json to avoid cors issue
-
       const result = await fetch(`http://localhost:3333/api/post/${id}`);
       const body = await result.json();
       setblogInfo(body);
@@ -27,18 +27,14 @@ const Blog = (props :any) => {
     fetchData();
   }, [id]);
 
-  function convertDate(date:Date) {
-    const newDate = new Date(date);
-    const result = newDate.toDateString();
-    return result;
-  }
+  const blogresult : BlogType = blogInfo[0];
 
-  const { author, blogtitle, blogpost, blogimage, comments, category, date } = {
-    ...blogInfo,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  } as any;
+  // const { id :post_id, author, username, blogtitle,  blogpost, blogimage, mood, submitted, category_id } = blogresult;
 
-  return (
+  // eslint-disable-next-line no-console
+  //console.log(blogresult.blogimage)
+
+  return blogresult && (
     <main className="tm-main">
       <div className="row tm-row">
         <SearchForm />
@@ -51,7 +47,7 @@ const Blog = (props :any) => {
             <source src="/static/video/wheat-field.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video> */}
-          <img src={blogimage} alt={blogtitle} />
+          <img src={`/post/${blogresult.blogimage ? blogresult.blogimage : ''}`} alt={blogresult.blogtitle} width={950} />
         </div>
       </div>
       <div className="row tm-row">
@@ -59,15 +55,15 @@ const Blog = (props :any) => {
           <div className="tm-post-full">
             <div className="mb-4">
               <h2 className="pt-2 tm-color-primary tm-post-title">
-                {blogtitle}
+                {blogresult.blogtitle}
               </h2>
               <p className="tm-mb-40">
-                {convertDate(date)} - posted by {author}
+                {convertDate(blogresult.submitted)} - posted by {blogresult.author}
               </p>
-              <p>{blogpost} </p>
-              <p>{category} </p>
+              <p>{blogresult.blogpost} </p>
+              <p>{blogresult.category_id} </p>
               <span className="d-block text-right tm-color-primary">
-                {comments}
+                {/* {comments} */}
               </span>
             </div>
 
@@ -76,7 +72,7 @@ const Blog = (props :any) => {
               <hr className="tm-hr-primary tm-mb-45" />
               <Comment />
               <CommentReply />
-              <CommentForm author={author} />
+              <CommentForm author={blogresult.author} />
             </div>
           </div>
         </div>

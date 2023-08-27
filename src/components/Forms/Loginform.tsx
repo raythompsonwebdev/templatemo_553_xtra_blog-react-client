@@ -1,19 +1,19 @@
 import { SetStateAction, useState } from "react";
 
  
-export default function Loginform() {
+const Loginform = () => {
   const [email, setUserEmail] = useState(' ');
   const [hashpassword, setUserPassword] = useState(' ');
 
-  function handleUserEmail(e: { preventDefault: () => void , target: { value: SetStateAction<string> }}) {
+  const handleUserEmail = (e: { preventDefault: () => void , target: { value: SetStateAction<string> }})=> {
     setUserEmail(e.target.value);
   }
 
-  function handleuserPassword(e: { preventDefault: () => void , target: { value: SetStateAction<string> }}) {
+  const handleuserPassword = (e: { preventDefault: () => void , target: { value: SetStateAction<string> }}) => {
     setUserPassword(e.target.value);
   }
 
-  function submitLogin(e: { preventDefault: () => void }) {
+  const submitLogin = (e: { preventDefault: () => void }) => {
     
     e.preventDefault();
 
@@ -21,10 +21,6 @@ export default function Loginform() {
 
     const formData : FormData = new FormData(myForm);
 
-    // const formData = {
-    //   email,
-    //   hashpassword,
-    // };
     // eslint-disable-next-line no-console
     console.log(formData);
 
@@ -91,3 +87,5 @@ export default function Loginform() {
     </form>
   );
 }
+
+export default Loginform

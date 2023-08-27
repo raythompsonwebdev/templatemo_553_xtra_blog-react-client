@@ -1,36 +1,28 @@
 import { Link } from 'react-router-dom';
+import { BlogType } from '../../types/index'
+import {convertDate} from '../../helper'
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Blogsnippet = (props :any) => {
   const {
-    id,
     author,
     blogimage,
     blogtitle,
     blogpost,
-    category,
-    comments,
-    prodId,
-    date,
+    category_id,
+    submitted,  
+    postId,  
   } = {
     ...props,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  } as any;
+  } as BlogType;
 
-  // eslint-disable-next-line no-console
-  console.log(id)
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  function convertDate(inputDate: Date) {
-    const newDate = new Date(inputDate);
-    const result = newDate.toDateString();
-    return result;
-  }
 
   return (
     <article className="col-12 col-md-6 tm-post">
       <hr className="tm-hr-primary" />
       <Link
-        to={`/post/${prodId}`}
+        to={`/post/${postId}`}
         className="effect-lily tm-post-link tm-pt-60">
         <div className="tm-post-link-inner">
           <img src={`${blogimage}`} alt="One" className="img-fluid" />
@@ -41,12 +33,12 @@ const Blogsnippet = (props :any) => {
 
       <p className="tm-pt-30">{blogpost}</p>
       <div className="d-flex justify-content-between tm-pt-45">
-        <span className="tm-color-primary">{category}</span>
-        <span className="tm-color-primary">{convertDate(date)}</span>
+        <span className="tm-color-primary">{category_id}</span>
+        <span className="tm-color-primary">{convertDate(submitted)}</span>
       </div>
       <hr />
       <div className="d-flex justify-content-between">
-        <span>{comments} comments</span>
+        {/* <span>{comments} comments</span> */}
         <span>by {author}</span>
       </div>
     </article>

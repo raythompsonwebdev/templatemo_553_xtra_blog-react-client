@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import BlogsnippetContainer from './components/Blog/BlogsnippetContainer';
 import SearchForm from './components/Forms/SearchForm';
+import { BlogType } from './types/index'
 
 // eslint-disable-next-line func-style
-function App() {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [blogData, setblogData] = useState<any>([]);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [lastIndex, setLastIndex] = useState<any>(0);
+const App = () => {
+ 
+  const [blogData, setblogData] = useState<BlogType[]>([]);
+  const [lastIndex, setLastIndex] = useState<number>(0);
 
   useEffect(() => {
     const fetchProducts = fetch(`http://localhost:3333/api/posts`);
@@ -21,13 +21,13 @@ function App() {
       })
       .then((data) => {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const returnedData = data.map((blog :any, index:any) => {
+        const returnedData = data.map((blog :any, index:number) => {
           // eslint-disable-next-line no-console
           console.log(index)
           const { id } = blog;
           // eslint-disable-next-line no-param-reassign
-          blog.prodId = id;
-          setLastIndex(blog.prodId);
+          blog.postId = id;
+          setLastIndex(blog.postId);
           return blog;
         });
 

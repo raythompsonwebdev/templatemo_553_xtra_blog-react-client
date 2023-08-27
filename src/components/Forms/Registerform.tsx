@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { SetStateAction, useState } from "react";
 
-export default function Registerform() {
+const Registerform = () => {
   const [username, setUsername] = useState('');
   const [hashpassword, setPassword] = useState('');
   const [email, setEmail] = useState('');
@@ -8,39 +8,46 @@ export default function Registerform() {
   const currDate = new Date().toISOString().slice(0, 10);
   const [datesubmitted, setDate] = useState(currDate);
 
-  function handleUsername(e) {
+  function handleUsername(e: { preventDefault: () => void , target: { value: SetStateAction<string> }}) {
     setUsername(e.target.value);
   }
 
-  function handleEmail(e) {
+  function handleEmail(e: { preventDefault: () => void , target: { value: SetStateAction<string> }}) {
     setEmail(e.target.value);
   }
 
-  function handlePassword(e) {
+  function handlePassword(e: { preventDefault: () => void , target: { value: SetStateAction<string> }}) {
     setPassword(e.target.value);
   }
 
-  function handleDate(e) {
+  function handleDate(e: { preventDefault: () => void , target: { value: SetStateAction<string> }}) {
     setDate(e.target.value);
   }
-
    
-  const submitRegister = (e) => {
+  const submitRegister = (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
-    const formData = {
-      username,
-      hashpassword,
-      email,
-      datesubmitted,
-    };
+    const myForm = document.getElementById("form") as HTMLFormElement;
+
+    const formData : FormData = new FormData(myForm);
+
+    //get url query params
+    const username: FormDataEntryValue | null = formData.get('username')
+    const email: FormDataEntryValue | null = formData.get('email')
+    const password: FormDataEntryValue | null = formData.get('password')
+    const submitted: FormDataEntryValue | null = formData.get('submitted')
 
     // eslint-disable-next-line no-console
-    console.log(formData);
+    console.log(formData.get('username'))
+      
 
-    fetch('http://localhost:3333/api/register-user', {
+    fetch('http://localhost:3333/api/registeruser', {
       method: 'POST',
-      body: formData,
+      headers: {
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({username, email, password, submitted}),
     })
       .then((response) => {
         if (!response.ok) {
@@ -123,3 +130,5 @@ export default function Registerform() {
     </div>
   );
 }
+
+export default Registerform 

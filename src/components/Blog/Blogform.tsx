@@ -1,68 +1,54 @@
 import { SetStateAction, useState } from "react";
 
-export default function Blogform() {
-  const [blogauthor, setBlogAuthor] = useState(' ');
-  // const [username, setUsername] = useState(' ');
-  const [blogtitle, setBlogTitle] = useState(' ');
-  const [blogtext, setBlogText] = useState(' ');
-  const [blogimage, setBlogImage] = useState(' ');
-  const [blogcat, setBlogCat] = useState(' ');
+const Blogform = () => {
+
+  const [blogauthor, setBlogAuthor] = useState('');
+  const [blogtitle, setBlogTitle] = useState('');
+  const [blogtext, setBlogText] = useState('');
+  const [blogimage, setBlogImage] = useState('');
+  const [blogcat, setBlogCat] = useState('');
   // add current date
   const currDate = new Date().toISOString().slice(0, 10);
   const [blogdate, setBlogDate] = useState(currDate);
 
-  function handleBlogAuthor(e: { preventDefault: () => void , target: { value: SetStateAction<string> }}) {
+ const handleBlogAuthor = (e: { preventDefault: () => void , target: { value: SetStateAction<string> }}) => {
     const{ value } = e.target;
     setBlogAuthor(value);
   }
 
-  // function handleUsername(e) {
-  //   setUsername(e.target.value);
-  // }
-
-  function handleBlogTitle(e: { preventDefault: () => void , target: { value: SetStateAction<string> }}) {
+  const handleBlogTitle = (e: { preventDefault: () => void , target: { value: SetStateAction<string> }}) => {
     const{ value } = e.target;
     setBlogTitle(value);
   }
 
-  function handleBlogText(e: { preventDefault: () => void , target: { value: SetStateAction<string> }}) {
+  const handleBlogText = (e: { preventDefault: () => void , target: { value: SetStateAction<string> }}) => {
     const{ value } = e.target;
     setBlogText(value);
   }
 
-  function handleBlogImage(e: { preventDefault: () => void , target: { value: SetStateAction<string> }}) {
+  const handleBlogImage = (e: { preventDefault: () => void , target: { value: SetStateAction<string> }}) => {
     const{value } = e.target;
     setBlogImage(value);
   }
 
-  function handleBlogCat(e: { preventDefault: () => void , target: { value: SetStateAction<string> }}) {
+  const handleBlogCat = (e: { preventDefault: () => void , target: { value: SetStateAction<string> }}) => {
     const{value } = e.target;
     setBlogCat(value);
   }
 
-  function handleBlogDate(e: { preventDefault: () => void , target: { value: SetStateAction<string> }}) {
+  const handleBlogDate = (e: { preventDefault: () => void , target: { value: SetStateAction<string> }}) => {
     const{value } = e.target;
     setBlogDate(value);
   }
 
-  function submitForm(e: { preventDefault: () => void }) {
+  const submitForm = (e: { preventDefault: () => void }) => {
 
     e.preventDefault();
-
 
     const myForm = document.getElementById("login") as HTMLFormElement;
 
     const formData : FormData = new FormData(myForm);
-
-    // const formData = {
-    //   blogauthor,
-    //   blogtitle,
-    //   blogtext,
-    //   blogimage,
-    //   blogcat,
-    //   blogdate,
-    // };
-
+    
     // eslint-disable-next-line no-console
     console.log(formData);
 
@@ -203,3 +189,6 @@ export default function Blogform() {
     </form>
   );
 }
+
+
+export default Blogform;

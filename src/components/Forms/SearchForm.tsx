@@ -3,21 +3,17 @@ import { SetStateAction, useState } from "react";
 export default function SearchForm() {
   const [searchterm, setSearchTerm] = useState('');
 
-  function handleSearch(e: { preventDefault: () => void , target: { value: SetStateAction<string> }}) {
+  const handleSearch = (e: { preventDefault: () => void , target: { value: SetStateAction<string> }})  => {
     setSearchTerm(e.target.value);
   }
 
-  function submitSearch(e: { preventDefault: () => void }) {
+  const submitSearch = (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
     const myForm = document.querySelector(".tm-search-form") as HTMLFormElement
 
     const formData : FormData = new FormData(myForm);
      
-    // const formData : FormData = {
-    //   searchterm,
-    // };
-
     // eslint-disable-next-line no-console
     console.log(searchterm);
 
