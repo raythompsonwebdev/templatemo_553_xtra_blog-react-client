@@ -346,6 +346,9 @@ video {
     border-radius: 0;
 }
 
+label,textarea {width:100%;}
+
+
 .tm-comment-form { max-width: 360px; }
 
 .tm-category-list { list-style-type: none; }

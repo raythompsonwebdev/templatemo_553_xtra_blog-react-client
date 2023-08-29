@@ -38,8 +38,7 @@ const Registerform = () => {
     const submitted: FormDataEntryValue | null = formData.get('submitted')
 
     // eslint-disable-next-line no-console
-    console.log(formData.get('username'))
-      
+    console.log(formData.get('username'))      
 
     fetch('http://localhost:3333/api/registeruser', {
       method: 'POST',

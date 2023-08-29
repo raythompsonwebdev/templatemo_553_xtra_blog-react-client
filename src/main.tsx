@@ -13,27 +13,30 @@ import Contact from './pages/Contact';
 import Profile from './pages/Profile';
 import './assets/css/bootstrap.min.css';
 import './assets/css/templatemo-xtra-blog.css';
+import { CookiesProvider } from "react-cookie";
 // import "./js/templatemo-script.js";
 // import reportWebVitals from "./reportWebVitals.js";
 
 const routing = (
   <Router>
-    <div id="main-wrapper">
-      <Header />
-      <React.StrictMode>
-        <Routes>
-          <Route path="/" element={<App />} />
-          <Route path="/post/:id" element={<Blog />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/create-post" element={<Createblog />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/profile" element={<Profile />} />
-        </Routes>
-      </React.StrictMode>
-      <Footer />
-    </div>
+    <CookiesProvider>
+      <div id="main-wrapper">
+        <Header />
+        <React.StrictMode>
+          <Routes>
+            <Route path="/" element={<App />} />
+            <Route path="/post/:id" element={<Blog />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/create-post" element={<Createblog />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/profile" element={<Profile />} />
+          </Routes>
+        </React.StrictMode>
+        <Footer />
+      </div>
+    </CookiesProvider>
   </Router>
 );
 

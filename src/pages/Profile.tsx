@@ -1,8 +1,40 @@
+import { useEffect, useState } from 'react';
+// import { useCookies } from "react-cookie";
 
-const Profile = () => (
+const Profile = () => {
+  
+  const [loggedIn, setLoggedIn] = useState('');
+ 
+  useEffect(() => {
+   
+    const fetchProducts = async () => {
+
+      const response = await fetch('http://localhost:3333/api/profile',{ 
+        method: "GET",
+        credentials: "include",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+    }); 
+      const result = await response.json();
+// eslint-disable-next-line no-console
+      console.log(result)
+  
+      setLoggedIn(result.loggedIn)
+    }
+
+    fetchProducts();  
+    
+  },[]);
+
+  // eslint-disable-next-line no-console
+  console.log(loggedIn)
+
+
+  return (
     <main className="tm-main">
       <div className="row tm-row">
-
       </div>
       <div className="row tm-row tm-mb-45">
         <div className="col-12">
@@ -143,5 +175,6 @@ const Profile = () => (
       </footer>
     </main>
   )
+}
 
 export default Profile; 

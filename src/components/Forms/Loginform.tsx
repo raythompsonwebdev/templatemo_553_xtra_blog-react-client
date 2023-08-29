@@ -1,5 +1,5 @@
 import { SetStateAction, useState } from "react";
-
+import { useNavigate } from "react-router-dom";
  
 const Loginform = () => {
   const [username, setUserName] = useState('');
@@ -13,10 +13,12 @@ const Loginform = () => {
     setUserPassword(e.target.value);
   }
 
-  const submitLogin = (e: { preventDefault: () => void }) => {
+  const navigate = useNavigate();
+
+  const submitLogin = async (e: { preventDefault: () => void }) => {
     
     e.preventDefault();
-
+    
     const myForm = document.getElementById("login") as HTMLFormElement;
 
     const formData : FormData = new FormData(myForm);
@@ -25,28 +27,56 @@ const Loginform = () => {
     const username: FormDataEntryValue | null = formData.get('username')
     const password: FormDataEntryValue | null = formData.get('password')
 
-    // eslint-disable-next-line no-console
-    console.log(username, password);
+    try {
+      
+      const response = await fetch('http://localhost:3333/api/login', {
+        method: 'POST',
+        headers: {
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',        
+        },
+        credentials: "include",
+        body: JSON.stringify({username, password}),
+      });
+  
+      const result = await response.json();
+      
+      // eslint-disable-next-line no-console
+      console.log("Success:", result);
 
-    fetch('http://localhost:3333/api/login', {
-      method: 'POST',
-      headers: {
-        // 'Content-Type': 'application/x-www-form-urlencoded',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({username, password}),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          // error processing
-          throw new Error(`${response.status}: ${response.statusText}`);
-        }
-        return response.json();
-      })
-      .then((response) => {
-        // eslint-disable-next-line no-console
-        console.log(response);
-      })      
+      navigate("/profile");
+      
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.error("Error:", error);
+    }
+
+
+    // fetch('http://localhost:3333/api/login', {
+    //   method: 'POST',
+    //   headers: {
+    //     // 'Content-Type': 'application/x-www-form-urlencoded',
+    //     'Accept': 'application/json',
+    //     'Content-Type': 'application/json',        
+    //   },
+    //   credentials: "include",
+    //   body: JSON.stringify({username, password}),
+    // })
+    //   .then((response) => {
+    //     if (!response.ok) {
+    //       // error processing
+    //       throw new Error(`${response.status}: ${response.statusText}`);
+    //     }
+    //     return response.json();
+    //   })
+    //   .then((response) => {
+    //     // eslint-disable-next-line no-console
+    //     console.log(response);
+    //     if(response.status === "200"){
+    //       redirect("/profile");
+    //     }
+    //   })      
   }
 
   return (

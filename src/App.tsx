@@ -21,9 +21,8 @@ const App = () => {
       })
       .then((data) => {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const returnedData = data.map((blog :any, index:number) => {
+        const returnedData = data.map((blog :any) => {
           // eslint-disable-next-line no-console
-          console.log(index)
           const { id } = blog;
           // eslint-disable-next-line no-param-reassign
           blog.postId = id;

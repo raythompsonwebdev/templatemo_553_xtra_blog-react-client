@@ -4,6 +4,7 @@ import ContactForm from '../components/Forms/ContactForm';
 import GoogleMap from '../components/GoogleMap';
 
 const Contact = () => (
+
     <main className="tm-main">
       <div className="row tm-row">
         <SearchForm />
