@@ -49,23 +49,46 @@ If you are developing a production application, we recommend updating the config
 - Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
 - Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
 
-## Usage
+## Prerequisites
 
-Install packages :
+This is an example of how to list things you need to use the software and how to install them.
 
-`npm install`
+- npm
+  ```sh
+  npm install npm@latest -g
+  ```
+
+### Installation
+
+Clone the repo
+
+```sh
+git clone git@github.com:raythompsonwebdev/templatemo_553_xtra_blog-react-client.git
+```
+
+Install NPM packages :
+
+```sh
+npm install
+```
 
 ### or
 
-`yarn install`
+```sh
+yarn install
+```
 
 ### or
 
-`pnpm install`
+```sh
+pnpm install
+```
 
 Once packages have been down loaded , To view website:
 
-`npm run dev`
+```sh
+npm run dev
+```
 
 Runs start to start website in development mode.
 
@@ -75,14 +98,20 @@ The page will reload when you make changes. You may also see any lint errors in 
 
 Runs build to build the application for production usage
 
-`npm run build`
+```sh
+npm run build
+```
 
 Runs lint to lint styles and scripts files.
 
-`npm run lint`
+```sh
+npm run lint
+```
 
 Run start to view application build for production usage.
 
-`npm run start`
+```sh
+npm run start
+```
 
 PLEASE NOTE : templatemo_553_xtra_blog-react-client also needs a backend server to make requests and a connection to a MySQL database to work - backend server for templatemo_553_xtra_blog-react-client found at my other respository templatemo_553_xtra_blog-react-server. Or you can create your own server.
