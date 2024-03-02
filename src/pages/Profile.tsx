@@ -9,7 +9,7 @@ const Profile = () => {
    
     const fetchProducts = async () => {
 
-      const response = await fetch('http://localhost:3333/api/profile',{ 
+      const response = await fetch('http://localhost:3333/api/user',{ 
         method: "GET",
         credentials: "include",
         headers: {

@@ -5,13 +5,14 @@ import {convertDate} from '../../helper'
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Blogsnippet = (props :any) => {
   const {
+    id,
     author,
-    blogimage,
     blogtitle,
     blogpost,
+    blogimage,
+    submitted, 
     category_id,
-    submitted,  
-    postId,  
+         
   } = {
     ...props,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -22,7 +23,7 @@ const Blogsnippet = (props :any) => {
     <article className="col-12 col-md-6 tm-post">
       <hr className="tm-hr-primary" />
       <Link
-        to={`/post/${postId}`}
+        to={`/post/${id}`}
         className="effect-lily tm-post-link tm-pt-60">
         <div className="tm-post-link-inner">
           <img src={`${blogimage}`} alt="One" className="img-fluid" />

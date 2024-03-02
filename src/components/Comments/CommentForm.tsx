@@ -1,6 +1,5 @@
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const CommentForm = (props:{author:any}) => {
+const CommentForm = (props:{author:string}) => {
 
   // eslint-disable-next-line no-console
   console.log(props)

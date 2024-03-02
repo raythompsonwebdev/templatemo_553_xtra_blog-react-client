@@ -20,7 +20,6 @@ const Loginform = () => {
     e.preventDefault();
     
     const myForm = document.getElementById("login") as HTMLFormElement;
-
     const formData : FormData = new FormData(myForm);
 
     //get url query params
@@ -40,43 +39,15 @@ const Loginform = () => {
         body: JSON.stringify({username, password}),
       });
   
-      const result = await response.json();
-      
+      const result = await response.json();      
       // eslint-disable-next-line no-console
       console.log("Success:", result);
-
-      navigate("/profile");
-      
+      navigate("/profile");      
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error("Error:", error);
     }
-
-
-    // fetch('http://localhost:3333/api/login', {
-    //   method: 'POST',
-    //   headers: {
-    //     // 'Content-Type': 'application/x-www-form-urlencoded',
-    //     'Accept': 'application/json',
-    //     'Content-Type': 'application/json',        
-    //   },
-    //   credentials: "include",
-    //   body: JSON.stringify({username, password}),
-    // })
-    //   .then((response) => {
-    //     if (!response.ok) {
-    //       // error processing
-    //       throw new Error(`${response.status}: ${response.statusText}`);
-    //     }
-    //     return response.json();
-    //   })
-    //   .then((response) => {
-    //     // eslint-disable-next-line no-console
-    //     console.log(response);
-    //     if(response.status === "200"){
-    //       redirect("/profile");
-    //     }
-    //   })      
+         
   }
 
   return (

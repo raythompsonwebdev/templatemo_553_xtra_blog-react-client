@@ -17,8 +17,7 @@ const Blog = () => {
 
   useEffect(() => {
      
-    const fetchData = async () => {
-      // add "proxy":"http://localhost:8000/" property to package.json to avoid cors issue
+    const fetchData = async () => {     
       const result = await fetch(`http://localhost:3333/api/post/${id}`);
       const body = await result.json();
       setblogInfo(body);
@@ -30,9 +29,6 @@ const Blog = () => {
   const blogresult : BlogType = blogInfo[0];
 
   // const { id :post_id, author, username, blogtitle,  blogpost, blogimage, mood, submitted, category_id } = blogresult;
-
-  // eslint-disable-next-line no-console
-  //console.log(blogresult.blogimage)
 
   return blogresult && (
     <main className="tm-main">

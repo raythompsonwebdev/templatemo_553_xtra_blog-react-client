@@ -6,7 +6,7 @@ const Registerform = () => {
   const [email, setEmail] = useState('');
   // set todays date
   const currDate = new Date().toISOString().slice(0, 10);
-  const [datesubmitted, setDate] = useState(currDate);
+  const [submitted, setDate] = useState(currDate);
 
   function handleUsername(e: { preventDefault: () => void , target: { value: SetStateAction<string> }}) {
     setUsername(e.target.value);
@@ -27,37 +27,38 @@ const Registerform = () => {
   const submitRegister = (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
-    const myForm = document.getElementById("form") as HTMLFormElement;
+   // const myForm = document.getElementById("form") as HTMLFormElement;
 
-    const formData : FormData = new FormData(myForm);
+   // const formData : FormData = new FormData(myForm);
 
     //get url query params
-    const username: FormDataEntryValue | null = formData.get('username')
-    const email: FormDataEntryValue | null = formData.get('email')
-    const password: FormDataEntryValue | null = formData.get('password')
-    const submitted: FormDataEntryValue | null = formData.get('submitted')
+    // const username: FormDataEntryValue | null = formData.get('username')
+    // const email: FormDataEntryValue | null = formData.get('email')
+    // const password: FormDataEntryValue | null = formData.get('password')
+    // const submitted: FormDataEntryValue | null = formData.get('submitted')
 
     // eslint-disable-next-line no-console
-    console.log(formData.get('username'))      
+   // console.log(username, email, password, submitted)      
 
-    fetch('http://localhost:3333/api/registeruser', {
+    fetch('http://localhost:3333/api/register_user', {
       method: 'POST',
       headers: {
-        // 'Content-Type': 'application/x-www-form-urlencoded',
+        'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({username, email, password, submitted}),
-    })
-      .then((response) => {
+      body: JSON.stringify({username, email, hashpassword, submitted}),
+    }).then((response) => {
         if (!response.ok) {
-          // error processing
           throw new Error(`registerForm : ${response.status}: ${response.statusText}`);
-        }
+        }        
         return response.json();
-      })
-      .then((response) => {
+      }).then((response) => {
         // eslint-disable-next-line no-console
         console.log(response);
+      }).catch((err) => {
+        // eslint-disable-next-line no-console
+        console.log(err.toString());
+        
       });
   };
 
@@ -116,7 +117,7 @@ const Registerform = () => {
               id="submitted"
               name="submitted"
               onChange={handleDate}
-              value={datesubmitted}
+              value={submitted}
             />
           </label>
         </div>

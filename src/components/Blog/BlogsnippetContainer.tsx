@@ -11,13 +11,14 @@ function BlogsnippetContainer(props: { blogData :BlogType[], lastIndex: number})
   const Blog = blogData.map((item :BlogType) => (
     <Blogsnippet
       key={item.id}
-      author={item.author}
-      blogimage={item.blogimage}
+      id={item.id}
+      author={item.author}      
       blogtitle={item.blogtitle}
       blogpost={item.blogpost}
-      category_id={item.category_id}
       submitted={item.submitted}
-      postId={item.postId}
+      blogimage={item.blogimage} 
+      category_id={item.category_id}
+      
     />
   ));
 

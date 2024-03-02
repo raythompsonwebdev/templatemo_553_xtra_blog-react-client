@@ -7,10 +7,7 @@ export interface BlogType {
   blogtitle:string;
   blogpost: string;
   mood: string;
-  prodId: string;
-  submitted: string;
   blogimage:string;
+  submitted: string;  
   category_id:number;
-  postId?:number;
-  key?:number;
 }

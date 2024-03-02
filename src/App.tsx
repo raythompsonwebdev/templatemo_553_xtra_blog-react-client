@@ -11,7 +11,7 @@ const App = () => {
   const [lastIndex, setLastIndex] = useState<number>(0);
 
   useEffect(() => {
-    const fetchProducts = fetch(`http://localhost:3333/api/posts`);
+    const fetchProducts = fetch(`/api/posts`);
     fetchProducts
       .then((response) => {
         if (!response.ok) {
