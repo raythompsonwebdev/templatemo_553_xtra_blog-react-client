@@ -18,24 +18,15 @@ const Loginform = () => {
   const submitLogin = async (e: { preventDefault: () => void }) => {
     
     e.preventDefault();
-    
-    const myForm = document.getElementById("login") as HTMLFormElement;
-    const formData : FormData = new FormData(myForm);
-
-    //get url query params
-    const username: FormDataEntryValue | null = formData.get('username')
-    const password: FormDataEntryValue | null = formData.get('password')
 
     try {
       
-      const response = await fetch('http://localhost:3333/api/login', {
+      const response = await fetch('/api/login', {
         method: 'POST',
         headers: {
-          // 'Content-Type': 'application/x-www-form-urlencoded',
           'Accept': 'application/json',
           'Content-Type': 'application/json',        
         },
-        credentials: "include",
         body: JSON.stringify({username, password}),
       });
   

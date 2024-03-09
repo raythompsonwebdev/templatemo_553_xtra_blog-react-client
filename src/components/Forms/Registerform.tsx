@@ -26,21 +26,8 @@ const Registerform = () => {
    
   const submitRegister = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-
-   // const myForm = document.getElementById("form") as HTMLFormElement;
-
-   // const formData : FormData = new FormData(myForm);
-
-    //get url query params
-    // const username: FormDataEntryValue | null = formData.get('username')
-    // const email: FormDataEntryValue | null = formData.get('email')
-    // const password: FormDataEntryValue | null = formData.get('password')
-    // const submitted: FormDataEntryValue | null = formData.get('submitted')
-
-    // eslint-disable-next-line no-console
-   // console.log(username, email, password, submitted)      
-
-    fetch('http://localhost:3333/api/register_user', {
+     
+    fetch('/api/register_user', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

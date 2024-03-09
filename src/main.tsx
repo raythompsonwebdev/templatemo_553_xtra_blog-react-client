@@ -11,6 +11,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Contact from './pages/Contact';
 import Profile from './pages/Profile';
+import Logout from './pages/Logout'
 import './assets/css/bootstrap.min.css';
 import './assets/css/templatemo-xtra-blog.css';
 import { CookiesProvider } from "react-cookie";
@@ -30,6 +31,7 @@ const routing = (
             <Route path="/about" element={<About />} />
             <Route path="/create-post" element={<Createblog />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/logout" element={<Logout />} />
             <Route path="/register" element={<Register />} />
             <Route path="/profile" element={<Profile />} />
           </Routes>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-// import { useCookies } from "react-cookie";
+
 
 const Profile = () => {
   
@@ -9,19 +9,16 @@ const Profile = () => {
    
     const fetchProducts = async () => {
 
-      const response = await fetch('http://localhost:3333/api/user',{ 
-        method: "GET",
-        credentials: "include",
+      const response = await fetch('/api/profile',{ 
+        method: "GET",        
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
           },
     }); 
       const result = await response.json();
-// eslint-disable-next-line no-console
-      console.log(result)
-  
-      setLoggedIn(result.loggedIn)
+
+      setLoggedIn(result)
     }
 
     fetchProducts();  

@@ -4,38 +4,41 @@ import { useEffect, useState } from 'react';
 
 const MainNav = () => {
 
-  const [loggedIn, setLoggedIn] = useState('');
- 
+  const [message, setMessage] = useState('');
+  const [loggedIn,setLogged] = useState();
+
   useEffect(() => {
    
-    const fetchProducts = async () => {
+    const fetchLoggedIn = async () => {
 
-      const response = await fetch('http://localhost:3333/api/user',{ 
-        method: "GET",
-        credentials: "include",
+      const response = await fetch('/api/profile',{ 
+        method: "GET",        
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
           },
     }); 
       const result = await response.json();
-// eslint-disable-next-line no-console
-      console.log(result)
-  
-      setLoggedIn(result.loggedIn)
+
+      setMessage(result.message)
+      setLogged(result.loggedIn)
     }
 
-    fetchProducts();  
+    fetchLoggedIn();  
     
   },[]);
-
-  // eslint-disable-next-line no-console
-  console.log(loggedIn)
-
-  return !loggedIn ? (
+    
+ // eslint-disable-next-line no-console
+  console.log(message);
+ 
+    
+  
+  return message === "user not authenticated" && loggedIn === false  ? (
   
     <nav className="tm-nav" id="tm-nav">
-      <ul>
+      
+      <ul>        
+	
         <li className="tm-nav-item active">
           <Link to="/" className="tm-nav-link">
             <i className="fas fa-home" />
@@ -74,7 +77,7 @@ const MainNav = () => {
         <li className="tm-nav-item active">
           <Link to="/profile" className="tm-nav-link">
             <i className="fas fa-home" />
-            Profile
+            User Profile
           </Link>
         </li>
         <li className="tm-nav-item">
