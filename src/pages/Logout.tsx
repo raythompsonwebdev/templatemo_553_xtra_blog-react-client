@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { UserContext } from "../useContext/context";
 
 const Logout = () => {
-  const [loggedIn, setLoggedIn] = useState(true);
+  const { loggedIn, setLoggedIn } = useContext(UserContext);
   const [message, setMessage] = useState("");
 
   useEffect(() => {
@@ -20,7 +21,7 @@ const Logout = () => {
     };
 
     logoutUser();
-  }, []);
+  }, [setLoggedIn]);
 
   // eslint-disable-next-line no-console
   console.log(loggedIn, message);

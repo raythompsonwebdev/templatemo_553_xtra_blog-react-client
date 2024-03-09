@@ -1,52 +1,46 @@
-import MainNav from './MainNav';
-import UserNav from './UserNav';
-import { useEffect, useState } from 'react';
-// import {LoginContext} from "../useContext/context"
+import MainNav from "./MainNav";
+import UserNav from "./UserNav";
+import { useEffect, useState, useContext } from "react";
+import { UserContext } from "../useContext/context";
 
+function Header() {
+  const [message, setMessage] = useState("");
+  const [userName, setUserName] = useState("");
+  const { loggedIn, setLoggedIn } = useContext(UserContext);
 
-function Header () {
-
-  const [loggedIn, setLoggedIn] = useState('');
-  const [message, setMessage] = useState('');
-  const [userName, setUserName] = useState('');
-  // const [cookieName , setCookieName] = useState<string>('') ;
- 
   useEffect(() => {
-   
     const fetchUserProfile = async () => {
-
-      const response = await fetch('/api/profile',{ 
-        method: "GET",        
+      const response = await fetch("/api/profile", {
+        method: "GET",
         headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-          },
-    }); 
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      });
       const result = await response.json();
 
-      setLoggedIn(result.loggedIn)
-      setMessage(result.message)
-      setUserName(result.token.username);
-    }
-
-    fetchUserProfile(); 
-       
-    
-  },[]);
+      if (result) {
+        setLoggedIn(result.loggedIn);
+        setMessage(result.message);
+        setUserName(result.token?.username);
+      }
+    };
+    fetchUserProfile();
+  }, [setLoggedIn]);
 
   // eslint-disable-next-line no-console
-  console.log(message, loggedIn, userName)
+  console.log(message, loggedIn, userName);
   // eslint-disable-next-line no-console
-  // console.log(cookieName)
+  // console.log(myValue);
 
-  return(
-    
+  return (
     <header className="tm-header" id="tm-header">
       <div className="tm-header-wrapper">
         <button
           className="navbar-toggler"
           type="button"
-          aria-label="Toggle navigation">
+          aria-label="Toggle navigation"
+        >
           <i className="fas fa-bars" />
         </button>
         <div className="tm-site-header">
@@ -56,13 +50,14 @@ function Header () {
           <h1 className="text-center">Xtra Blog</h1>
         </div>
         {/* <LoginContext.Provider value={{userName, setUserName}}> */}
-          {!loggedIn ? <MainNav /> : <UserNav />}
+        {!loggedIn ? <MainNav /> : <UserNav />}
         {/* </LoginContext.Provider> */}
         <div className="tm-mb-65">
           <a
             rel="nofollow"
             href="https://fb.com/templatemo"
-            className="tm-social-link">
+            className="tm-social-link"
+          >
             <i className="fab fa-facebook tm-social-icon" />
           </a>
           <a href="https://twitter.com" className="tm-social-link">
@@ -82,9 +77,7 @@ function Header () {
         </p>
       </div>
     </header>
-    
   );
-  
 }
 
 export default Header;

@@ -4,12 +4,6 @@ import Registerform from "../components/Forms/Registerform";
 function Register() {
   return (
     <main className="tm-main">
-      {/* <div className="row tm-row">     
-      <SearchForm />                                 
-    </div>            
-    <div className="row tm-row tm-mb-45">
-        <GoogleMap />               
-    </div> */}
       <div className="row tm-row tm-mb-120">
         <div className="col-12">
           <h2 className="tm-color-primary tm-post-title tm-mb-60">Register</h2>

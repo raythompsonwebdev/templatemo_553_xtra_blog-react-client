@@ -1,11 +1,9 @@
+import { Link } from "react-router-dom";
 
-import { Link } from 'react-router-dom';
-
-function MainNav () {   
-  
+function MainNav() {
   return (
-    <nav className="tm-nav" id="tm-nav">      
-      <ul> 
+    <nav className="tm-nav" id="tm-nav">
+      <ul>
         <li className="tm-nav-item active">
           <Link to="/" className="tm-nav-link">
             <i className="fas fa-home" />
@@ -38,7 +36,6 @@ function MainNav () {
         </li>
       </ul>
     </nav>
-  
   );
 }
 

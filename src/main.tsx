@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import App from "./App";
+import App from "./pages/App";
 import Blog from "./pages/Blog";
 import About from "./pages/About";
 import Createblog from "./pages/Createblog";
@@ -17,27 +17,30 @@ import "./assets/css/templatemo-xtra-blog.css";
 // import { CookiesProvider } from "react-cookie";
 // import "./js/templatemo-script.js";
 // import reportWebVitals from "./reportWebVitals.js";
+import { UserProvider } from "./useContext/context";
 
 const routing = (
-  <Router>
-    <div id="main-wrapper">
-      <Header />
-      <React.StrictMode>
-        <Routes>
-          <Route path="/" element={<App />} />
-          <Route path="/post/:id" element={<Blog />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/create-post" element={<Createblog />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/logout" element={<Logout />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/profile" element={<Profile />} />
-        </Routes>
-      </React.StrictMode>
-      <Footer />
-    </div>
-  </Router>
+  <UserProvider>
+    <Router>
+      <div id="main-wrapper">
+        <Header />
+        <React.StrictMode>
+          <Routes>
+            <Route path="/" element={<App />} />
+            <Route path="/post/:id" element={<Blog />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/create-post" element={<Createblog />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/logout" element={<Logout />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/profile" element={<Profile />} />
+          </Routes>
+        </React.StrictMode>
+        <Footer />
+      </div>
+    </Router>
+  </UserProvider>
 );
 
 const container = document.getElementById("root") as HTMLElement;

@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import BlogsnippetContainer from "./components/Blog/BlogsnippetContainer";
-import SearchForm from "./components/Forms/SearchForm";
-import { BlogType } from "./types/index";
+import BlogsnippetContainer from "../components/Blog/BlogsnippetContainer";
+import SearchForm from "../components/Forms/SearchForm";
+import { BlogType } from "../types/index";
 
-// eslint-disable-next-line func-style
 const App = () => {
   const [blogData, setblogData] = useState<BlogType[]>([]);
   const [lastIndex, setLastIndex] = useState<number>(0);
@@ -32,9 +31,6 @@ const App = () => {
         setblogData(returnedData);
       });
   }, []);
-
-  // eslint-disable-next-line no-console
-  // console.log(blogData);
 
   return (
     <main className="tm-main">

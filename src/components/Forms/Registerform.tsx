@@ -1,61 +1,75 @@
 import { SetStateAction, useState } from "react";
 
 const Registerform = () => {
-  const [username, setUsername] = useState('');
-  const [hashpassword, setPassword] = useState('');
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState("");
+  const [hashpassword, setPassword] = useState("");
+  const [email, setEmail] = useState("");
   // set todays date
   const currDate = new Date().toISOString().slice(0, 10);
   const [submitted, setDate] = useState(currDate);
 
-  function handleUsername(e: { preventDefault: () => void , target: { value: SetStateAction<string> }}) {
+  function handleUsername(e: {
+    preventDefault: () => void;
+    target: { value: SetStateAction<string> };
+  }) {
     setUsername(e.target.value);
   }
 
-  function handleEmail(e: { preventDefault: () => void , target: { value: SetStateAction<string> }}) {
+  function handleEmail(e: {
+    preventDefault: () => void;
+    target: { value: SetStateAction<string> };
+  }) {
     setEmail(e.target.value);
   }
 
-  function handlePassword(e: { preventDefault: () => void , target: { value: SetStateAction<string> }}) {
+  function handlePassword(e: {
+    preventDefault: () => void;
+    target: { value: SetStateAction<string> };
+  }) {
     setPassword(e.target.value);
   }
 
-  function handleDate(e: { preventDefault: () => void , target: { value: SetStateAction<string> }}) {
+  function handleDate(e: {
+    preventDefault: () => void;
+    target: { value: SetStateAction<string> };
+  }) {
     setDate(e.target.value);
   }
-   
+
   const submitRegister = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-     
-    fetch('/api/register_user', {
-      method: 'POST',
+
+    fetch("/api/register_user", {
+      method: "POST",
       headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
+        Accept: "application/json",
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({username, email, hashpassword, submitted}),
-    }).then((response) => {
+      body: JSON.stringify({ username, email, hashpassword, submitted }),
+    })
+      .then((response) => {
         if (!response.ok) {
-          throw new Error(`registerForm : ${response.status}: ${response.statusText}`);
-        }        
+          throw new Error(
+            `registerForm : ${response.status}: ${response.statusText}`
+          );
+        }
         return response.json();
-      }).then((response) => {
+      })
+      .then((response) => {
         // eslint-disable-next-line no-console
         console.log(response);
-      }).catch((err) => {
+      })
+      .catch((err) => {
         // eslint-disable-next-line no-console
         console.log(err.toString());
-        
       });
   };
 
   return (
     <div className="col-lg-7 ">
       <form className="mb-5 ml-auto mr-0" id="form" onSubmit={submitRegister}>
-        <h1 className="h3 mb-3 fw-normal">Register Here</h1>
-
         <div className="form-group">
-          <label htmlFor="username" style={{ width: '100%' }}>
+          <label htmlFor="username" style={{ width: "100%" }}>
             Username:&#32;
             <input
               className="form-control"
@@ -69,7 +83,7 @@ const Registerform = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="email" style={{ width: '100%' }}>
+          <label htmlFor="email" style={{ width: "100%" }}>
             Email:&#32;
             <input
               className="form-control"
@@ -83,7 +97,7 @@ const Registerform = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="password" style={{ width: '100%' }}>
+          <label htmlFor="password" style={{ width: "100%" }}>
             Password:&#32;
             <input
               className="form-control"
@@ -116,6 +130,6 @@ const Registerform = () => {
       </form>
     </div>
   );
-}
+};
 
-export default Registerform 
+export default Registerform;

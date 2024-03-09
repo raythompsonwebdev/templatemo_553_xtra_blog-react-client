@@ -1,42 +1,38 @@
-import { useEffect, useState } from 'react';
-
+import { useEffect, useState, useContext } from "react";
+import { UserContext } from "../useContext/context";
 
 const Profile = () => {
-  
-  const [loggedIn, setLoggedIn] = useState('');
-  const [message, setMessage] = useState('');
-  const [userName, setUserName] = useState('');
- 
-  useEffect(() => {
-   
-    const fetchUserProfile = async () => {
+  const { loggedIn, setLoggedIn } = useContext(UserContext);
+  const [message, setMessage] = useState("");
+  const [userName, setUserName] = useState("");
+  const [userEmail, setUserEmail] = useState("");
 
-      const response = await fetch('/api/profile',{ 
-        method: "GET",        
+  useEffect(() => {
+    const fetchUserProfile = async () => {
+      const response = await fetch("/api/profile", {
+        method: "GET",
         headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-          },
-    }); 
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      });
       const result = await response.json();
 
-      setLoggedIn(result.loggedIn)
-      setMessage(result.message)
-      setUserName(result.token.username);
-    }
+      setLoggedIn(result.loggedIn);
+      setMessage(result.message);
+      setUserName(result.token?.username);
+      setUserEmail(result.token?.email);
+    };
 
-    fetchUserProfile();  
-    
-  },[]);
+    fetchUserProfile();
+  }, [setLoggedIn]);
 
   // eslint-disable-next-line no-console
-  console.log(message, loggedIn)
-
+  console.log(message, loggedIn);
 
   return (
     <main className="tm-main">
-      <div className="row tm-row">
-      </div>
+      <div className="row tm-row"></div>
       <div className="row tm-row tm-mb-45">
         <div className="col-12">
           <hr className="tm-hr-primary tm-mb-55" />
@@ -46,40 +42,34 @@ const Profile = () => {
         <div className="col-12">
           <div className="mb-4">
             <h2 className="pt-2 tm-mb-40 tm-color-primary tm-post-title">
-              Welcome {userName} 
+              Welcome {userName}
             </h2>
-                       
           </div>
         </div>
       </div>
       <div className="row tm-row tm-mb-120">
         <div className="col-lg-4 tm-about-col">
           <div className="tm-bg-gray tm-about-pad">
-            <div className="text-center tm-mt-40 tm-mb-60">
+            {/* <div className="text-center tm-mt-40 tm-mb-60">
               <i className="fas fa-bezier-curve fa-4x tm-color-primary" />
-            </div>
-            <h2 className="mb-3 tm-color-primary tm-post-title">Background</h2>
-            <p className="mb-0 tm-line-height-short">
-              Phasellus pulvinar nisl ornare leo porttitor, et vestibulum lorem
-              semper. Duis risus ex, molestie sit amet magna in, pharetra
-              pellentesque est. Curabitur elit metus.
-            </p>
+            </div> */}
+            <h2 className="mb-3 tm-color-primary tm-post-title">{userName}</h2>
+            <img
+              src="/images/about-02.jpg"
+              alt="two"
+              className="img-fluid mr-4"
+            />
           </div>
         </div>
         <div className="col-lg-8 tm-about-col">
           <div className="tm-bg-gray tm-about-pad">
-            <div className="text-center tm-mt-40 tm-mb-60">
+            {/* <div className="text-center tm-mt-40 tm-mb-60">
               <i className="fas fa-users-cog fa-4x tm-color-primary" />
-            </div>
-            <h2 className="mb-3 tm-color-primary tm-post-title">Teamwork</h2>
-            <p className="mb-0 tm-line-height-short">
-              Suspendisse ullamcorper, mi vel molestie ornare, arcu magna
-              euismod ipsum, in malesuada nulla magna ut enim. Morbi lacinia
-              magna sed auctor, vitae nunc cursus.
-            </p>
+            </div> */}
+            <h2 className="mb-3 tm-color-primary tm-post-title">Email</h2>
+            <p className="mb-0 tm-line-height-short"> {userEmail}</p>
           </div>
         </div>
-      
       </div>
       <div className="row tm-row tm-mb-60">
         <div className="col-12">
@@ -87,11 +77,11 @@ const Profile = () => {
         </div>
         <div className="col-lg-6 tm-mb-60 tm-person-col">
           <div className="media tm-person">
-            <img
+            {/* <img
               src="/images/about-02.jpg"
               alt="two"
               className="img-fluid mr-4"
-            />
+            /> */}
             <div className="media-body">
               <h2 className="tm-color-primary tm-post-title mb-2">
                 John Henry
@@ -106,11 +96,11 @@ const Profile = () => {
         </div>
         <div className="col-lg-6 tm-mb-60 tm-person-col">
           <div className="media tm-person">
-            <img
+            {/* <img
               src="/images/about-03.jpg"
               alt="three"
               className="img-fluid mr-4"
-            />
+            /> */}
             <div className="media-body">
               <h2 className="tm-color-primary tm-post-title mb-2">Timy Cake</h2>
               <h3 className="tm-h3 mb-3">Project Director</h3>
@@ -123,11 +113,11 @@ const Profile = () => {
         </div>
         <div className="col-lg-6 tm-mb-60 tm-person-col">
           <div className="media tm-person">
-            <img
+            {/* <img
               src="/images/about-04.jpg"
               alt="four"
               className="img-fluid mr-4"
-            />
+            /> */}
             <div className="media-body">
               <h2 className="tm-color-primary tm-post-title mb-2">Jay Zoona</h2>
               <h3 className="tm-h3 mb-3">Supervisor</h3>
@@ -140,11 +130,11 @@ const Profile = () => {
         </div>
         <div className="col-lg-6 tm-mb-60 tm-person-col">
           <div className="media tm-person">
-            <img
+            {/* <img
               src="/images/about-05.jpg"
               alt="five"
               className="img-fluid mr-4"
-            />
+            /> */}
             <div className="media-body">
               <h2 className="tm-color-primary tm-post-title mb-2">
                 Catherine Soft
@@ -161,12 +151,13 @@ const Profile = () => {
       </div>
       <footer className="row tm-row">
         <div className="col-md-6 col-12 tm-color-gray">
-          Design:{' '}
+          Design:{" "}
           <a
             rel="nofollow"
             target="_parent"
             href="https://templatemo.com"
-            className="tm-external-link">
+            className="tm-external-link"
+          >
             TemplateMo
           </a>
         </div>
@@ -175,7 +166,7 @@ const Profile = () => {
         </div>
       </footer>
     </main>
-  )
-}
+  );
+};
 
-export default Profile; 
+export default Profile;
