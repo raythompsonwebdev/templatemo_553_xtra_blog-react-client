@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
- 
-const Comment = () => (
+function Comment() {
+  return (
     <div className="tm-comment tm-mb-45">
       <figure className="tm-comment-figure">
         <img
@@ -27,6 +27,7 @@ const Comment = () => (
         </div>
       </div>
     </div>
-  )
+  );
+}
 
 export default Comment;

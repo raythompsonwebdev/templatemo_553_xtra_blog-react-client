@@ -1,5 +1,5 @@
- 
-const CommentReply = () => (
+function CommentReply() {
+  return (
     <div className="tm-comment-reply tm-mb-45">
       <hr />
       <div className="tm-comment">
@@ -21,6 +21,7 @@ const CommentReply = () => (
       </div>
       <span className="d-block text-right tm-color-primary">June 21, 2020</span>
     </div>
-  )
+  );
+}
 
 export default CommentReply;

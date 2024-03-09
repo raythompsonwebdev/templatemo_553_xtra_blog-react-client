@@ -1,8 +1,6 @@
-
-const CommentForm = (props:{author:string}) => {
-
+function CommentForm(props: { author: string }) {
   // eslint-disable-next-line no-console
-  console.log(props)
+  console.log(props);
   return (
     <form action="" className="mb-6">
       <h2 className="tm-color-primary tm-post-title mb-6">Your comment</h2>

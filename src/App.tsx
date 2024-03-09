@@ -1,12 +1,11 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import BlogsnippetContainer from './components/Blog/BlogsnippetContainer';
-import SearchForm from './components/Forms/SearchForm';
-import { BlogType } from './types/index'
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import BlogsnippetContainer from "./components/Blog/BlogsnippetContainer";
+import SearchForm from "./components/Forms/SearchForm";
+import { BlogType } from "./types/index";
 
 // eslint-disable-next-line func-style
 const App = () => {
- 
   const [blogData, setblogData] = useState<BlogType[]>([]);
   const [lastIndex, setLastIndex] = useState<number>(0);
 
@@ -15,13 +14,13 @@ const App = () => {
     fetchProducts
       .then((response) => {
         if (!response.ok) {
-          throw new Error('no data provided');
+          throw new Error("no data provided");
         }
         return response.json();
       })
       .then((data) => {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const returnedData = data.map((blog :any) => {
+        const returnedData = data.map((blog: any) => {
           // eslint-disable-next-line no-console
           const { id } = blog;
           // eslint-disable-next-line no-param-reassign
@@ -51,7 +50,8 @@ const App = () => {
         <div className="tm-prev-next-wrapper">
           <Link
             to="#"
-            className="mb-2 tm-btn tm-btn-primary tm-prev-next disabled tm-mr-20">
+            className="mb-2 tm-btn tm-btn-primary tm-prev-next disabled tm-mr-20"
+          >
             Prev
           </Link>
           <Link to="#" className="mb-2 tm-btn tm-btn-primary tm-prev-next">
@@ -88,6 +88,6 @@ const App = () => {
       </div>
     </main>
   );
-}
+};
 
 export default App;

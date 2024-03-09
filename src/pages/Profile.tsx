@@ -4,10 +4,12 @@ import { useEffect, useState } from 'react';
 const Profile = () => {
   
   const [loggedIn, setLoggedIn] = useState('');
+  const [message, setMessage] = useState('');
+  const [userName, setUserName] = useState('');
  
   useEffect(() => {
    
-    const fetchProducts = async () => {
+    const fetchUserProfile = async () => {
 
       const response = await fetch('/api/profile',{ 
         method: "GET",        
@@ -18,15 +20,17 @@ const Profile = () => {
     }); 
       const result = await response.json();
 
-      setLoggedIn(result)
+      setLoggedIn(result.loggedIn)
+      setMessage(result.message)
+      setUserName(result.token.username);
     }
 
-    fetchProducts();  
+    fetchUserProfile();  
     
   },[]);
 
   // eslint-disable-next-line no-console
-  console.log(loggedIn)
+  console.log(message, loggedIn)
 
 
   return (
@@ -42,7 +46,7 @@ const Profile = () => {
         <div className="col-12">
           <div className="mb-4">
             <h2 className="pt-2 tm-mb-40 tm-color-primary tm-post-title">
-              About this xtra blog
+              Welcome {userName} 
             </h2>
                        
           </div>

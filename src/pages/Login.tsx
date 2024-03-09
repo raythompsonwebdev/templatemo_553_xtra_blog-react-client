@@ -1,7 +1,8 @@
-import { Link } from 'react-router-dom';
-import Loginform from '../components/Forms/Loginform';
+import { Link } from "react-router-dom";
+import Loginform from "../components/Forms/Loginform";
 
-const Login = () => (
+function Login() {
+  return (
     <main className="tm-main">
       {/* <div className="row tm-row">     
       <SearchForm />                                 
@@ -40,28 +41,32 @@ const Login = () => (
             <li className="mb-2">
               <Link
                 to="https://facebook.com"
-                className="d-flex align-items-center justify-content-center">
+                className="d-flex align-items-center justify-content-center"
+              >
                 <i className="fab fa-facebook" />
               </Link>
             </li>
             <li className="mb-2">
               <Link
                 to="https://twitter.com"
-                className="d-flex align-items-center justify-content-center">
+                className="d-flex align-items-center justify-content-center"
+              >
                 <i className="fab fa-twitter" />
               </Link>
             </li>
             <li className="mb-2">
               <Link
                 to="https://youtube.com"
-                className="d-flex align-items-center justify-content-center">
+                className="d-flex align-items-center justify-content-center"
+              >
                 <i className="fab fa-youtube" />
               </Link>
             </li>
             <li className="mb-2">
               <Link
                 to="https://instagram.com"
-                className="d-flex align-items-center justify-content-center mr-0">
+                className="d-flex align-items-center justify-content-center mr-0"
+              >
                 <i className="fab fa-instagram" />
               </Link>
             </li>
@@ -69,6 +74,7 @@ const Login = () => (
         </div>
       </div>
     </main>
-  )
+  );
+}
 
-export default Login
+export default Login;

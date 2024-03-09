@@ -1,14 +1,12 @@
-import { Link } from 'react-router-dom';
-import Blogform from '../components/Blog/Blogform';
+import { Link } from "react-router-dom";
+import Blogform from "../components/Blog/Blogform";
 
-const Createblog = () => (
+function Createblog() {
+  return (
     <main className="tm-main">
-
       <div className="row tm-row tm-mb-120">
         <div className="col-12">
-          <h2 className="tm-color-primary tm-post-title tm-mb-60">
-            Add Blog
-          </h2>
+          <h2 className="tm-color-primary tm-post-title tm-mb-60">Add Blog</h2>
         </div>
         <div className="col-lg-7 tm-contact-left">
           <Blogform />
@@ -37,28 +35,32 @@ const Createblog = () => (
             <li className="mb-2">
               <Link
                 to="https://facebook.com"
-                className="d-flex align-items-center justify-content-center">
+                className="d-flex align-items-center justify-content-center"
+              >
                 <i className="fab fa-facebook" />
               </Link>
             </li>
             <li className="mb-2">
               <Link
                 to="https://twitter.com"
-                className="d-flex align-items-center justify-content-center">
+                className="d-flex align-items-center justify-content-center"
+              >
                 <i className="fab fa-twitter" />
               </Link>
             </li>
             <li className="mb-2">
               <Link
                 to="https://youtube.com"
-                className="d-flex align-items-center justify-content-center">
+                className="d-flex align-items-center justify-content-center"
+              >
                 <i className="fab fa-youtube" />
               </Link>
             </li>
             <li className="mb-2">
               <Link
                 to="https://instagram.com"
-                className="d-flex align-items-center justify-content-center mr-0">
+                className="d-flex align-items-center justify-content-center mr-0"
+              >
                 <i className="fab fa-instagram" />
               </Link>
             </li>
@@ -66,6 +68,7 @@ const Createblog = () => (
         </div>
       </div>
     </main>
-  )
+  );
+}
 
-export default Createblog 
+export default Createblog;

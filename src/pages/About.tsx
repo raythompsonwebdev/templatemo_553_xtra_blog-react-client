@@ -1,7 +1,8 @@
-import { Link } from 'react-router-dom';
-import SearchForm from '../components/Forms/SearchForm'
+import { Link } from "react-router-dom";
+import SearchForm from "../components/Forms/SearchForm";
 
-const About = () => (
+function About() {
+  return (
     <main className="tm-main">
       <div className="row tm-row">
         <SearchForm />
@@ -23,7 +24,8 @@ const About = () => (
               <Link
                 rel="nofollow"
                 to="https://templatemo.com/tm-553-xtra-blog"
-                target="_blank">
+                target="_blank"
+              >
                 Xtra Blog Template
               </Link>
               from TemplateMo website for 100% free of charge. Etiam vehicula,
@@ -168,12 +170,13 @@ const About = () => (
       </div>
       <footer className="row tm-row">
         <div className="col-md-6 col-12 tm-color-gray">
-          Design:{' '}
+          Design:{" "}
           <a
             rel="nofollow"
             target="_parent"
             href="https://templatemo.com"
-            className="tm-external-link">
+            className="tm-external-link"
+          >
             TemplateMo
           </a>
         </div>
@@ -182,6 +185,7 @@ const About = () => (
         </div>
       </footer>
     </main>
-  )
+  );
+}
 
-export default About
+export default About;

@@ -1,6 +1,46 @@
 import MainNav from './MainNav';
+import UserNav from './UserNav';
+import { useEffect, useState } from 'react';
+// import {LoginContext} from "../useContext/context"
 
-const Header = () => (
+
+function Header () {
+
+  const [loggedIn, setLoggedIn] = useState('');
+  const [message, setMessage] = useState('');
+  const [userName, setUserName] = useState('');
+  // const [cookieName , setCookieName] = useState<string>('') ;
+ 
+  useEffect(() => {
+   
+    const fetchUserProfile = async () => {
+
+      const response = await fetch('/api/profile',{ 
+        method: "GET",        
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+    }); 
+      const result = await response.json();
+
+      setLoggedIn(result.loggedIn)
+      setMessage(result.message)
+      setUserName(result.token.username);
+    }
+
+    fetchUserProfile(); 
+       
+    
+  },[]);
+
+  // eslint-disable-next-line no-console
+  console.log(message, loggedIn, userName)
+  // eslint-disable-next-line no-console
+  // console.log(cookieName)
+
+  return(
+    
     <header className="tm-header" id="tm-header">
       <div className="tm-header-wrapper">
         <button
@@ -15,7 +55,9 @@ const Header = () => (
           </div>
           <h1 className="text-center">Xtra Blog</h1>
         </div>
-        <MainNav />
+        {/* <LoginContext.Provider value={{userName, setUserName}}> */}
+          {!loggedIn ? <MainNav /> : <UserNav />}
+        {/* </LoginContext.Provider> */}
         <div className="tm-mb-65">
           <a
             rel="nofollow"
@@ -40,6 +82,9 @@ const Header = () => (
         </p>
       </div>
     </header>
-  )
+    
+  );
+  
+}
 
 export default Header;
