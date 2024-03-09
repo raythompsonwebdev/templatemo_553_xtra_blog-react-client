@@ -5,6 +5,12 @@ function UserNav() {
     <nav className="tm-nav" id="tm-nav">
       <ul>
         <li className="tm-nav-item active">
+          <Link to="/" className="tm-nav-link">
+            <i className="fas fa-home" />
+            Blog Home
+          </Link>
+        </li>
+        <li className="tm-nav-item ">
           <Link to="/profile" className="tm-nav-link">
             <i className="fas fa-home" />
             User Profile

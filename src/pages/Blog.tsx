@@ -7,16 +7,16 @@ import CommentForm from "../components/Comments/CommentForm";
 import { BlogType } from "../types/index";
 import { convertDate } from "../helper";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Blog = () => {
   const { id } = useParams();
 
   // const singleBlog = blogData.find((item) => item.name === name);
+
   const [blogInfo, setblogInfo] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await fetch(`http://localhost:3333/api/post/${id}`);
+      const result = await fetch(`/api/post/${id}`);
       const body = await result.json();
       setblogInfo(body);
     };
@@ -25,8 +25,6 @@ const Blog = () => {
   }, [id]);
 
   const blogresult: BlogType = blogInfo[0];
-
-  // const { id :post_id, author, username, blogtitle,  blogpost, blogimage, mood, submitted, category_id } = blogresult;
 
   return (
     blogresult && (

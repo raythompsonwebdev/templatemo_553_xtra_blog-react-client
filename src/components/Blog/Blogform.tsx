@@ -1,30 +1,32 @@
 import { SetStateAction, useState } from "react";
 
 const Blogform = () => {
-  const [bloguser, setBlogUser] = useState("");
-  const [blogauthor, setBlogAuthor] = useState("");
+  const [username, setUserName] = useState("");
+  const [author, setBlogAuthor] = useState("");
   const [blogtitle, setBlogTitle] = useState("");
-  const [blogtext, setBlogText] = useState("");
-  // const [blogimage, setBlogImage] = useState('');
-  const [blogcat, setBlogCat] = useState("");
-  // add current date
+  const [blogpost, setBlogPost] = useState("");
+  const [mood, setMood] = useState("");
+  const [category_id, setCatId] = useState("");
   const currDate = new Date().toISOString().slice(0, 10);
-  const [blogdate, setBlogDate] = useState(currDate);
+  const [submitted, setBlogDate] = useState(currDate);
 
-  const handleBlogUser = (e: {
-    preventDefault: () => void;
-    target: { value: SetStateAction<string> };
-  }) => {
-    const { value } = e.target;
-    setBlogUser(value);
-  };
+  const blogimage = "image";
+  const user_id = "10";
 
-  const handleBlogAuthor = (e: {
+  const handleAuthor = (e: {
     preventDefault: () => void;
     target: { value: SetStateAction<string> };
   }) => {
     const { value } = e.target;
     setBlogAuthor(value);
+  };
+
+  const handleUserName = (e: {
+    preventDefault: () => void;
+    target: { value: SetStateAction<string> };
+  }) => {
+    const { value } = e.target;
+    setUserName(value);
   };
 
   const handleBlogTitle = (e: {
@@ -35,25 +37,28 @@ const Blogform = () => {
     setBlogTitle(value);
   };
 
-  const handleBlogText = (e: {
+  const handleBlogPost = (e: {
     preventDefault: () => void;
     target: { value: SetStateAction<string> };
   }) => {
     const { value } = e.target;
-    setBlogText(value);
+    setBlogPost(value);
   };
 
-  // const handleBlogImage = (e: { preventDefault: () => void , target: { value: SetStateAction<string> }}) => {
-  //   const{value } = e.target;
-  //   setBlogImage(value);
-  // }
-
-  const handleBlogCat = (e: {
+  const handleCatId = (e: {
     preventDefault: () => void;
     target: { value: SetStateAction<string> };
   }) => {
     const { value } = e.target;
-    setBlogCat(value);
+    setCatId(value);
+  };
+
+  const handleMood = (e: {
+    preventDefault: () => void;
+    target: { value: SetStateAction<string> };
+  }) => {
+    const { value } = e.target;
+    setMood(value);
   };
 
   const handleBlogDate = (e: {
@@ -64,30 +69,42 @@ const Blogform = () => {
     setBlogDate(value);
   };
 
-  const submitForm = (e: { preventDefault: () => void }) => {
+  const submitForm = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
-    const myForm = document.getElementById("addblog-form") as HTMLFormElement;
-
-    const formData: FormData = new FormData(myForm);
-
-    // eslint-disable-next-line no-console
-    console.log(formData);
-
-    fetch("/api/create-post", {
+    fetch("/api/add_post", {
       method: "POST",
-      body: formData,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        author,
+        username,
+        blogtitle,
+        blogpost,
+        mood,
+        submitted,
+        blogimage,
+        category_id,
+        user_id,
+      }),
     })
       .then((response) => {
         if (!response.ok) {
-          // error processing
-          throw new Error(`${response.status}: ${response.statusText}`);
+          throw new Error(
+            `registerForm : ${response.status}: ${response.statusText}`
+          );
         }
-        return response.text();
+        return response.json();
       })
       .then((response) => {
         // eslint-disable-next-line no-console
         console.log(response);
+      })
+      .catch((err) => {
+        // eslint-disable-next-line no-console
+        console.log(err.toString());
       });
   };
 
@@ -97,15 +114,15 @@ const Blogform = () => {
 
       <div className="form-group row mb-4">
         <div className="col-sm-12">
-          <label htmlFor="blogauthor">
+          <label htmlFor="author">
             Author:&#32;
             <input
               className="form-control"
               type="text"
-              name="blogauthor"
-              id="blogauthor"
-              value={blogauthor}
-              onChange={handleBlogAuthor}
+              name="author"
+              id="author"
+              value={author}
+              onChange={handleAuthor}
               required
             />
           </label>
@@ -121,8 +138,8 @@ const Blogform = () => {
               type="text"
               name="username"
               id="username"
-              value={bloguser}
-              onChange={handleBlogUser}
+              value={username}
+              onChange={handleUserName}
               required
             />
           </label>
@@ -148,48 +165,30 @@ const Blogform = () => {
 
       <div className="form-group row mb-4">
         <div className="col-sm-12">
-          <label htmlFor="blogtext">
+          <label htmlFor="blogpost">
             <span>Post:&#32;</span>
             <textarea
-              value={blogtext}
-              onChange={handleBlogText}
-              name="blogtext"
-              id="blogtext"
+              value={blogpost}
+              onChange={handleBlogPost}
+              name="blogpost"
+              id="blogpost"
               rows={10}
             />
           </label>
         </div>
       </div>
 
-      {/* <div className="form-group row mb-4">
-        <div className="col-sm-12">
-          <label htmlFor="blogimage">
-            Mood:&#32;
-            <input
-              className="form-control"
-              type="text"
-              name="blogimage"
-              id="blogimage"
-              value={blogimage}
-              onChange={handleBlogImage}
-              required
-            />
-          </label>
-        </div>
-      </div> */}
-
       <div className="form-group row mb-4">
         <div className="col-sm-12">
           <label htmlFor="blogcat">
-            Mood:&#32;
+            CategoryID:&#32;
             <input
               className="form-control"
               type="text"
-              name="blogcat"
-              id="blogcat"
-              value={blogcat}
-              onChange={handleBlogCat}
-              required
+              name="catId"
+              id="catId"
+              value={category_id}
+              onChange={handleCatId}
             />
           </label>
         </div>
@@ -197,15 +196,31 @@ const Blogform = () => {
 
       <div className="form-group row mb-4">
         <div className="col-sm-12">
-          <label htmlFor="blogdate">
+          <label htmlFor="mood">
+            Mood:&#32;
+            <input
+              className="form-control"
+              type="text"
+              name="mood"
+              id="mood"
+              value={mood}
+              onChange={handleMood}
+            />
+          </label>
+        </div>
+      </div>
+
+      <div className="form-group row mb-4">
+        <div className="col-sm-12">
+          <label htmlFor="submitted">
             Date :
             <input
               className="form-control"
               type="date"
-              id="blogdate"
-              name="blogdate"
+              id="submitted"
+              name="submitted"
               onChange={handleBlogDate}
-              value={blogdate}
+              value={submitted}
             />
           </label>
         </div>
