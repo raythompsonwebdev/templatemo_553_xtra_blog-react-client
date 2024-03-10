@@ -39,30 +39,31 @@ const Registerform = () => {
   const submitRegister = (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
-    fetch("/api/register_user", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ username, email, hashpassword, submitted }),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(
-            `registerForm : ${response.status}: ${response.statusText}`
-          );
-        }
-        return response.json();
+    try {
+      fetch("/api/register_user", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, email, hashpassword, submitted }),
       })
-      .then((response) => {
-        // eslint-disable-next-line no-console
-        console.log(response);
-      })
-      .catch((err) => {
-        // eslint-disable-next-line no-console
-        console.log(err.toString());
-      });
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(
+              `Database Error: ${response.status}: ${response.statusText}`
+            );
+          }
+          return response.json();
+        })
+        .then((response) => {
+          // eslint-disable-next-line no-console
+          console.log(response);
+        });
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.error(error);
+    }
   };
 
   return (

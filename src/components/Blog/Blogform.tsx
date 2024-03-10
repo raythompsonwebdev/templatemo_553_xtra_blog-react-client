@@ -69,43 +69,44 @@ const Blogform = () => {
     setBlogDate(value);
   };
 
-  const submitForm = async (e: { preventDefault: () => void }) => {
+  const submitForm = (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
-    fetch("/api/add_post", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        author,
-        username,
-        blogtitle,
-        blogpost,
-        mood,
-        submitted,
-        blogimage,
-        category_id,
-        user_id,
-      }),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(
-            `registerForm : ${response.status}: ${response.statusText}`
-          );
-        }
-        return response.json();
+    try {
+      fetch("/api/add_post", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          author,
+          username,
+          blogtitle,
+          blogpost,
+          mood,
+          submitted,
+          blogimage,
+          category_id,
+          user_id,
+        }),
       })
-      .then((response) => {
-        // eslint-disable-next-line no-console
-        console.log(response);
-      })
-      .catch((err) => {
-        // eslint-disable-next-line no-console
-        console.log(err.toString());
-      });
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(
+              `Database Error : ${response.status}: ${response.statusText}`
+            );
+          }
+          return response.json();
+        })
+        .then((response) => {
+          // eslint-disable-next-line no-console
+          console.log(response);
+        });
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.log(error);
+    }
   };
 
   return (

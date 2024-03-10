@@ -33,7 +33,6 @@ const Loginform = () => {
         },
         body: JSON.stringify({ username, password }),
       });
-
       const result = await response.json();
       // eslint-disable-next-line no-console
       console.log("Success:", result);

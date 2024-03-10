@@ -1,58 +1,66 @@
 import { SetStateAction, useState } from "react";
 
- 
 const Contact = () => {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
 
-  const [username, setUsername] = useState(' ');
-  const [email, setEmail] = useState(' ');
-  const [subject, setSubject] = useState('');
-  const [message, setMessage] = useState('');
-
-  const handleUsername = (e: { preventDefault: () => void , target: { value: SetStateAction<string> }}) => {
-    const{value } = e.target;
+  const handleUsername = (e: {
+    preventDefault: () => void;
+    target: { value: SetStateAction<string> };
+  }) => {
+    const { value } = e.target;
     setUsername(value);
-  }
+  };
 
-  const handleEmail = (e: { preventDefault: () => void , target: { value: SetStateAction<string> }}) => {
-    const{value } = e.target;
+  const handleEmail = (e: {
+    preventDefault: () => void;
+    target: { value: SetStateAction<string> };
+  }) => {
+    const { value } = e.target;
     setEmail(value);
-  }
+  };
 
-  const handleSubject = (e: { preventDefault: () => void , target: { value: SetStateAction<string> }}) => {
-    const{value } = e.target;
+  const handleSubject = (e: {
+    preventDefault: () => void;
+    target: { value: SetStateAction<string> };
+  }) => {
+    const { value } = e.target;
     setSubject(value);
-  }
+  };
 
-  const handleMessage = (e: { preventDefault: () => void , target: { value: SetStateAction<string> }}) => {
-    const{value } = e.target;
+  const handleMessage = (e: {
+    preventDefault: () => void;
+    target: { value: SetStateAction<string> };
+  }) => {
+    const { value } = e.target;
     setMessage(value);
-  }
-
-  // eslint-disable-next-line no-console
-  console.log(username, email, subject, message);
+  };
 
   const submitForm = (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
-    const myForm = document.getElementById("contact-form") as HTMLFormElement;
-
-    const formData : FormData = new FormData(myForm);
-
-    fetch('http://localhost:3333/api/contact', {
-      method: 'POST',
-      body: formData,
-    })
-      .then((response) => {
-        if (!response.ok) {
-          // error processing
-          throw new Error(`${response.status}: ${response.statusText}`);
-        }
-        return response.text();
+    try {
+      fetch("/api/contact", {
+        method: "POST",
+        body: JSON.stringify({ username, email, subject, message }),
       })
-      .then((response) => {
-        // eslint-disable-next-line no-console
-        console.log(response);
-      });
+        .then((response) => {
+          if (!response.ok) {
+            // error processing
+            throw new Error(`${response.status}: ${response.statusText}`);
+          }
+          return response.text();
+        })
+        .then((response) => {
+          // eslint-disable-next-line no-console
+          console.log(response);
+        });
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.log(error);
+    }
   };
 
   return (
@@ -61,7 +69,8 @@ const Contact = () => {
         <div className="col-sm-12">
           <label
             htmlFor="name"
-            className="col-sm-12 col-form-label text-left tm-color-primary">
+            className="col-sm-12 col-form-label text-left tm-color-primary"
+          >
             Name
             <input
               className="form-control mr-0 ml-auto"
@@ -78,7 +87,8 @@ const Contact = () => {
         <div className="col-sm-12">
           <label
             htmlFor="email"
-            className="col-sm-12 col-form-label text-left tm-color-primary">
+            className="col-sm-12 col-form-label text-left tm-color-primary"
+          >
             Email
             <input
               className="form-control mr-0 ml-auto"
@@ -95,7 +105,8 @@ const Contact = () => {
         <div className="col-sm-12">
           <label
             htmlFor="subject"
-            className="col-sm-12 col-form-label text-left tm-color-primary">
+            className="col-sm-12 col-form-label text-left tm-color-primary"
+          >
             Subject
             <input
               className="form-control mr-0 ml-auto"
@@ -112,7 +123,8 @@ const Contact = () => {
         <div className="col-sm-12">
           <label
             htmlFor="message"
-            className="col-sm-12 col-form-label text-left tm-color-primary">
+            className="col-sm-12 col-form-label text-left tm-color-primary"
+          >
             Message
             <textarea
               className="form-control mr-0 ml-auto"
@@ -134,6 +146,6 @@ const Contact = () => {
       </div>
     </form>
   );
-}
+};
 
-export default Contact
+export default Contact;
