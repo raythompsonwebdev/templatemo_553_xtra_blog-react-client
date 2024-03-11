@@ -41,6 +41,9 @@ const Contact = () => {
   const submitForm = (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
+    // const formData = new FormData(form);
+    // const data = Object.fromEntries(formData);
+
     try {
       fetch("/api/contact", {
         method: "POST",

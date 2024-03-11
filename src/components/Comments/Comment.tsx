@@ -1,6 +1,12 @@
 import { Link } from "react-router-dom";
+import { CommentType } from "../../types/index";
+import { convertDate } from "../../helper";
 
-function Comment() {
+function Comment(props: { comment: CommentType }) {
+  const { comment } = props;
+
+  const { id, username, email, message, date } = comment;
+
   return (
     <div className="tm-comment tm-mb-45">
       <figure className="tm-comment-figure">
@@ -10,20 +16,17 @@ function Comment() {
           className="mb-2 rounded-circle img-thumbnail"
         />
         <figcaption className="tm-color-primary text-center">
-          Mark Sonny
+          {username} ID: {id}
         </figcaption>
       </figure>
       <div>
-        <p>
-          Praesent aliquam ex vel lectus ornare tritique. Nunc et eros quis enim
-          feugiat tincidunt et vitae dui. Nullam consectetur justo ac ex laoreet
-          rhoncus. Nunc id leo pretium, faucibus sapien vel, euismod turpis.
-        </p>
+        <p>{message}</p>
+        <p>{email}</p>
         <div className="d-flex justify-content-between">
           <Link to="#" className="tm-color-primary">
             REPLY
           </Link>
-          <span className="tm-color-primary">June 14, 2020</span>
+          <span className="tm-color-primary">{convertDate(date)}</span>
         </div>
       </div>
     </div>

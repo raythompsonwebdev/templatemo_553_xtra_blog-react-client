@@ -158,7 +158,6 @@ const Blogform = () => {
               id="blogtitle"
               value={blogtitle}
               onChange={handleBlogTitle}
-              required
             />
           </label>
         </div>

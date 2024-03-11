@@ -4,26 +4,29 @@ import SearchForm from "../components/Forms/SearchForm";
 import Comment from "../components/Comments/Comment";
 import CommentReply from "../components/Comments/CommentReply";
 import CommentForm from "../components/Comments/CommentForm";
-import { BlogType } from "../types/index";
+import { BlogType, CommentType } from "../types/index";
 import { convertDate } from "../helper";
 
 const Blog = () => {
   const { id } = useParams();
 
-  // const singleBlog = blogData.find((item) => item.name === name);
-
   const [blogInfo, setblogInfo] = useState([]);
+  const [commentsInfo, setCommentsInfo] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       const result = await fetch(`/api/post/${id}`);
+      const commentsResult = await fetch(`/api/comments`);
       const body = await result.json();
+      const commentbody = await commentsResult.json();
       setblogInfo(body);
+      setCommentsInfo(commentbody);
     };
 
     fetchData();
   }, [id]);
 
+  const commentresult: CommentType[] = commentsInfo;
   const blogresult: BlogType = blogInfo[0];
 
   return (
@@ -68,9 +71,12 @@ const Blog = () => {
               <div>
                 <h2 className="tm-color-primary tm-post-title">Comments</h2>
                 <hr className="tm-hr-primary tm-mb-45" />
-                <Comment />
+                {commentresult.map((comment) => (
+                  <Comment comment={comment} key={comment.id} />
+                ))}
+
                 <CommentReply />
-                <CommentForm author={blogresult.author} />
+                <CommentForm />
               </div>
             </div>
           </div>

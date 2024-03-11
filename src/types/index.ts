@@ -10,3 +10,11 @@ export interface BlogType {
   category_id: number;
   user_id: number;
 }
+
+export interface CommentType {
+  id: number;
+  username: string;
+  email: string;
+  message: string;
+  date: string;
+}
