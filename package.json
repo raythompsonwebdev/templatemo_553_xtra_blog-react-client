@@ -12,9 +12,9 @@
   },
   "dependencies": {
     "js-cookie": "^3.0.5",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.17.0"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.23.0"
   },
   "browserslist": {
     "production": [
@@ -30,20 +30,20 @@
   },
   "devDependencies": {
     "@types/js-cookie": "^3.0.6",
-    "@types/react": "^18.2.31",
-    "@types/react-dom": "^18.2.14",
-    "@typescript-eslint/eslint-plugin": "^6.8.0",
-    "@typescript-eslint/parser": "^6.8.0",
-    "@vitejs/plugin-react-swc": "^3.4.0",
-    "autoprefixer": "^10.4.16",
-    "eslint": "^8.52.0",
-    "eslint-plugin-prettier": "^5.0.1",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.3",
-    "postcss": "^8.4.31",
-    "prettier": "^3.0.3",
-    "stylelint": "^15.11.0",
-    "typescript": "^5.2.2",
-    "vite": "^4.5.2"
+    "@types/react": "^18.3.1",
+    "@types/react-dom": "^18.3.0",
+    "@typescript-eslint/eslint-plugin": "^7.8.0",
+    "@typescript-eslint/parser": "^7.8.0",
+    "@vitejs/plugin-react-swc": "^3.6.0",
+    "autoprefixer": "^10.4.19",
+    "eslint": "^9.2.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-react-refresh": "^0.4.6",
+    "postcss": "^8.4.38",
+    "prettier": "^3.2.5",
+    "stylelint": "^16.5.0",
+    "typescript": "^5.4.5",
+    "vite": "^5.2.11"
   }
 }

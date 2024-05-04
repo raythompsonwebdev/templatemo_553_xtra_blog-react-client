@@ -1,6 +1,6 @@
 import { SetStateAction, useState } from "react";
 
-const Registerform = () => {
+const RegisterForm = () => {
   const [username, setUsername] = useState("");
   const [hashpassword, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -133,4 +133,4 @@ const Registerform = () => {
   );
 };
 
-export default Registerform;
+export default RegisterForm;

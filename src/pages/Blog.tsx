@@ -122,7 +122,7 @@ const Blog = () => {
               <h2 className="tm-mb-40 tm-post-title tm-color-primary">
                 Related Posts
               </h2>
-              <Link to="#" className="d-block tm-mb-40">
+              <Link to="/post/2" className="d-block tm-mb-40">
                 <figure>
                   <img
                     src="/images/img-02.jpg"
@@ -134,7 +134,7 @@ const Blog = () => {
                   </figcaption>
                 </figure>
               </Link>
-              <Link to="#" className="d-block tm-mb-40">
+              <Link to="/post/7" className="d-block tm-mb-40">
                 <figure>
                   <img
                     src="/images/img-05.jpg"
@@ -146,7 +146,7 @@ const Blog = () => {
                   </figcaption>
                 </figure>
               </Link>
-              <Link to="#" className="d-block tm-mb-40">
+              <Link to="/post/8" className="d-block tm-mb-40">
                 <figure>
                   <img
                     src="/images/img-06.jpg"

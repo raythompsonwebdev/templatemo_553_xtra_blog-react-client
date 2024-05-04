@@ -1,10 +1,7 @@
-import Blogsnippet from "./Blogsnippet.js";
+import Blogsnippet from "./BlogArticle.js";
 import { BlogType } from "../../types/index";
 
-function BlogsnippetContainer(props: {
-  blogData: BlogType[];
-  lastIndex: number;
-}) {
+function BlogArticles(props: { blogData: BlogType[]; lastIndex: number }) {
   const { blogData, lastIndex } = props;
 
   // eslint-disable-next-line no-console
@@ -29,4 +26,4 @@ function BlogsnippetContainer(props: {
   return Blog;
 }
 
-export default BlogsnippetContainer;
+export default BlogArticles;

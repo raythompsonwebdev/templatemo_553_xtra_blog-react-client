@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { BlogType } from "../../types/index";
 import { convertDate } from "../../helper";
 
-const Blogsnippet = (props: BlogType) => {
+const BlogArticle = (props: BlogType) => {
   const {
     id,
     author,
@@ -44,4 +44,4 @@ const Blogsnippet = (props: BlogType) => {
   );
 };
 
-export default Blogsnippet;
+export default BlogArticle;

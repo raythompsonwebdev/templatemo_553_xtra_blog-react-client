@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import { UserContext } from "../useContext/context";
 
-const Logout = () => {
+const LogOut = () => {
   const { loggedIn, setLoggedIn } = useContext(UserContext);
   const [message, setMessage] = useState("");
 
@@ -95,4 +95,4 @@ const Logout = () => {
   );
 };
 
-export default Logout;
+export default LogOut;
