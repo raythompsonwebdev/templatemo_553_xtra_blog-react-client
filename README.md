@@ -17,10 +17,11 @@ Built using JS framework React and build tool Vite, this web application allows 
 ## Tools
 
 - [React](https://react.dev/)
+- [React Router](https://reactrouter.com/)
 - [Sass](https://sass-lang.com/)
-- [Vite](https://nodejs.org/en)
+- [Vite](https://vitejs.dev/)
 - [Prettier](https://prettier.io/)
-- [Eslint](https://eslint.org/)
+- [ESlint](https://eslint.org/)
 - [Postcss](https://postcss.org/)
 - [Stylelint](https://stylelint.io/)
 - [Typescript](https://www.typescriptlang.org/)
