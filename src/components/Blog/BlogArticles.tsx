@@ -1,14 +1,14 @@
-import Blogsnippet from "./BlogArticle.js";
+import BlogArticle from "./BlogArticle";
 import { BlogType } from "../../types/index";
 
-function BlogArticles(props: { blogData: BlogType[]; lastIndex: number }) {
-  const { blogData, lastIndex } = props;
+function BlogArticles(props: { blogData: BlogType[] }) {
+  const { blogData } = props;
 
   // eslint-disable-next-line no-console
-  console.error(lastIndex);
+  // console.error(lastIndex);
 
   const Blog = blogData.map((item: BlogType) => (
-    <Blogsnippet
+    <BlogArticle
       key={item.id}
       id={item.id}
       author={item.author}

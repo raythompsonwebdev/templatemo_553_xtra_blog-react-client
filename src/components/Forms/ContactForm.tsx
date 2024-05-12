@@ -58,7 +58,8 @@ const Contact = () => {
         })
         .then((response) => {
           // eslint-disable-next-line no-console
-          console.log(response);
+
+          setMessage(response);
         });
     } catch (error) {
       // eslint-disable-next-line no-console
@@ -68,6 +69,7 @@ const Contact = () => {
 
   return (
     <form id="contact-form" className="mb-5 ml-auto mr-0" onSubmit={submitForm}>
+      <span id="error-messages"></span>
       <div className="form-group row mb-4">
         <div className="col-sm-12">
           <label

@@ -1,37 +1,19 @@
 import MainNav from "./MainNav";
 import UserNav from "./UserNav";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useContext } from "react";
 import { UserContext } from "../useContext/context";
 
 function Header() {
-  const [message, setMessage] = useState("");
-  const [userName, setUserName] = useState("");
+  // const [message, setMessage] = useState("");
+  // const [userName, setUserName] = useState("");
   const { loggedIn, setLoggedIn } = useContext(UserContext);
 
   useEffect(() => {
-    const fetchUserProfile = async () => {
-      const response = await fetch("/api/profile", {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-      });
-      const result = await response.json();
-
-      if (result) {
-        setLoggedIn(result.loggedIn);
-        setMessage(result.message);
-        setUserName(result.token?.username);
-      }
-    };
-    fetchUserProfile();
+    setLoggedIn(false);
   }, [setLoggedIn]);
 
   // eslint-disable-next-line no-console
-  console.log(message, loggedIn, userName);
-  // eslint-disable-next-line no-console
-  // console.log(myValue);
+  console.log(loggedIn);
 
   return (
     <header className="tm-header" id="tm-header">

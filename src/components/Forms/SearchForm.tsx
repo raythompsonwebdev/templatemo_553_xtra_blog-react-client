@@ -14,7 +14,7 @@ export default function SearchForm() {
     e.preventDefault();
 
     try {
-      fetch(`http://localhost:3333/api/search?query=${searchterm}`, {
+      fetch(`/api/search?query=${searchterm}`, {
         method: "GET",
       })
         .then((response) => {

@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
-import { useEffect, useState, useContext } from "react";
-import { UserContext } from "../useContext/context";
+// import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
+// import { UserContext } from "../useContext/context";
 
 const LogOut = () => {
-  const { loggedIn, setLoggedIn } = useContext(UserContext);
+  //const { loggedIn, setLoggedIn } = useContext(UserContext);
+
   const [message, setMessage] = useState("");
 
   useEffect(() => {
@@ -17,22 +19,16 @@ const LogOut = () => {
       });
       const result = await response.json();
       setMessage(result.message);
-      setLoggedIn(result.loggedIn);
     };
 
     logoutUser();
-  }, [setLoggedIn]);
-
-  // eslint-disable-next-line no-console
-  console.log(loggedIn, message);
+  }, []);
 
   return (
     <main className="tm-main">
       <div className="row tm-row tm-mb-120">
         <div className="col-12">
-          <h2 className="tm-color-primary tm-post-title tm-mb-60">
-            Your Logged Out
-          </h2>
+          <h2 className="tm-color-primary tm-post-title tm-mb-60">{message}</h2>
         </div>
         <div className="col-lg-7 tm-contact-left"></div>
         <div className="col-lg-5 tm-contact-right">

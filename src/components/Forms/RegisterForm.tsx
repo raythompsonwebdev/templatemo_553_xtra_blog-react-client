@@ -8,6 +8,8 @@ const RegisterForm = () => {
   const currDate = new Date().toISOString().slice(0, 10);
   const [submitted, setDate] = useState(currDate);
 
+  const [errormessage, setErrorMessage] = useState("");
+
   function handleUsername(e: {
     preventDefault: () => void;
     target: { value: SetStateAction<string> };
@@ -49,26 +51,32 @@ const RegisterForm = () => {
         body: JSON.stringify({ username, email, hashpassword, submitted }),
       })
         .then((response) => {
-          if (!response.ok) {
-            throw new Error(
-              `Database Error: ${response.status}: ${response.statusText}`
-            );
-          }
+          //if (response.ok) {
           return response.json();
+          //}
+          // throw new Error(
+          //   `Database Error: ${response.status}: ${response.statusText}`
+          // );
         })
         .then((response) => {
           // eslint-disable-next-line no-console
           console.log(response);
+          setErrorMessage(response.message);
         });
     } catch (error) {
       // eslint-disable-next-line no-console
-      console.error(error);
+      console.log(error);
     }
   };
+
+  if (errormessage !== "") {
+    console.log(errormessage);
+  }
 
   return (
     <div className="col-lg-7 ">
       <form className="mb-5 ml-auto mr-0" id="form" onSubmit={submitRegister}>
+        <span>{errormessage ? errormessage : ""}</span>
         <div className="form-group">
           <label htmlFor="username" style={{ width: "100%" }}>
             Username:&#32;

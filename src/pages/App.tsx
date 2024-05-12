@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import BlogsnippetContainer from "../components/Blog/BlogArticles";
+import BlogArticles from "../components/Blog/BlogArticles";
 import SearchForm from "../components/Forms/SearchForm";
 import { BlogType } from "../types/index";
 
 const App = () => {
   const [blogData, setblogData] = useState<BlogType[]>([]);
-  const [lastIndex, setLastIndex] = useState<number>(0);
 
   useEffect(() => {
     const fetchProducts = fetch(`/api/posts`);
@@ -18,17 +17,7 @@ const App = () => {
         return response.json();
       })
       .then((data) => {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const returnedData = data.map((blog: any) => {
-          // eslint-disable-next-line no-console
-          const { id } = blog;
-          // eslint-disable-next-line no-param-reassign
-          blog.postId = id;
-          setLastIndex(blog.postId);
-          return blog;
-        });
-
-        setblogData(returnedData);
+        setblogData(data);
       });
   }, []);
 
@@ -39,7 +28,7 @@ const App = () => {
       </div>
       <br />
       <div className="row tm-row">
-        <BlogsnippetContainer blogData={blogData} lastIndex={lastIndex} />
+        <BlogArticles blogData={blogData} />
       </div>
 
       <div className="row tm-row tm-mt-100 tm-mb-75">

@@ -1,15 +1,18 @@
 import { SetStateAction, useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
-  const [username, setUserName] = useState("");
+  const [email, setUserEmail] = useState("");
   const [password, setUserPassword] = useState("");
+  const [message, setErrorMessage] = useState("");
 
-  const handleUserName = (e: {
+  // const navigate = useNavigate();
+
+  const handleUserEmail = (e: {
     preventDefault: () => void;
     target: { value: SetStateAction<string> };
   }) => {
-    setUserName(e.target.value);
+    setUserEmail(e.target.value);
   };
 
   const handleuserPassword = (e: {
@@ -18,8 +21,6 @@ const LoginForm = () => {
   }) => {
     setUserPassword(e.target.value);
   };
-
-  const navigate = useNavigate();
 
   const submitLogin = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
@@ -31,30 +32,35 @@ const LoginForm = () => {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ email, password }),
       });
+
       const result = await response.json();
-      // eslint-disable-next-line no-console
-      console.log("Success:", result);
-      navigate("/profile");
+
+      if (result.message !== "") {
+        setErrorMessage(result.message);
+      } else {
+        //navigate("/profile");
+      }
     } catch (error) {
       // eslint-disable-next-line no-console
-      console.error("Error:", error);
+      console.error(error);
     }
   };
 
   return (
     <form id="login" onSubmit={submitLogin}>
+      <span>{message ? message : ""}</span>
       <div className="form-group">
         <label htmlFor="username" style={{ width: "100%" }}>
-          Username:&#32;
+          Email:&#32;
           <input
             className="form-control"
-            type="text"
-            name="username"
+            type="email"
+            name="email"
             id="text"
-            value={username}
-            onChange={handleUserName}
+            value={email}
+            onChange={handleUserEmail}
             required
           />
         </label>

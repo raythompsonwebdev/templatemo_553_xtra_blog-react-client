@@ -1,34 +1,36 @@
-import { useEffect, useState, useContext } from "react";
-import { UserContext } from "../useContext/context";
+// import { useEffect, useState, useContext } from "react";
+// import { useEffect, useState } from "react";
+// import { UserContext } from "../useContext/context";
 
 const Profile = () => {
-  const { loggedIn, setLoggedIn } = useContext(UserContext);
-  const [message, setMessage] = useState("");
-  const [userName, setUserName] = useState("");
-  const [userEmail, setUserEmail] = useState("");
+  //const { loggedIn, setLoggedIn } = useContext(UserContext);
+  // const [loggedIn, setLoggedIn] = useState(false);
+  // const [message, setMessage] = useState("");
+  // const [userName, setUserName] = useState("");
+  // const [userEmail, setUserEmail] = useState("");
 
-  useEffect(() => {
-    const fetchUserProfile = async () => {
-      const response = await fetch("/api/profile", {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-      });
-      const result = await response.json();
+  // useEffect(() => {
+  //   const fetchUserProfile = async () => {
+  //     const response = await fetch("/api/profile", {
+  //       method: "GET",
+  //       headers: {
+  //         Accept: "application/json",
+  //         "Content-Type": "application/json",
+  //       },
+  //     });
+  //     const result = await response.json();
 
-      setLoggedIn(result.loggedIn);
-      setMessage(result.message);
-      setUserName(result.token?.username);
-      setUserEmail(result.token?.email);
-    };
+  //     setLoggedIn(false);
+  //     setMessage(result.message);
+  //     setUserName(result.token?.username);
+  //     setUserEmail(result.token?.email);
+  //   };
 
-    fetchUserProfile();
-  }, [setLoggedIn]);
+  //   fetchUserProfile();
+  // }, [setLoggedIn]);
 
-  // eslint-disable-next-line no-console
-  console.log(message, loggedIn);
+  // // eslint-disable-next-line no-console
+  // console.log(message, loggedIn);
 
   return (
     <main className="tm-main">
@@ -42,7 +44,7 @@ const Profile = () => {
         <div className="col-12">
           <div className="mb-4">
             <h2 className="pt-2 tm-mb-40 tm-color-primary tm-post-title">
-              Welcome {userName}
+              Welcome
             </h2>
           </div>
         </div>
@@ -53,7 +55,7 @@ const Profile = () => {
             {/* <div className="text-center tm-mt-40 tm-mb-60">
               <i className="fas fa-bezier-curve fa-4x tm-color-primary" />
             </div> */}
-            <h2 className="mb-3 tm-color-primary tm-post-title">{userName}</h2>
+            <h2 className="mb-3 tm-color-primary tm-post-title">fg</h2>
             <img
               src="/images/about-02.jpg"
               alt="two"
@@ -67,7 +69,7 @@ const Profile = () => {
               <i className="fas fa-users-cog fa-4x tm-color-primary" />
             </div> */}
             <h2 className="mb-3 tm-color-primary tm-post-title">Email</h2>
-            <p className="mb-0 tm-line-height-short"> {userEmail}</p>
+            <p className="mb-0 tm-line-height-short"> </p>
           </div>
         </div>
       </div>

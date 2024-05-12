@@ -18,11 +18,12 @@ import "./assets/css/templatemo-xtra-blog.css";
 // import "./js/templatemo-script.js";
 // import reportWebVitals from "./reportWebVitals.js";
 import { UserProvider } from "./useContext/context";
+import { PrivateRoute } from "./pages/auth/PrivateRoute";
 
 const routing = (
   <UserProvider>
-    <Router>
-      <React.StrictMode>
+    <React.StrictMode>
+      <Router>
         <div id="main-wrapper">
           <Header />
           <Routes>
@@ -30,16 +31,30 @@ const routing = (
             <Route path="/post/:id" element={<Blog />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/about" element={<About />} />
-            <Route path="/create-post" element={<CreateBlog />} />
             <Route path="/login" element={<Login />} />
             <Route path="/logout" element={<LogOut />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route
+              path="/create-post"
+              element={
+                <PrivateRoute>
+                  <CreateBlog />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <PrivateRoute>
+                  <Profile />
+                </PrivateRoute>
+              }
+            />
           </Routes>
           <Footer />
         </div>
-      </React.StrictMode>
-    </Router>
+      </Router>
+    </React.StrictMode>
   </UserProvider>
 );
 
