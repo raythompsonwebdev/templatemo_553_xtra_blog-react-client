@@ -34,22 +34,12 @@ const routing = (
             <Route path="/login" element={<Login />} />
             <Route path="/logout" element={<LogOut />} />
             <Route path="/register" element={<Register />} />
-            <Route
-              path="/create-post"
-              element={
-                <PrivateRoute>
-                  <CreateBlog />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/profile"
-              element={
-                <PrivateRoute>
-                  <Profile />
-                </PrivateRoute>
-              }
-            />
+            <Route path="/" element={<PrivateRoute />}>
+              <Route path="/create-post" element={<CreateBlog />} />
+            </Route>
+            <Route path="/" element={<PrivateRoute />}>
+              <Route path="/profile" element={<Profile />} />
+            </Route>
           </Routes>
           <Footer />
         </div>

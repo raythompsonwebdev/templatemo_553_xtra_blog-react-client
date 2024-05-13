@@ -1,6 +1,10 @@
 import { SetStateAction, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useToken } from "../../pages/auth/useToken";
 
 const RegisterForm = () => {
+  const [token, setToken] = useToken();
+
   const [username, setUsername] = useState("");
   const [hashpassword, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -9,6 +13,8 @@ const RegisterForm = () => {
   const [submitted, setDate] = useState(currDate);
 
   const [errormessage, setErrorMessage] = useState("");
+
+  const navigate = useNavigate();
 
   function handleUsername(e: {
     preventDefault: () => void;
@@ -62,6 +68,8 @@ const RegisterForm = () => {
           // eslint-disable-next-line no-console
           console.log(response);
           setErrorMessage(response.message);
+          setToken(response.token);
+          navigate("/profile");
         });
     } catch (error) {
       // eslint-disable-next-line no-console
@@ -71,6 +79,10 @@ const RegisterForm = () => {
 
   if (errormessage !== "") {
     console.log(errormessage);
+  }
+
+  if (token !== "") {
+    console.log(token);
   }
 
   return (

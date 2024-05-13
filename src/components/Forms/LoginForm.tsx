@@ -1,12 +1,15 @@
 import { SetStateAction, useState } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useToken } from "../../pages/auth/useToken";
 
 const LoginForm = () => {
   const [email, setUserEmail] = useState("");
   const [password, setUserPassword] = useState("");
-  const [message, setErrorMessage] = useState("");
+  const [errormessage, setErrorMessage] = useState("");
 
-  // const navigate = useNavigate();
+  const [token, setToken] = useToken();
+
+  const navigate = useNavigate();
 
   const handleUserEmail = (e: {
     preventDefault: () => void;
@@ -37,20 +40,26 @@ const LoginForm = () => {
 
       const result = await response.json();
 
-      if (result.message !== "") {
-        setErrorMessage(result.message);
-      } else {
-        //navigate("/profile");
-      }
+      setErrorMessage(result.message);
+      setToken(result.token);
+      navigate("/profile");
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error(error);
     }
   };
 
+  if (errormessage !== "") {
+    console.log(errormessage);
+  }
+
+  if (token !== "") {
+    console.log(token);
+  }
+
   return (
     <form id="login" onSubmit={submitLogin}>
-      <span>{message ? message : ""}</span>
+      <span>{errormessage ? errormessage : ""}</span>
       <div className="form-group">
         <label htmlFor="username" style={{ width: "100%" }}>
           Email:&#32;

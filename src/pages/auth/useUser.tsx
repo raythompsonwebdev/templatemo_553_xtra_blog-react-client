@@ -4,7 +4,7 @@ import { useToken } from "./useToken";
 export const useUser = () => {
   const [token] = useToken();
 
-  const getPayloadFromToken = (token: any | ((newToken: any) => void)) => {
+  const getPayloadFromToken = (token: any) => {
     const encodedPayload = token.split(".")[1];
     return JSON.parse(atob(encodedPayload));
   };

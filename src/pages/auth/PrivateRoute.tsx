@@ -1,10 +1,13 @@
-import { Navigate, Route } from "react-router-dom";
+import { Outlet, Navigate } from "react-router-dom";
+import { useUser } from "./useUser";
 
 //chatgtp
-export const PrivateRoute = ({ element, ...rest }: any) => {
-  const user = null; // You should replace this with your actual user authentication logic
+export const PrivateRoute = () => {
+  const user = useUser();
 
-  if (!user) return <Navigate to="/login" />; // Redirect the user to the login page if not authenticated
+  return !user ? <Navigate to="/login" /> : <Outlet />; // Redirect the user to the login page if not authenticated
 
-  return <Route {...rest} element={element} />;
+  // // return <Route {...rest} element={element} />;
+
+  // return <Route {...rest} element={element} />;
 };

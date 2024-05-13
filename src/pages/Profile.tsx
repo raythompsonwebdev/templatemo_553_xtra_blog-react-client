@@ -1,13 +1,80 @@
-// import { useEffect, useState, useContext } from "react";
-// import { useEffect, useState } from "react";
-// import { UserContext } from "../useContext/context";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useToken } from "./auth/useToken";
+import { useUser } from "./auth/useUser";
 
 const Profile = () => {
-  //const { loggedIn, setLoggedIn } = useContext(UserContext);
-  // const [loggedIn, setLoggedIn] = useState(false);
-  // const [message, setMessage] = useState("");
-  // const [userName, setUserName] = useState("");
-  // const [userEmail, setUserEmail] = useState("");
+  const user = useUser();
+  const [token, setToken] = useToken();
+
+  // const { id, email, info } = user;
+  const { id, email } = user;
+
+  const info = {
+    hairColor: "beeef",
+    favoriteFood: "beeef",
+    bio: "beeef",
+  };
+
+  const navigate = useNavigate();
+
+  // These states are bound to the values of the text inputs
+  // on the page (see JSX below).
+  const [favoriteFood, setFavoriteFood] = useState(info.favoriteFood || "");
+  const [hairColor, setHairColor] = useState(info.hairColor || "");
+  const [bio, setBio] = useState(info.bio || "");
+
+  // These state variables control whether or not we show
+  // the success and error message sections after making
+  // a network request (see JSX below).
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [showErrorMessage, setShowErrorMessage] = useState(false);
+
+  // This useEffect hook automatically hides the
+  // success and error messages after 3 seconds when they're shown.
+  // Just a little user interface improvement.
+  useEffect(() => {
+    if (showSuccessMessage || showErrorMessage) {
+      setTimeout(() => {
+        setShowSuccessMessage(false);
+        setShowErrorMessage(false);
+      }, 3000);
+    }
+  }, [showSuccessMessage, showErrorMessage]);
+
+  const saveChanges = async () => {
+    try {
+      const response = await axios.put(
+        `/api/users/${id}`,
+        {
+          favoriteFood,
+          hairColor,
+          bio,
+        },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+
+      const { token: newToken } = response.data;
+      setToken(newToken);
+      setShowSuccessMessage(true);
+    } catch (error) {
+      setShowErrorMessage(true);
+    }
+  };
+
+  const logOut = () => {
+    localStorage.removeItem("token");
+    navigate("/logout");
+  };
+
+  const resetValues = () => {
+    setFavoriteFood(info.favoriteFood);
+    setHairColor(info.hairColor);
+    setBio(info.bio);
+  };
 
   // useEffect(() => {
   //   const fetchUserProfile = async () => {
@@ -34,121 +101,39 @@ const Profile = () => {
 
   return (
     <main className="tm-main">
-      <div className="row tm-row"></div>
-      <div className="row tm-row tm-mb-45">
+      <div className="row tm-row">
         <div className="col-12">
-          <hr className="tm-hr-primary tm-mb-55" />
-        </div>
-      </div>
-      <div className="row tm-row tm-mb-40">
-        <div className="col-12">
-          <div className="mb-4">
-            <h2 className="pt-2 tm-mb-40 tm-color-primary tm-post-title">
-              Welcome
-            </h2>
-          </div>
-        </div>
-      </div>
-      <div className="row tm-row tm-mb-120">
-        <div className="col-lg-4 tm-about-col">
-          <div className="tm-bg-gray tm-about-pad">
-            {/* <div className="text-center tm-mt-40 tm-mb-60">
-              <i className="fas fa-bezier-curve fa-4x tm-color-primary" />
-            </div> */}
-            <h2 className="mb-3 tm-color-primary tm-post-title">fg</h2>
-            <img
-              src="/images/about-02.jpg"
-              alt="two"
-              className="img-fluid mr-4"
+          <h1>Info for {email}</h1>
+          {showSuccessMessage && (
+            <div className="success">Successfully saved user data!</div>
+          )}
+          {showErrorMessage && (
+            <div className="fail">
+              Uh oh... something went wrong and we couldn't save changes
+            </div>
+          )}
+          <label>
+            Favorite Food:
+            <input
+              onChange={(e) => setFavoriteFood(e.target.value)}
+              value={favoriteFood}
             />
-          </div>
-        </div>
-        <div className="col-lg-8 tm-about-col">
-          <div className="tm-bg-gray tm-about-pad">
-            {/* <div className="text-center tm-mt-40 tm-mb-60">
-              <i className="fas fa-users-cog fa-4x tm-color-primary" />
-            </div> */}
-            <h2 className="mb-3 tm-color-primary tm-post-title">Email</h2>
-            <p className="mb-0 tm-line-height-short"> </p>
-          </div>
-        </div>
-      </div>
-      <div className="row tm-row tm-mb-60">
-        <div className="col-12">
-          <hr className="tm-hr-primary  tm-mb-55" />
-        </div>
-        <div className="col-lg-6 tm-mb-60 tm-person-col">
-          <div className="media tm-person">
-            {/* <img
-              src="/images/about-02.jpg"
-              alt="two"
-              className="img-fluid mr-4"
-            /> */}
-            <div className="media-body">
-              <h2 className="tm-color-primary tm-post-title mb-2">
-                John Henry
-              </h2>
-              <h3 className="tm-h3 mb-3">CEO/Founder</h3>
-              <p className="mb-0 tm-line-height-short">
-                Aliquam non vulputate lectus, vel ultricies diam. Suspendisse at
-                ipsum hendrerit, vestibulum mi id, mattis tortor.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="col-lg-6 tm-mb-60 tm-person-col">
-          <div className="media tm-person">
-            {/* <img
-              src="/images/about-03.jpg"
-              alt="three"
-              className="img-fluid mr-4"
-            /> */}
-            <div className="media-body">
-              <h2 className="tm-color-primary tm-post-title mb-2">Timy Cake</h2>
-              <h3 className="tm-h3 mb-3">Project Director</h3>
-              <p className="mb-0 tm-line-height-short">
-                Quisque in bibendum elit, in egestas turpis. Vestibulum ornare
-                sollicitudin congue. Aliquam lorem mi, maximus at iaculis ut.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="col-lg-6 tm-mb-60 tm-person-col">
-          <div className="media tm-person">
-            {/* <img
-              src="/images/about-04.jpg"
-              alt="four"
-              className="img-fluid mr-4"
-            /> */}
-            <div className="media-body">
-              <h2 className="tm-color-primary tm-post-title mb-2">Jay Zoona</h2>
-              <h3 className="tm-h3 mb-3">Supervisor</h3>
-              <p className="mb-0 tm-line-height-short">
-                Maecenas eu mi eu dui cursus consequat non eu metus. Morbi ac
-                turpis eleifend, commodo purus eget, commodo mauris.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="col-lg-6 tm-mb-60 tm-person-col">
-          <div className="media tm-person">
-            {/* <img
-              src="/images/about-05.jpg"
-              alt="five"
-              className="img-fluid mr-4"
-            /> */}
-            <div className="media-body">
-              <h2 className="tm-color-primary tm-post-title mb-2">
-                Catherine Soft
-              </h2>
-              <h3 className="tm-h3 mb-3">Team Leader</h3>
-              <p className="mb-0 tm-line-height-short">
-                Integer eu sapien hendrerit, imperdiet arcu sit amet,
-                sollicitudin ipsum. Phasellus consequat suscipit ligula eget
-                bibendum.
-              </p>
-            </div>
-          </div>
+          </label>
+          <label>
+            Hair Color:
+            <input
+              onChange={(e) => setHairColor(e.target.value)}
+              value={hairColor}
+            />
+          </label>
+          <label>
+            Bio:
+            <input onChange={(e) => setBio(e.target.value)} value={bio} />
+          </label>
+          <hr />
+          <button onClick={saveChanges}>Save Changes</button>
+          <button onClick={resetValues}>Reset Values</button>
+          <button onClick={logOut}>Log Out</button>
         </div>
       </div>
       <footer className="row tm-row">
