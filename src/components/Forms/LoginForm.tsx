@@ -58,7 +58,7 @@ const LoginForm = () => {
   }
 
   return (
-    <form id="login" onSubmit={submitLogin}>
+    <form className="mb-5 ml-auto mr-0" id="form" onSubmit={submitLogin}>
       <span>{errormessage ? errormessage : ""}</span>
       <div className="form-group">
         <label htmlFor="username" style={{ width: "100%" }}>

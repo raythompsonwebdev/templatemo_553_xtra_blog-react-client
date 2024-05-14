@@ -2,18 +2,20 @@ import MainNav from "./MainNav";
 import UserNav from "./UserNav";
 import { useEffect, useContext } from "react";
 import { UserContext } from "../useContext/context";
+import { useUser } from "../pages/auth/useUser";
 
 function Header() {
   // const [message, setMessage] = useState("");
   // const [userName, setUserName] = useState("");
   const { loggedIn, setLoggedIn } = useContext(UserContext);
+  const user = useUser();
 
   useEffect(() => {
     setLoggedIn(false);
   }, [setLoggedIn]);
 
   // eslint-disable-next-line no-console
-  console.log(loggedIn);
+  console.log(loggedIn, user);
 
   return (
     <header className="tm-header" id="tm-header">
@@ -32,7 +34,7 @@ function Header() {
           <h1 className="text-center">Xtra Blog</h1>
         </div>
         {/* <LoginContext.Provider value={{userName, setUserName}}> */}
-        {!loggedIn ? <MainNav /> : <UserNav />}
+        {user.email !== "" ? <UserNav /> : <MainNav />}
         {/* </LoginContext.Provider> */}
         <div className="tm-mb-65">
           <a

@@ -9,13 +9,9 @@ const Profile = () => {
   const [token, setToken] = useToken();
 
   // const { id, email, info } = user;
-  const { id, email } = user;
+  const { user_id, username, email, info } = user;
 
-  const info = {
-    hairColor: "beeef",
-    favoriteFood: "beeef",
-    bio: "beeef",
-  };
+  console.log(info);
 
   const navigate = useNavigate();
 
@@ -46,7 +42,7 @@ const Profile = () => {
   const saveChanges = async () => {
     try {
       const response = await axios.put(
-        `/api/users/${id}`,
+        `/api/users/${user_id}`,
         {
           favoriteFood,
           hairColor,
@@ -56,6 +52,8 @@ const Profile = () => {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
+
+      console.log(response);
 
       const { token: newToken } = response.data;
       setToken(newToken);
@@ -76,29 +74,6 @@ const Profile = () => {
     setBio(info.bio);
   };
 
-  // useEffect(() => {
-  //   const fetchUserProfile = async () => {
-  //     const response = await fetch("/api/profile", {
-  //       method: "GET",
-  //       headers: {
-  //         Accept: "application/json",
-  //         "Content-Type": "application/json",
-  //       },
-  //     });
-  //     const result = await response.json();
-
-  //     setLoggedIn(false);
-  //     setMessage(result.message);
-  //     setUserName(result.token?.username);
-  //     setUserEmail(result.token?.email);
-  //   };
-
-  //   fetchUserProfile();
-  // }, [setLoggedIn]);
-
-  // // eslint-disable-next-line no-console
-  // console.log(message, loggedIn);
-
   return (
     <main className="tm-main">
       <div className="row tm-row">
@@ -112,28 +87,86 @@ const Profile = () => {
               Uh oh... something went wrong and we couldn't save changes
             </div>
           )}
-          <label>
-            Favorite Food:
-            <input
-              onChange={(e) => setFavoriteFood(e.target.value)}
-              value={favoriteFood}
-            />
-          </label>
-          <label>
-            Hair Color:
-            <input
-              onChange={(e) => setHairColor(e.target.value)}
-              value={hairColor}
-            />
-          </label>
-          <label>
-            Bio:
-            <input onChange={(e) => setBio(e.target.value)} value={bio} />
-          </label>
-          <hr />
-          <button onClick={saveChanges}>Save Changes</button>
-          <button onClick={resetValues}>Reset Values</button>
-          <button onClick={logOut}>Log Out</button>
+          <div className="card">
+            <div className="row g-0">
+              <div className="col-md-4">
+                <svg
+                  className="bd-placeholder-img"
+                  width="100%"
+                  height="250"
+                  xmlns="http://www.w3.org/2000/svg"
+                  role="img"
+                  aria-label="Placeholder: Image"
+                  preserveAspectRatio="xMidYMid slice"
+                  focusable="false"
+                >
+                  <title>Placeholder</title>
+                  <rect width="100%" height="100%" fill="#868e96"></rect>
+                  <text x="50%" y="50%" fill="#dee2e6" dy=".3em">
+                    Image
+                  </text>
+                </svg>
+              </div>
+              <div className="col-md-8">
+                <div className="card-body">
+                  <h5 className="card-title">{username}</h5>
+                  <p className="card-text">
+                    This is a wider card with supporting text below as a natural
+                    lead-in to additional content. This content is a little bit
+                    longer.
+                  </p>
+                  <p className="card-text">
+                    <small className="text-body-secondary">
+                      Last updated 3 mins ago
+                    </small>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <form className="mb-5 ml-auto mr-0" id="form">
+            <div className="form-group">
+              <label>
+                Bio:
+                <input
+                  className="form-control"
+                  onChange={(e) => setBio(e.target.value)}
+                  value={bio}
+                />
+              </label>
+            </div>
+            <div className="form-group">
+              <label>
+                Hair Color:
+                <input
+                  className="form-control"
+                  onChange={(e) => setHairColor(e.target.value)}
+                  value={hairColor}
+                />
+              </label>
+            </div>
+            <div className="form-group">
+              <label>
+                Favorite Food:
+                <input
+                  className="form-control"
+                  onChange={(e) => setFavoriteFood(e.target.value)}
+                  value={favoriteFood}
+                />
+              </label>
+            </div>
+
+            <hr />
+            <button className="btn btn-primary" onClick={saveChanges}>
+              Save Changes
+            </button>
+            <button className="btn btn-primary" onClick={resetValues}>
+              Reset Values
+            </button>
+            <button className="btn btn-primary" onClick={logOut}>
+              Log Out
+            </button>
+          </form>
         </div>
       </div>
       <footer className="row tm-row">
