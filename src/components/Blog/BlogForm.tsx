@@ -1,8 +1,11 @@
 import { SetStateAction, useState } from "react";
 
-const BlogForm = () => {
-  const [username, setUserName] = useState("");
-  const [author, setBlogAuthor] = useState("");
+const BlogForm = (props: any) => {
+  const { user, loggedIn } = props;
+
+  const [user_id, setAuthorId] = useState(user.user_id);
+  const [username, setUserName] = useState(user.username);
+  const [author, setBlogAuthor] = useState(user.username);
   const [blogtitle, setBlogTitle] = useState("");
   const [blogpost, setBlogPost] = useState("");
   const [mood, setMood] = useState("");
@@ -10,8 +13,9 @@ const BlogForm = () => {
   const currDate = new Date().toISOString().slice(0, 10);
   const [submitted, setBlogDate] = useState(currDate);
 
-  const blogimage = "image";
-  const user_id = "10";
+  const blogimage = "./images/image-one.jpg";
+
+  console.log(loggedIn);
 
   const handleAuthor = (e: {
     preventDefault: () => void;
@@ -45,14 +49,6 @@ const BlogForm = () => {
     setBlogPost(value);
   };
 
-  const handleCatId = (e: {
-    preventDefault: () => void;
-    target: { value: SetStateAction<string> };
-  }) => {
-    const { value } = e.target;
-    setCatId(value);
-  };
-
   const handleMood = (e: {
     preventDefault: () => void;
     target: { value: SetStateAction<string> };
@@ -67,6 +63,22 @@ const BlogForm = () => {
   }) => {
     const { value } = e.target;
     setBlogDate(value);
+  };
+
+  const handleCatId = (e: {
+    preventDefault: () => void;
+    target: { value: SetStateAction<string> };
+  }) => {
+    const { value } = e.target;
+    setCatId(value);
+  };
+
+  const handleAuthorId = (e: {
+    preventDefault: () => void;
+    target: { value: SetStateAction<string> };
+  }) => {
+    const { value } = e.target;
+    setAuthorId(value);
   };
 
   const submitForm = (e: { preventDefault: () => void }) => {
@@ -221,6 +233,21 @@ const BlogForm = () => {
               name="submitted"
               onChange={handleBlogDate}
               value={submitted}
+            />
+          </label>
+        </div>
+      </div>
+
+      <div className="form-group row mb-4">
+        <div className="col-sm-12">
+          <label htmlFor="user_id">
+            <input
+              className="form-control"
+              type="hidden"
+              id="user_id"
+              name="user_id"
+              onChange={handleAuthorId}
+              value={user_id}
             />
           </label>
         </div>

@@ -1,6 +1,14 @@
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function UserNav() {
+  const navigate = useNavigate();
+
+  const logOut = () => {
+    localStorage.removeItem("token");
+    navigate("/logout");
+  };
+
   return (
     <nav className="tm-nav" id="tm-nav">
       <ul>
@@ -23,10 +31,10 @@ function UserNav() {
           </Link>
         </li>
         <li className="tm-nav-item">
-          <Link to="/logout" className="tm-nav-link">
+          <button className="tm-nav-link" onClick={logOut}>
             <i className="fas fa-pen" />
             Logout
-          </Link>
+          </button>
         </li>
         <li className="tm-nav-item">
           <Link to="/about" className="tm-nav-link">

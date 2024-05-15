@@ -4,9 +4,6 @@ import { BlogType } from "../../types/index";
 function BlogArticles(props: { blogData: BlogType[] }) {
   const { blogData } = props;
 
-  // eslint-disable-next-line no-console
-  // console.error(lastIndex);
-
   const Blog = blogData.map((item: BlogType) => (
     <BlogArticle
       key={item.id}

@@ -1,35 +1,25 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { useToken } from "./auth/useToken";
 import { useUser } from "./auth/useUser";
+import { UserContext } from "../useContext/context";
 
 const Profile = () => {
   const user = useUser();
   const [token, setToken] = useToken();
+  const { loggedIn, setLoggedIn } = useContext(UserContext);
 
-  // const { id, email, info } = user;
   const { user_id, username, email, info } = user;
 
-  console.log(user);
+  console.log(loggedIn);
 
-  const navigate = useNavigate();
-
-  // These states are bound to the values of the text inputs
-  // on the page (see JSX below).
   const [favoriteFood, setFavoriteFood] = useState(info.favoriteFood || "");
   const [hairColor, setHairColor] = useState(info.hairColor || "");
   const [bio, setBio] = useState(info.bio || "");
 
-  // These state variables control whether or not we show
-  // the success and error message sections after making
-  // a network request (see JSX below).
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [showErrorMessage, setShowErrorMessage] = useState(false);
 
-  // This useEffect hook automatically hides the
-  // success and error messages after 3 seconds when they're shown.
-  // Just a little user interface improvement.
   useEffect(() => {
     if (showSuccessMessage || showErrorMessage) {
       setTimeout(() => {
@@ -37,9 +27,13 @@ const Profile = () => {
         setShowErrorMessage(false);
       }, 3000);
     }
-  }, [showSuccessMessage, showErrorMessage]);
+    if (loggedIn) {
+      setLoggedIn(true);
+    }
+  }, [showSuccessMessage, showErrorMessage, setLoggedIn]);
 
-  const saveChanges = async () => {
+  const saveChanges = async (e: { preventDefault: () => void }) => {
+    e.preventDefault();
     try {
       const response = await axios.put(
         `/api/users/${user_id}`,
@@ -56,28 +50,12 @@ const Profile = () => {
         }
       );
 
-      // const response = await fetch(`/api/users/${user_id}`, {
-      //   method: "POST",
-      //   headers: {
-      //     Accept: "application/json",
-      //     "Content-Type": "application/json",
-      //     Authorization: `Bearer ${token}`,
-      //   },
-      //   body: JSON.stringify({ favoriteFood, hairColor, bio }),
-      // });
-
-      console.log(response.data);
       const { token: newToken } = response.data;
       setToken(newToken);
       setShowSuccessMessage(true);
     } catch (error) {
       setShowErrorMessage(true);
     }
-  };
-
-  const logOut = () => {
-    localStorage.removeItem("token");
-    navigate("/logout");
   };
 
   const resetValues = () => {
@@ -136,7 +114,7 @@ const Profile = () => {
               </div>
             </div>
           </div>
-          <form className="mb-5 ml-auto mr-0" id="form">
+          <form className="mb-5 ml-auto mr-0" id="form" onSubmit={saveChanges}>
             <div className="form-group">
               <label>
                 Bio:
@@ -169,14 +147,11 @@ const Profile = () => {
             </div>
 
             <hr />
-            <button className="btn btn-primary" onClick={saveChanges}>
+            <button className="btn btn-primary" type="submit">
               Save Changes
             </button>
             <button className="btn btn-primary" onClick={resetValues}>
               Reset Values
-            </button>
-            <button className="btn btn-primary" onClick={logOut}>
-              Log Out
             </button>
           </form>
         </div>

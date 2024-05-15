@@ -1,7 +1,22 @@
 import { Link } from "react-router-dom";
 import Blogform from "../components/Blog/BlogForm";
+// import { useToken } from "./auth/useToken";
+import { useUser } from "./auth/useUser";
+import { UserContext } from "../useContext/context";
+import { useEffect, useContext } from "react";
 
 function CreateBlog() {
+  const user = useUser();
+  const { loggedIn, setLoggedIn } = useContext(UserContext);
+
+  console.log(loggedIn);
+
+  useEffect(() => {
+    if (user !== null) {
+      setLoggedIn(true);
+    }
+  }, [setLoggedIn]);
+
   return (
     <main className="tm-main">
       <div className="row tm-row tm-mb-120">
@@ -9,7 +24,7 @@ function CreateBlog() {
           <h2 className="tm-color-primary tm-post-title tm-mb-60">Add Blog</h2>
         </div>
         <div className="col-lg-7 tm-contact-left">
-          <Blogform />
+          <Blogform user={user} loggedIn={loggedIn} />
         </div>
         <div className="col-lg-5 tm-contact-right">
           <address className="mb-4 tm-color-gray">

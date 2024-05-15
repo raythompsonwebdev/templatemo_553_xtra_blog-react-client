@@ -11,7 +11,9 @@ function Header() {
   const user = useUser();
 
   useEffect(() => {
-    setLoggedIn(false);
+    if (user !== null) {
+      setLoggedIn(true);
+    }
   }, [setLoggedIn]);
 
   // eslint-disable-next-line no-console
@@ -34,7 +36,7 @@ function Header() {
           <h1 className="text-center">Xtra Blog</h1>
         </div>
         {/* <LoginContext.Provider value={{userName, setUserName}}> */}
-        {user !== null ? <UserNav /> : <MainNav />}
+        {loggedIn ? <UserNav /> : <MainNav />}
         {/* </LoginContext.Provider> */}
         <div className="tm-mb-65">
           <a
