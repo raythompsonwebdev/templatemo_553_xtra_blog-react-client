@@ -6,7 +6,7 @@ import { useUser } from "../pages/auth/useUser";
 
 function Header() {
   // const [message, setMessage] = useState("");
-  // const [userName, setUserName] = useState("");
+
   const { loggedIn, setLoggedIn } = useContext(UserContext);
   const user = useUser();
 
@@ -15,7 +15,7 @@ function Header() {
   }, [setLoggedIn]);
 
   // eslint-disable-next-line no-console
-  console.log(loggedIn, user);
+  console.log(user, loggedIn);
 
   return (
     <header className="tm-header" id="tm-header">
@@ -34,7 +34,7 @@ function Header() {
           <h1 className="text-center">Xtra Blog</h1>
         </div>
         {/* <LoginContext.Provider value={{userName, setUserName}}> */}
-        {user.email !== "" ? <UserNav /> : <MainNav />}
+        {user !== null ? <UserNav /> : <MainNav />}
         {/* </LoginContext.Provider> */}
         <div className="tm-mb-65">
           <a

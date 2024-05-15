@@ -11,7 +11,7 @@ const Profile = () => {
   // const { id, email, info } = user;
   const { user_id, username, email, info } = user;
 
-  console.log(info);
+  console.log(user);
 
   const navigate = useNavigate();
 
@@ -44,17 +44,29 @@ const Profile = () => {
       const response = await axios.put(
         `/api/users/${user_id}`,
         {
-          favoriteFood,
-          hairColor,
           bio,
+          hairColor,
+          favoriteFood,
         },
         {
-          headers: { Authorization: `Bearer ${token}` },
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
 
-      console.log(response);
+      // const response = await fetch(`/api/users/${user_id}`, {
+      //   method: "POST",
+      //   headers: {
+      //     Accept: "application/json",
+      //     "Content-Type": "application/json",
+      //     Authorization: `Bearer ${token}`,
+      //   },
+      //   body: JSON.stringify({ favoriteFood, hairColor, bio }),
+      // });
 
+      console.log(response.data);
       const { token: newToken } = response.data;
       setToken(newToken);
       setShowSuccessMessage(true);
