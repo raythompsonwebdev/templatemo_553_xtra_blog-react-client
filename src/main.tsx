@@ -1,4 +1,6 @@
 import React from "react";
+import "./assets/css/bootstrap.min.css";
+import "./assets/css/templatemo-xtra-blog.css";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
@@ -12,13 +14,13 @@ import Register from "./pages/Register";
 import Contact from "./pages/Contact";
 import Profile from "./pages/Profile";
 import LogOut from "./pages/LogOut";
-import "./assets/css/bootstrap.min.css";
-import "./assets/css/templatemo-xtra-blog.css";
-// import { CookiesProvider } from "react-cookie";
-// import "./js/templatemo-script.js";
-// import reportWebVitals from "./reportWebVitals.js";
+import EmailLandingPage from "./pages/EmailLandingPage";
+import VerifyEmail from "./pages/VerifyEmail";
 import { UserProvider } from "./useContext/context";
 import { PrivateRoute } from "./pages/auth/PrivateRoute";
+
+// import "./js/templatemo-script.js";
+// import reportWebVitals from "./reportWebVitals.js";
 
 const routing = (
   <UserProvider>
@@ -34,6 +36,11 @@ const routing = (
             <Route path="/login" element={<Login />} />
             <Route path="/logout" element={<LogOut />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/please-verify" element={<VerifyEmail />} />
+            <Route
+              path="/verify-email/:verificationString"
+              element={<EmailLandingPage />}
+            />
             <Route path="/" element={<PrivateRoute />}>
               <Route path="/create-post" element={<CreateBlog />} />
             </Route>

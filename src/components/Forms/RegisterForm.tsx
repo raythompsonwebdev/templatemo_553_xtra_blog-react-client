@@ -69,7 +69,7 @@ const RegisterForm = () => {
           console.log(response);
           setErrorMessage(response.message);
           setToken(response.token);
-          navigate("/profile");
+          navigate("/please-verify");
         });
     } catch (error) {
       // eslint-disable-next-line no-console

@@ -53,7 +53,7 @@ const LoginForm = () => {
     console.log(errormessage);
   }
 
-  if (token !== "") {
+  if (token !== null) {
     console.log(token);
   }
 

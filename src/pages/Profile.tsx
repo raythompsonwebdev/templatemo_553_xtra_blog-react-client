@@ -9,7 +9,7 @@ const Profile = () => {
   const [token, setToken] = useToken();
   const { loggedIn, setLoggedIn } = useContext(UserContext);
 
-  const { user_id, username, email, info } = user;
+  const { user_id, username, email, is_verified, info } = user;
 
   console.log(loggedIn);
 
@@ -69,6 +69,12 @@ const Profile = () => {
       <div className="row tm-row">
         <div className="col-12">
           <h1>Info for {email}</h1>
+
+          {!is_verified && (
+            <div className="fail">
+              You won't be able to make any changes until you verify your email
+            </div>
+          )}
           {showSuccessMessage && (
             <div className="success">Successfully saved user data!</div>
           )}
