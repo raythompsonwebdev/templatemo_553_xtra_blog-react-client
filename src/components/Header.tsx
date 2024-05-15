@@ -17,7 +17,7 @@ function Header() {
   }, [setLoggedIn]);
 
   // eslint-disable-next-line no-console
-  console.log(user, loggedIn);
+  console.log(loggedIn);
 
   return (
     <header className="tm-header" id="tm-header">
