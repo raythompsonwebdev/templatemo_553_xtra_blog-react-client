@@ -93,6 +93,13 @@ const LoginForm = () => {
       <button className="w-100 btn btn-lg btn-primary" type="submit">
         Login
       </button>
+      <br />
+      <button
+        className="w-100 btn btn-lg btn-primary"
+        onClick={() => navigate("/forgot-password")}
+      >
+        Forgot your password?
+      </button>
       <p className="mt-5 mb-3 text-muted">© 2017–2021</p>
     </form>
   );
