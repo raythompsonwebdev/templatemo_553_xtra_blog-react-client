@@ -5,7 +5,7 @@ import Comment from "../components/Comments/Comment";
 import CommentReply from "../components/Comments/CommentReply";
 import CommentForm from "../components/Comments/CommentForm";
 import { BlogType, CommentType } from "../types/index";
-import { convertDate } from "../helper";
+import { convertDate } from "../util/helper";
 
 const Blog = () => {
   const { id } = useParams();

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { CommentType } from "../../types/index";
-import { convertDate } from "../../helper";
+import { convertDate } from "../../util/helper";
 
 function Comment(props: { comment: CommentType }) {
   const { comment } = props;

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { BlogType } from "../../types/index";
-import { convertDate } from "../../helper";
+import { convertDate } from "../../util/helper";
 
 const BlogArticle = (props: BlogType) => {
   const {
