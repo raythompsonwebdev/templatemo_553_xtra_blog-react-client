@@ -28,6 +28,45 @@ function Comment(props: { comment: CommentType }) {
           </Link>
           <span className="tm-color-primary">{convertDate(date)}</span>
         </div>
+        <p></p>
+        <form action="" className="mb-12">
+          <div className="mb-4">
+            <input
+              className="form-control"
+              id="username"
+              name="username"
+              type="text"
+            />
+          </div>
+          <div className="mb-4">
+            <input
+              className="form-control"
+              id="email"
+              name="email"
+              type="text"
+            />
+          </div>
+          <div className="mb-4">
+            <textarea className="form-control" name="message" rows={6} />
+          </div>
+          <div className="mb-4">
+            <input
+              className="form-control"
+              type="hidden"
+              id="date"
+              name="date"
+              value={date}
+            />
+          </div>
+          <div className="text-right">
+            <button
+              type="submit"
+              className="tm-btn tm-btn-primary tm-btn-small"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );

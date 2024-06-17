@@ -6,12 +6,12 @@ import Footer from "./components/Footer";
 import App from "./pages/App";
 import Blog from "./pages/Blog";
 import About from "./pages/About";
-import Createblog from "./pages/Createblog";
+import CreateBlog from "./pages/CreateBlog";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Contact from "./pages/Contact";
 import Profile from "./pages/Profile";
-import Logout from "./pages/Logout";
+import LogOut from "./pages/LogOut";
 import "./assets/css/bootstrap.min.css";
 import "./assets/css/templatemo-xtra-blog.css";
 // import { CookiesProvider } from "react-cookie";
@@ -22,23 +22,23 @@ import { UserProvider } from "./useContext/context";
 const routing = (
   <UserProvider>
     <Router>
-      <div id="main-wrapper">
-        <Header />
-        <React.StrictMode>
+      <React.StrictMode>
+        <div id="main-wrapper">
+          <Header />
           <Routes>
             <Route path="/" element={<App />} />
             <Route path="/post/:id" element={<Blog />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/about" element={<About />} />
-            <Route path="/create-post" element={<Createblog />} />
+            <Route path="/create-post" element={<CreateBlog />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/logout" element={<Logout />} />
+            <Route path="/logout" element={<LogOut />} />
             <Route path="/register" element={<Register />} />
             <Route path="/profile" element={<Profile />} />
           </Routes>
-        </React.StrictMode>
-        <Footer />
-      </div>
+          <Footer />
+        </div>
+      </React.StrictMode>
     </Router>
   </UserProvider>
 );
@@ -46,8 +46,3 @@ const routing = (
 const container = document.getElementById("root") as HTMLElement;
 const root = createRoot(container);
 root.render(routing);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-// reportWebVitals();

@@ -1,7 +1,7 @@
 import { SetStateAction, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Loginform = () => {
+const LoginForm = () => {
   const [username, setUserName] = useState("");
   const [password, setUserPassword] = useState("");
 
@@ -83,4 +83,4 @@ const Loginform = () => {
   );
 };
 
-export default Loginform;
+export default LoginForm;

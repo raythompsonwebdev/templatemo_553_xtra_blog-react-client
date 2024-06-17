@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import BlogsnippetContainer from "../components/Blog/BlogsnippetContainer";
+import BlogsnippetContainer from "../components/Blog/BlogArticles";
 import SearchForm from "../components/Forms/SearchForm";
 import { BlogType } from "../types/index";
 

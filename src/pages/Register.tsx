@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Registerform from "../components/Forms/Registerform";
+import Registerform from "../components/Forms/RegisterForm";
 
 function Register() {
   return (

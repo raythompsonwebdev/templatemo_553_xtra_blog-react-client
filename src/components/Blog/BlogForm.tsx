@@ -1,6 +1,6 @@
 import { SetStateAction, useState } from "react";
 
-const Blogform = () => {
+const BlogForm = () => {
   const [username, setUserName] = useState("");
   const [author, setBlogAuthor] = useState("");
   const [blogtitle, setBlogTitle] = useState("");
@@ -234,4 +234,4 @@ const Blogform = () => {
   );
 };
 
-export default Blogform;
+export default BlogForm;

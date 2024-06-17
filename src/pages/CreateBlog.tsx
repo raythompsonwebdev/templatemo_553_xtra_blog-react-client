@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import Blogform from "../components/Blog/Blogform";
+import Blogform from "../components/Blog/BlogForm";
 
-function Createblog() {
+function CreateBlog() {
   return (
     <main className="tm-main">
       <div className="row tm-row tm-mb-120">
@@ -71,4 +71,4 @@ function Createblog() {
   );
 }
 
-export default Createblog;
+export default CreateBlog;
